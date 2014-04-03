@@ -1,0 +1,551 @@
+﻿========================================
+Parse Tree
+========================================
+
++--<Global> ::= <Module> <Global>
+|  +--<Module> ::= module Identifier '{' <ModuleMembers> '}'
+|  |  +--module
+|  |  +--geometry
+|  |  +--{
+|  |  +--<ModuleMembers> ::= <ModuleMember> <ModuleMembers>
+|  |  |  +--<Class> ::= <Visibility> class Identifier <Extends> <Implements> '{' <ClassMembers> '}'
+|  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  +--public
+|  |  |  |  +--class
+|  |  |  |  +--Point
+|  |  |  |  +--<Extends> ::= 
+|  |  |  |  +--<Implements> ::= 
+|  |  |  |  +--{
+|  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  +--<Field> ::= <Visibility> var Identifier <VarType> ';'
+|  |  |  |  |  |  +--<Visibility> ::= 
+|  |  |  |  |  |  +--var
+|  |  |  |  |  |  +--x
+|  |  |  |  |  |  +--<VarType> ::= ':' Identifier
+|  |  |  |  |  |  |  +--:
+|  |  |  |  |  |  |  +--float32
+|  |  |  |  |  |  +--;
+|  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  +--<Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>
+|  |  |  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  |  |  +--public
+|  |  |  |  |  |  |  +--constructor
+|  |  |  |  |  |  |  +--(
+|  |  |  |  |  |  |  +--<Parameters> ::= 
+|  |  |  |  |  |  |  +--)
+|  |  |  |  |  |  |  +--<StatementsBlock> ::= '{' <Statements> '}'
+|  |  |  |  |  |  |  |  +--{
+|  |  |  |  |  |  |  |  +--<Statements> ::= 
+|  |  |  |  |  |  |  |  +--}
+|  |  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  |  +--<Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>
+|  |  |  |  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  |  |  |  +--public
+|  |  |  |  |  |  |  |  +--constructor
+|  |  |  |  |  |  |  |  +--(
+|  |  |  |  |  |  |  |  +--<Parameter> ::= Identifier <VarType>
+|  |  |  |  |  |  |  |  |  +--x
+|  |  |  |  |  |  |  |  |  +--<VarType> ::= ':' Identifier
+|  |  |  |  |  |  |  |  |  |  +--:
+|  |  |  |  |  |  |  |  |  |  +--float
+|  |  |  |  |  |  |  |  +--)
+|  |  |  |  |  |  |  |  +--<StatementsBlock> ::= '{' <Statements> '}'
+|  |  |  |  |  |  |  |  |  +--{
+|  |  |  |  |  |  |  |  |  +--<Statements> ::= 
+|  |  |  |  |  |  |  |  |  +--}
+|  |  |  |  |  |  |  +--<ClassMembers> ::= 
+|  |  |  |  +--}
+|  |  |  +--<ModuleMembers> ::= <ModuleMember> <ModuleMembers>
+|  |  |  |  +--<Class> ::= <Visibility> class Identifier <Extends> <Implements> '{' <ClassMembers> '}'
+|  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  +--public
+|  |  |  |  |  +--class
+|  |  |  |  |  +--Point2d
+|  |  |  |  |  +--<Extends> ::= extends Identifier
+|  |  |  |  |  |  +--extends
+|  |  |  |  |  |  +--Point1d
+|  |  |  |  |  +--<Implements> ::= implements <Identifiers>
+|  |  |  |  |  |  +--implements
+|  |  |  |  |  |  +--<Identifiers> ::= Identifier ',' <Identifiers>
+|  |  |  |  |  |  |  +--Equatible
+|  |  |  |  |  |  |  +--,
+|  |  |  |  |  |  |  +--<Identifiers> ::= Identifier
+|  |  |  |  |  |  |  |  +--Compareable
+|  |  |  |  |  +--{
+|  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  +--<Field> ::= <Visibility> var Identifier <VarType> ';'
+|  |  |  |  |  |  |  +--<Visibility> ::= 
+|  |  |  |  |  |  |  +--var
+|  |  |  |  |  |  |  +--y
+|  |  |  |  |  |  |  +--<VarType> ::= ':' Identifier
+|  |  |  |  |  |  |  |  +--:
+|  |  |  |  |  |  |  |  +--float32
+|  |  |  |  |  |  |  +--;
+|  |  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  |  +--<Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>
+|  |  |  |  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  |  |  |  +--public
+|  |  |  |  |  |  |  |  +--constructor
+|  |  |  |  |  |  |  |  +--(
+|  |  |  |  |  |  |  |  +--<Parameters> ::= 
+|  |  |  |  |  |  |  |  +--)
+|  |  |  |  |  |  |  |  +--<StatementsBlock> ::= '{' <Statements> '}'
+|  |  |  |  |  |  |  |  |  +--{
+|  |  |  |  |  |  |  |  |  +--<Statements> ::= 
+|  |  |  |  |  |  |  |  |  +--}
+|  |  |  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  |  |  +--<Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>
+|  |  |  |  |  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  |  |  |  |  +--public
+|  |  |  |  |  |  |  |  |  +--constructor
+|  |  |  |  |  |  |  |  |  +--(
+|  |  |  |  |  |  |  |  |  +--<Parameters> ::= <Parameter> ',' <Parameters>
+|  |  |  |  |  |  |  |  |  |  +--<Parameter> ::= Identifier <VarType>
+|  |  |  |  |  |  |  |  |  |  |  +--x
+|  |  |  |  |  |  |  |  |  |  |  +--<VarType> ::= ':' Identifier
+|  |  |  |  |  |  |  |  |  |  |  |  +--:
+|  |  |  |  |  |  |  |  |  |  |  |  +--float
+|  |  |  |  |  |  |  |  |  |  +--,
+|  |  |  |  |  |  |  |  |  |  +--<Parameter> ::= Identifier <VarType>
+|  |  |  |  |  |  |  |  |  |  |  +--y
+|  |  |  |  |  |  |  |  |  |  |  +--<VarType> ::= ':' Identifier
+|  |  |  |  |  |  |  |  |  |  |  |  +--:
+|  |  |  |  |  |  |  |  |  |  |  |  +--float
+|  |  |  |  |  |  |  |  |  +--)
+|  |  |  |  |  |  |  |  |  +--<StatementsBlock> ::= '{' <Statements> '}'
+|  |  |  |  |  |  |  |  |  |  +--{
+|  |  |  |  |  |  |  |  |  |  +--<Statements> ::= 
+|  |  |  |  |  |  |  |  |  |  +--}
+|  |  |  |  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  |  |  |  +--<Function> ::= <Visibility> method Identifier '(' <Parameters> ')' <ReturnType> <StatementsBlock>
+|  |  |  |  |  |  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  |  |  |  |  |  +--public
+|  |  |  |  |  |  |  |  |  |  +--method
+|  |  |  |  |  |  |  |  |  |  +--add
+|  |  |  |  |  |  |  |  |  |  +--(
+|  |  |  |  |  |  |  |  |  |  +--<Parameters> ::= 
+|  |  |  |  |  |  |  |  |  |  +--)
+|  |  |  |  |  |  |  |  |  |  +--<ReturnType> ::= 
+|  |  |  |  |  |  |  |  |  |  +--<StatementsBlock> ::= '{' <Statements> '}'
+|  |  |  |  |  |  |  |  |  |  |  +--{
+|  |  |  |  |  |  |  |  |  |  |  +--<Statements> ::= 
+|  |  |  |  |  |  |  |  |  |  |  +--}
+|  |  |  |  |  |  |  |  |  +--<ClassMembers> ::= 
+|  |  |  |  |  +--}
+|  |  |  |  +--<ModuleMembers> ::= <ModuleMember> <ModuleMembers>
+|  |  |  |  |  +--<Class> ::= <Visibility> class Identifier <Extends> <Implements> '{' <ClassMembers> '}'
+|  |  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  |  +--public
+|  |  |  |  |  |  +--class
+|  |  |  |  |  |  +--Point3d
+|  |  |  |  |  |  +--<Extends> ::= extends Identifier
+|  |  |  |  |  |  |  +--extends
+|  |  |  |  |  |  |  +--Point2d
+|  |  |  |  |  |  +--<Implements> ::= 
+|  |  |  |  |  |  +--{
+|  |  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  |  +--<Field> ::= <Visibility> var Identifier <VarType> ';'
+|  |  |  |  |  |  |  |  +--<Visibility> ::= 
+|  |  |  |  |  |  |  |  +--var
+|  |  |  |  |  |  |  |  +--z
+|  |  |  |  |  |  |  |  +--<VarType> ::= ':' Identifier
+|  |  |  |  |  |  |  |  |  +--:
+|  |  |  |  |  |  |  |  |  +--float32
+|  |  |  |  |  |  |  |  +--;
+|  |  |  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  |  |  +--<Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>
+|  |  |  |  |  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  |  |  |  |  +--public
+|  |  |  |  |  |  |  |  |  +--constructor
+|  |  |  |  |  |  |  |  |  +--(
+|  |  |  |  |  |  |  |  |  +--<Parameters> ::= 
+|  |  |  |  |  |  |  |  |  +--)
+|  |  |  |  |  |  |  |  |  +--<StatementsBlock> ::= '{' <Statements> '}'
+|  |  |  |  |  |  |  |  |  |  +--{
+|  |  |  |  |  |  |  |  |  |  +--<Statements> ::= 
+|  |  |  |  |  |  |  |  |  |  +--}
+|  |  |  |  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  |  |  |  +--<Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>
+|  |  |  |  |  |  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  |  |  |  |  |  +--public
+|  |  |  |  |  |  |  |  |  |  +--constructor
+|  |  |  |  |  |  |  |  |  |  +--(
+|  |  |  |  |  |  |  |  |  |  +--<Parameters> ::= <Parameter> ',' <Parameters>
+|  |  |  |  |  |  |  |  |  |  |  +--<Parameter> ::= Identifier <VarType>
+|  |  |  |  |  |  |  |  |  |  |  |  +--x
+|  |  |  |  |  |  |  |  |  |  |  |  +--<VarType> ::= ':' Identifier
+|  |  |  |  |  |  |  |  |  |  |  |  |  +--:
+|  |  |  |  |  |  |  |  |  |  |  |  |  +--float
+|  |  |  |  |  |  |  |  |  |  |  +--,
+|  |  |  |  |  |  |  |  |  |  |  +--<Parameters> ::= <Parameter> ',' <Parameters>
+|  |  |  |  |  |  |  |  |  |  |  |  +--<Parameter> ::= Identifier <VarType>
+|  |  |  |  |  |  |  |  |  |  |  |  |  +--y
+|  |  |  |  |  |  |  |  |  |  |  |  |  +--<VarType> ::= ':' Identifier
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  +--:
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  +--float
+|  |  |  |  |  |  |  |  |  |  |  |  +--,
+|  |  |  |  |  |  |  |  |  |  |  |  +--<Parameter> ::= Identifier <VarType>
+|  |  |  |  |  |  |  |  |  |  |  |  |  +--z
+|  |  |  |  |  |  |  |  |  |  |  |  |  +--<VarType> ::= ':' Identifier
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  +--:
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  +--float
+|  |  |  |  |  |  |  |  |  |  +--)
+|  |  |  |  |  |  |  |  |  |  +--<StatementsBlock> ::= '{' <Statements> '}'
+|  |  |  |  |  |  |  |  |  |  |  +--{
+|  |  |  |  |  |  |  |  |  |  |  +--<Statements> ::= 
+|  |  |  |  |  |  |  |  |  |  |  +--}
+|  |  |  |  |  |  |  |  |  +--<ClassMembers> ::= <ClassMember> <ClassMembers>
+|  |  |  |  |  |  |  |  |  |  +--<Function> ::= <Visibility> method Identifier '(' <Parameters> ')' <ReturnType> <StatementsBlock>
+|  |  |  |  |  |  |  |  |  |  |  +--<Visibility> ::= public
+|  |  |  |  |  |  |  |  |  |  |  |  +--public
+|  |  |  |  |  |  |  |  |  |  |  +--method
+|  |  |  |  |  |  |  |  |  |  |  +--add
+|  |  |  |  |  |  |  |  |  |  |  +--(
+|  |  |  |  |  |  |  |  |  |  |  +--<Parameters> ::= 
+|  |  |  |  |  |  |  |  |  |  |  +--)
+|  |  |  |  |  |  |  |  |  |  |  +--<ReturnType> ::= 
+|  |  |  |  |  |  |  |  |  |  |  +--<StatementsBlock> ::= '{' <Statements> '}'
+|  |  |  |  |  |  |  |  |  |  |  |  +--{
+|  |  |  |  |  |  |  |  |  |  |  |  +--<Statements> ::= 
+|  |  |  |  |  |  |  |  |  |  |  |  +--}
+|  |  |  |  |  |  |  |  |  |  +--<ClassMembers> ::= 
+|  |  |  |  |  |  +--}
+|  |  |  |  |  +--<ModuleMembers> ::= 
+|  |  +--}
+|  +--<Global> ::= 
+
+
+========================================
+Parse Actions
+========================================
+
+Parse Action      State    Line     Col   Parse Value                                       Description                                                                                      
+---------------   -----   -----   -----   -----------------------------------------------   -------------------------------------------------------------------------------------------------
+Token Read            0       0       0   module                                            Token type: module                                                                               
+Shift                 1                                                                     The parser shifted to state 1                                                                    
+Token Read            1       0       7   geometry                                          Token type: Identifier                                                                           
+Shift                 4                                                                     The parser shifted to state 4                                                                    
+Token Read            4       0      16   {                                                 Token type: {                                                                                    
+Shift                 6                                                                     The parser shifted to state 6                                                                    
+Token Read            6       2       4   public                                            Token type: public                                                                               
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9       2      11   class                                             Token type: class                                                                                
+Reduce               13                   (1) ::= public                                    <Visibility> ::= public                                                                          
+Shift                16                                                                     The parser shifted to state 16                                                                   
+Token Read           16       2      17   Point                                             Token type: Identifier                                                                           
+Shift                17                                                                     The parser shifted to state 17                                                                   
+Token Read           17       2      23   {                                                 Token type: {                                                                                    
+Reduce               19                   (2) ::=                                           <Extends> ::=                                                                                    
+Reduce               22                   (3) ::=                                           <Implements> ::=                                                                                 
+Shift                25                                                                     The parser shifted to state 25                                                                   
+Token Read           25       3       8   var                                               Token type: var                                                                                  
+Reduce               32                   (4) ::=                                           <Visibility> ::=                                                                                 
+Shift                38                                                                     The parser shifted to state 38                                                                   
+Token Read           38       3      12   x                                                 Token type: Identifier                                                                           
+Shift                41                                                                     The parser shifted to state 41                                                                   
+Token Read           41       3      13   :                                                 Token type: :                                                                                    
+Shift                46                                                                     The parser shifted to state 46                                                                   
+Token Read           46       3      15   float32                                           Token type: Identifier                                                                           
+Shift                52                                                                     The parser shifted to state 52                                                                   
+Token Read           52       3      22   ;                                                 Token type: ;                                                                                    
+Reduce               47                   (5) ::= : float32                                 <VarType> ::= ':' Identifier                                                                     
+Shift                53                                                                     The parser shifted to state 53                                                                   
+Token Read           53       5       8   public                                            Token type: public                                                                               
+Reduce               30                   (6) ::= (4) var x (5) ;                           <Field> ::= <Visibility> var Identifier <VarType> ';'                                            
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9       5      15   constructor                                       Token type: constructor                                                                          
+Reduce               32                   (7) ::= public                                    <Visibility> ::= public                                                                          
+Shift                36                                                                     The parser shifted to state 36                                                                   
+Token Read           36       5      26   (                                                 Token type: (                                                                                    
+Shift                39                                                                     The parser shifted to state 39                                                                   
+Token Read           39       5      27   )                                                 Token type: )                                                                                    
+Reduce               44                   (8) ::=                                           <Parameters> ::=                                                                                 
+Shift                50                                                                     The parser shifted to state 50                                                                   
+Token Read           50       5      29   {                                                 Token type: {                                                                                    
+Shift                55                                                                     The parser shifted to state 55                                                                   
+Token Read           55       6       8   }                                                 Token type: }                                                                                    
+Reduce               58                   (9) ::=                                           <Statements> ::=                                                                                 
+Shift                61                                                                     The parser shifted to state 61                                                                   
+Token Read           61       8       8   public                                            Token type: public                                                                               
+Reduce               56                   (10) ::= { (9) }                                  <StatementsBlock> ::= '{' <Statements> '}'                                                       
+Reduce               29                   (11) ::= (7) constructor ( (8) ) (10)             <Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>                
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9       8      15   constructor                                       Token type: constructor                                                                          
+Reduce               32                   (12) ::= public                                   <Visibility> ::= public                                                                          
+Shift                36                                                                     The parser shifted to state 36                                                                   
+Token Read           36       8      26   (                                                 Token type: (                                                                                    
+Shift                39                                                                     The parser shifted to state 39                                                                   
+Token Read           39       8      27   x                                                 Token type: Identifier                                                                           
+Shift                42                                                                     The parser shifted to state 42                                                                   
+Token Read           42       8      28   :                                                 Token type: :                                                                                    
+Shift                46                                                                     The parser shifted to state 46                                                                   
+Token Read           46       8      30   float                                             Token type: Identifier                                                                           
+Shift                52                                                                     The parser shifted to state 52                                                                   
+Token Read           52       8      35   )                                                 Token type: )                                                                                    
+Reduce               48                   (13) ::= : float                                  <VarType> ::= ':' Identifier                                                                     
+Reduce               43                   (14) ::= x (13)                                   <Parameter> ::= Identifier <VarType>                                                             
+Shift                50                                                                     The parser shifted to state 50                                                                   
+Token Read           50       8      37   {                                                 Token type: {                                                                                    
+Shift                55                                                                     The parser shifted to state 55                                                                   
+Token Read           55       9       8   }                                                 Token type: }                                                                                    
+Reduce               58                   (15) ::=                                          <Statements> ::=                                                                                 
+Shift                61                                                                     The parser shifted to state 61                                                                   
+Token Read           61      10       4   }                                                 Token type: }                                                                                    
+Reduce               56                   (16) ::= { (15) }                                 <StatementsBlock> ::= '{' <Statements> '}'                                                       
+Reduce               29                   (17) ::= (12) constructor ( (14) ) (16)           <Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>                
+Reduce               34                   (18) ::=                                          <ClassMembers> ::=                                                                               
+Reduce               34                   (19) ::= (17) (18)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Reduce               34                   (20) ::= (11) (19)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Reduce               28                   (21) ::= (6) (20)                                 <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Shift                35                                                                     The parser shifted to state 35                                                                   
+Token Read           35      12       4   public                                            Token type: public                                                                               
+Reduce               10                   (22) ::= (1) class Point (2) (3) { (21) }         <Class> ::= <Visibility> class Identifier <Extends> <Implements> '{' <ClassMembers> '}'          
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9      12      11   class                                             Token type: class                                                                                
+Reduce               13                   (23) ::= public                                   <Visibility> ::= public                                                                          
+Shift                16                                                                     The parser shifted to state 16                                                                   
+Token Read           16      12      17   Point2d                                           Token type: Identifier                                                                           
+Shift                17                                                                     The parser shifted to state 17                                                                   
+Token Read           17      12      25   extends                                           Token type: extends                                                                              
+Shift                18                                                                     The parser shifted to state 18                                                                   
+Token Read           18      12      33   Point1d                                           Token type: Identifier                                                                           
+Shift                20                                                                     The parser shifted to state 20                                                                   
+Token Read           20      12      41   implements                                        Token type: implements                                                                           
+Reduce               19                   (24) ::= extends Point1d                          <Extends> ::= extends Identifier                                                                 
+Shift                21                                                                     The parser shifted to state 21                                                                   
+Token Read           21      12      52   Equatible                                         Token type: Identifier                                                                           
+Shift                23                                                                     The parser shifted to state 23                                                                   
+Token Read           23      12      61   ,                                                 Token type: ,                                                                                    
+Shift                26                                                                     The parser shifted to state 26                                                                   
+Token Read           26      12      63   Compareable                                       Token type: Identifier                                                                           
+Shift                23                                                                     The parser shifted to state 23                                                                   
+Token Read           23      12      75   {                                                 Token type: {                                                                                    
+Reduce               33                   (25) ::= Compareable                              <Identifiers> ::= Identifier                                                                     
+Reduce               24                   (26) ::= Equatible , (25)                         <Identifiers> ::= Identifier ',' <Identifiers>                                                   
+Reduce               22                   (27) ::= implements (26)                          <Implements> ::= implements <Identifiers>                                                        
+Shift                25                                                                     The parser shifted to state 25                                                                   
+Token Read           25      13       8   var                                               Token type: var                                                                                  
+Reduce               32                   (28) ::=                                          <Visibility> ::=                                                                                 
+Shift                38                                                                     The parser shifted to state 38                                                                   
+Token Read           38      13      12   y                                                 Token type: Identifier                                                                           
+Shift                41                                                                     The parser shifted to state 41                                                                   
+Token Read           41      13      13   :                                                 Token type: :                                                                                    
+Shift                46                                                                     The parser shifted to state 46                                                                   
+Token Read           46      13      15   float32                                           Token type: Identifier                                                                           
+Shift                52                                                                     The parser shifted to state 52                                                                   
+Token Read           52      13      22   ;                                                 Token type: ;                                                                                    
+Reduce               47                   (29) ::= : float32                                <VarType> ::= ':' Identifier                                                                     
+Shift                53                                                                     The parser shifted to state 53                                                                   
+Token Read           53      15       8   public                                            Token type: public                                                                               
+Reduce               30                   (30) ::= (28) var y (29) ;                        <Field> ::= <Visibility> var Identifier <VarType> ';'                                            
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9      15      15   constructor                                       Token type: constructor                                                                          
+Reduce               32                   (31) ::= public                                   <Visibility> ::= public                                                                          
+Shift                36                                                                     The parser shifted to state 36                                                                   
+Token Read           36      15      26   (                                                 Token type: (                                                                                    
+Shift                39                                                                     The parser shifted to state 39                                                                   
+Token Read           39      15      27   )                                                 Token type: )                                                                                    
+Reduce               44                   (32) ::=                                          <Parameters> ::=                                                                                 
+Shift                50                                                                     The parser shifted to state 50                                                                   
+Token Read           50      15      29   {                                                 Token type: {                                                                                    
+Shift                55                                                                     The parser shifted to state 55                                                                   
+Token Read           55      16       8   }                                                 Token type: }                                                                                    
+Reduce               58                   (33) ::=                                          <Statements> ::=                                                                                 
+Shift                61                                                                     The parser shifted to state 61                                                                   
+Token Read           61      18       8   public                                            Token type: public                                                                               
+Reduce               56                   (34) ::= { (33) }                                 <StatementsBlock> ::= '{' <Statements> '}'                                                       
+Reduce               29                   (35) ::= (31) constructor ( (32) ) (34)           <Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>                
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9      18      15   constructor                                       Token type: constructor                                                                          
+Reduce               32                   (36) ::= public                                   <Visibility> ::= public                                                                          
+Shift                36                                                                     The parser shifted to state 36                                                                   
+Token Read           36      18      26   (                                                 Token type: (                                                                                    
+Shift                39                                                                     The parser shifted to state 39                                                                   
+Token Read           39      18      27   x                                                 Token type: Identifier                                                                           
+Shift                42                                                                     The parser shifted to state 42                                                                   
+Token Read           42      18      28   :                                                 Token type: :                                                                                    
+Shift                46                                                                     The parser shifted to state 46                                                                   
+Token Read           46      18      30   float                                             Token type: Identifier                                                                           
+Shift                52                                                                     The parser shifted to state 52                                                                   
+Token Read           52      18      35   ,                                                 Token type: ,                                                                                    
+Reduce               48                   (37) ::= : float                                  <VarType> ::= ':' Identifier                                                                     
+Reduce               43                   (38) ::= x (37)                                   <Parameter> ::= Identifier <VarType>                                                             
+Shift                49                                                                     The parser shifted to state 49                                                                   
+Token Read           49      18      37   y                                                 Token type: Identifier                                                                           
+Shift                42                                                                     The parser shifted to state 42                                                                   
+Token Read           42      18      38   :                                                 Token type: :                                                                                    
+Shift                46                                                                     The parser shifted to state 46                                                                   
+Token Read           46      18      40   float                                             Token type: Identifier                                                                           
+Shift                52                                                                     The parser shifted to state 52                                                                   
+Token Read           52      18      45   )                                                 Token type: )                                                                                    
+Reduce               48                   (39) ::= : float                                  <VarType> ::= ':' Identifier                                                                     
+Reduce               43                   (40) ::= y (39)                                   <Parameter> ::= Identifier <VarType>                                                             
+Reduce               44                   (41) ::= (38) , (40)                              <Parameters> ::= <Parameter> ',' <Parameters>                                                    
+Shift                50                                                                     The parser shifted to state 50                                                                   
+Token Read           50      18      47   {                                                 Token type: {                                                                                    
+Shift                55                                                                     The parser shifted to state 55                                                                   
+Token Read           55      19       8   }                                                 Token type: }                                                                                    
+Reduce               58                   (42) ::=                                          <Statements> ::=                                                                                 
+Shift                61                                                                     The parser shifted to state 61                                                                   
+Token Read           61      21       8   public                                            Token type: public                                                                               
+Reduce               56                   (43) ::= { (42) }                                 <StatementsBlock> ::= '{' <Statements> '}'                                                       
+Reduce               29                   (44) ::= (36) constructor ( (41) ) (43)           <Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>                
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9      21      15   method                                            Token type: method                                                                               
+Reduce               32                   (45) ::= public                                   <Visibility> ::= public                                                                          
+Shift                37                                                                     The parser shifted to state 37                                                                   
+Token Read           37      21      22   add                                               Token type: Identifier                                                                           
+Shift                40                                                                     The parser shifted to state 40                                                                   
+Token Read           40      21      25   (                                                 Token type: (                                                                                    
+Shift                45                                                                     The parser shifted to state 45                                                                   
+Token Read           45      21      26   )                                                 Token type: )                                                                                    
+Reduce               51                   (46) ::=                                          <Parameters> ::=                                                                                 
+Shift                57                                                                     The parser shifted to state 57                                                                   
+Token Read           57      21      28   {                                                 Token type: {                                                                                    
+Reduce               60                   (47) ::=                                          <ReturnType> ::=                                                                                 
+Shift                55                                                                     The parser shifted to state 55                                                                   
+Token Read           55      22       8   }                                                 Token type: }                                                                                    
+Reduce               58                   (48) ::=                                          <Statements> ::=                                                                                 
+Shift                61                                                                     The parser shifted to state 61                                                                   
+Token Read           61      23       4   }                                                 Token type: }                                                                                    
+Reduce               63                   (49) ::= { (48) }                                 <StatementsBlock> ::= '{' <Statements> '}'                                                       
+Reduce               31                   (50) ::= (45) method add ( (46) ) (47) (49)       <Function> ::= <Visibility> method Identifier '(' <Parameters> ')' <ReturnType> <StatementsBlock>
+Reduce               34                   (51) ::=                                          <ClassMembers> ::=                                                                               
+Reduce               34                   (52) ::= (50) (51)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Reduce               34                   (53) ::= (44) (52)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Reduce               34                   (54) ::= (35) (53)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Reduce               28                   (55) ::= (30) (54)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Shift                35                                                                     The parser shifted to state 35                                                                   
+Token Read           35      25       4   public                                            Token type: public                                                                               
+Reduce               10                   (56) ::= (23) class Point2d (24) (27) { (55) }    <Class> ::= <Visibility> class Identifier <Extends> <Implements> '{' <ClassMembers> '}'          
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9      25      11   class                                             Token type: class                                                                                
+Reduce               13                   (57) ::= public                                   <Visibility> ::= public                                                                          
+Shift                16                                                                     The parser shifted to state 16                                                                   
+Token Read           16      25      17   Point3d                                           Token type: Identifier                                                                           
+Shift                17                                                                     The parser shifted to state 17                                                                   
+Token Read           17      25      25   extends                                           Token type: extends                                                                              
+Shift                18                                                                     The parser shifted to state 18                                                                   
+Token Read           18      25      33   Point2d                                           Token type: Identifier                                                                           
+Shift                20                                                                     The parser shifted to state 20                                                                   
+Token Read           20      25      41   {                                                 Token type: {                                                                                    
+Reduce               19                   (58) ::= extends Point2d                          <Extends> ::= extends Identifier                                                                 
+Reduce               22                   (59) ::=                                          <Implements> ::=                                                                                 
+Shift                25                                                                     The parser shifted to state 25                                                                   
+Token Read           25      26       8   var                                               Token type: var                                                                                  
+Reduce               32                   (60) ::=                                          <Visibility> ::=                                                                                 
+Shift                38                                                                     The parser shifted to state 38                                                                   
+Token Read           38      26      12   z                                                 Token type: Identifier                                                                           
+Shift                41                                                                     The parser shifted to state 41                                                                   
+Token Read           41      26      13   :                                                 Token type: :                                                                                    
+Shift                46                                                                     The parser shifted to state 46                                                                   
+Token Read           46      26      15   float32                                           Token type: Identifier                                                                           
+Shift                52                                                                     The parser shifted to state 52                                                                   
+Token Read           52      26      22   ;                                                 Token type: ;                                                                                    
+Reduce               47                   (61) ::= : float32                                <VarType> ::= ':' Identifier                                                                     
+Shift                53                                                                     The parser shifted to state 53                                                                   
+Token Read           53      28       8   public                                            Token type: public                                                                               
+Reduce               30                   (62) ::= (60) var z (61) ;                        <Field> ::= <Visibility> var Identifier <VarType> ';'                                            
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9      28      15   constructor                                       Token type: constructor                                                                          
+Reduce               32                   (63) ::= public                                   <Visibility> ::= public                                                                          
+Shift                36                                                                     The parser shifted to state 36                                                                   
+Token Read           36      28      26   (                                                 Token type: (                                                                                    
+Shift                39                                                                     The parser shifted to state 39                                                                   
+Token Read           39      28      27   )                                                 Token type: )                                                                                    
+Reduce               44                   (64) ::=                                          <Parameters> ::=                                                                                 
+Shift                50                                                                     The parser shifted to state 50                                                                   
+Token Read           50      28      29   {                                                 Token type: {                                                                                    
+Shift                55                                                                     The parser shifted to state 55                                                                   
+Token Read           55      29       8   }                                                 Token type: }                                                                                    
+Reduce               58                   (65) ::=                                          <Statements> ::=                                                                                 
+Shift                61                                                                     The parser shifted to state 61                                                                   
+Token Read           61      31       8   public                                            Token type: public                                                                               
+Reduce               56                   (66) ::= { (65) }                                 <StatementsBlock> ::= '{' <Statements> '}'                                                       
+Reduce               29                   (67) ::= (63) constructor ( (64) ) (66)           <Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>                
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9      31      15   constructor                                       Token type: constructor                                                                          
+Reduce               32                   (68) ::= public                                   <Visibility> ::= public                                                                          
+Shift                36                                                                     The parser shifted to state 36                                                                   
+Token Read           36      31      26   (                                                 Token type: (                                                                                    
+Shift                39                                                                     The parser shifted to state 39                                                                   
+Token Read           39      31      27   x                                                 Token type: Identifier                                                                           
+Shift                42                                                                     The parser shifted to state 42                                                                   
+Token Read           42      31      28   :                                                 Token type: :                                                                                    
+Shift                46                                                                     The parser shifted to state 46                                                                   
+Token Read           46      31      30   float                                             Token type: Identifier                                                                           
+Shift                52                                                                     The parser shifted to state 52                                                                   
+Token Read           52      31      35   ,                                                 Token type: ,                                                                                    
+Reduce               48                   (69) ::= : float                                  <VarType> ::= ':' Identifier                                                                     
+Reduce               43                   (70) ::= x (69)                                   <Parameter> ::= Identifier <VarType>                                                             
+Shift                49                                                                     The parser shifted to state 49                                                                   
+Token Read           49      31      37   y                                                 Token type: Identifier                                                                           
+Shift                42                                                                     The parser shifted to state 42                                                                   
+Token Read           42      31      38   :                                                 Token type: :                                                                                    
+Shift                46                                                                     The parser shifted to state 46                                                                   
+Token Read           46      31      40   float                                             Token type: Identifier                                                                           
+Shift                52                                                                     The parser shifted to state 52                                                                   
+Token Read           52      31      45   ,                                                 Token type: ,                                                                                    
+Reduce               48                   (71) ::= : float                                  <VarType> ::= ':' Identifier                                                                     
+Reduce               43                   (72) ::= y (71)                                   <Parameter> ::= Identifier <VarType>                                                             
+Shift                49                                                                     The parser shifted to state 49                                                                   
+Token Read           49      31      47   z                                                 Token type: Identifier                                                                           
+Shift                42                                                                     The parser shifted to state 42                                                                   
+Token Read           42      31      48   :                                                 Token type: :                                                                                    
+Shift                46                                                                     The parser shifted to state 46                                                                   
+Token Read           46      31      50   float                                             Token type: Identifier                                                                           
+Shift                52                                                                     The parser shifted to state 52                                                                   
+Token Read           52      31      55   )                                                 Token type: )                                                                                    
+Reduce               48                   (73) ::= : float                                  <VarType> ::= ':' Identifier                                                                     
+Reduce               43                   (74) ::= z (73)                                   <Parameter> ::= Identifier <VarType>                                                             
+Reduce               54                   (75) ::= (72) , (74)                              <Parameters> ::= <Parameter> ',' <Parameters>                                                    
+Reduce               44                   (76) ::= (70) , (75)                              <Parameters> ::= <Parameter> ',' <Parameters>                                                    
+Shift                50                                                                     The parser shifted to state 50                                                                   
+Token Read           50      31      57   {                                                 Token type: {                                                                                    
+Shift                55                                                                     The parser shifted to state 55                                                                   
+Token Read           55      32       8   }                                                 Token type: }                                                                                    
+Reduce               58                   (77) ::=                                          <Statements> ::=                                                                                 
+Shift                61                                                                     The parser shifted to state 61                                                                   
+Token Read           61      34       8   public                                            Token type: public                                                                               
+Reduce               56                   (78) ::= { (77) }                                 <StatementsBlock> ::= '{' <Statements> '}'                                                       
+Reduce               29                   (79) ::= (68) constructor ( (76) ) (78)           <Constructor> ::= <Visibility> constructor '(' <Parameters> ')' <StatementsBlock>                
+Shift                 9                                                                     The parser shifted to state 9                                                                    
+Token Read            9      34      15   method                                            Token type: method                                                                               
+Reduce               32                   (80) ::= public                                   <Visibility> ::= public                                                                          
+Shift                37                                                                     The parser shifted to state 37                                                                   
+Token Read           37      34      22   add                                               Token type: Identifier                                                                           
+Shift                40                                                                     The parser shifted to state 40                                                                   
+Token Read           40      34      25   (                                                 Token type: (                                                                                    
+Shift                45                                                                     The parser shifted to state 45                                                                   
+Token Read           45      34      26   )                                                 Token type: )                                                                                    
+Reduce               51                   (81) ::=                                          <Parameters> ::=                                                                                 
+Shift                57                                                                     The parser shifted to state 57                                                                   
+Token Read           57      34      28   {                                                 Token type: {                                                                                    
+Reduce               60                   (82) ::=                                          <ReturnType> ::=                                                                                 
+Shift                55                                                                     The parser shifted to state 55                                                                   
+Token Read           55      35       8   }                                                 Token type: }                                                                                    
+Reduce               58                   (83) ::=                                          <Statements> ::=                                                                                 
+Shift                61                                                                     The parser shifted to state 61                                                                   
+Token Read           61      36       4   }                                                 Token type: }                                                                                    
+Reduce               63                   (84) ::= { (83) }                                 <StatementsBlock> ::= '{' <Statements> '}'                                                       
+Reduce               31                   (85) ::= (80) method add ( (81) ) (82) (84)       <Function> ::= <Visibility> method Identifier '(' <Parameters> ')' <ReturnType> <StatementsBlock>
+Reduce               34                   (86) ::=                                          <ClassMembers> ::=                                                                               
+Reduce               34                   (87) ::= (85) (86)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Reduce               34                   (88) ::= (79) (87)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Reduce               34                   (89) ::= (67) (88)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Reduce               28                   (90) ::= (62) (89)                                <ClassMembers> ::= <ClassMember> <ClassMembers>                                                  
+Shift                35                                                                     The parser shifted to state 35                                                                   
+Token Read           35      37       0   }                                                 Token type: }                                                                                    
+Reduce               10                   (91) ::= (57) class Point3d (58) (59) { (90) }    <Class> ::= <Visibility> class Identifier <Extends> <Implements> '{' <ClassMembers> '}'          
+Reduce               14                   (92) ::=                                          <ModuleMembers> ::=                                                                              
+Reduce               14                   (93) ::= (91) (92)                                <ModuleMembers> ::= <ModuleMember> <ModuleMembers>                                               
+Reduce               14                   (94) ::= (56) (93)                                <ModuleMembers> ::= <ModuleMember> <ModuleMembers>                                               
+Reduce               12                   (95) ::= (22) (94)                                <ModuleMembers> ::= <ModuleMember> <ModuleMembers>                                               
+Shift                15                                                                     The parser shifted to state 15                                                                   
+Token Read           15      38       0                                                     Token type: EOF                                                                                  
+Reduce                3                   (96) ::= module geometry { (95) }                 <Module> ::= module Identifier '{' <ModuleMembers> '}'                                           
+Reduce                5                   (97) ::=                                          <Global> ::=                                                                                     
+Reduce                2                   (98) ::= (96) (97)                                <Global> ::= <Module> <Global>                                                                   
+Accept                2                                                                                                                                                                      
+
+

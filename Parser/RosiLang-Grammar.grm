@@ -1,0 +1,53 @@
+! Properties
+"Name"    = 'RosiLang'
+"Version" = '0.01 alpha'
+"Author"  = 'Panayot C. Cankov'
+
+"About"   = 'RosiVMs RosiLang - First blood version.'
+
+"Case Sensitive" = 'True'
+"Start Symbol" = <Global>
+        
+! Identifiers
+Identifier = {Letter}{AlphaNumeric}*
+           
+<Identifiers> ::= Identifier | Identifier ',' <Identifiers>
+
+! Types    
+<Global> ::= | <Module> <Global>
+           
+<Module> ::= 'module' Identifier '{' <ModuleMembers> '}'
+          
+<ModuleMembers> ::= <ModuleMember> <ModuleMembers> | <>
+                 
+<ModuleMember> ::= <Class>
+                 
+<Class> ::= <Visibility> 'class' Identifier <Extends> <Implements> '{' <ClassMembers> '}'
+         
+<Visibility> ::= 'public' | 'protected' | 'private' | <>
+              
+<Extends> ::= 'extends' Identifier | <>
+           
+<Implements> ::= 'implements' <Identifiers> | <>
+              
+<ClassMembers> ::= <ClassMember> <ClassMembers> | <>
+
+<ClassMember> ::= <Field> | <Constructor> | <Function>
+               
+<Field> ::= <Visibility> 'var' Identifier <VarType> ';'
+        
+<VarType> ::= ':' Identifier | <> 
+         
+<Constructor> ::= <Visibility> 'constructor' '(' <Parameters> ')' <StatementsBlock> 
+               
+<Function> ::= <Visibility> 'method' Identifier '(' <Parameters> ')' <ReturnType> <StatementsBlock>
+              
+<Parameters> ::= <Parameter> ',' <Parameters> | <Parameter> | <>
+<Parameter> ::= Identifier <VarType>
+             
+<ReturnType> ::= '=>' Identifier | <>
+              
+! Expressions
+<StatementsBlock> ::= '{' <Statements> '}'
+                   
+<Statements> ::= <>

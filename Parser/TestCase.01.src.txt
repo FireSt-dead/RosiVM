@@ -1,0 +1,38 @@
+module geometry {
+
+    public class Point {
+        var x: float32;
+        
+        public constructor() {
+        }
+        
+        public constructor(x: float) {
+        }
+    }
+
+    public class Point2d extends Point1d implements Equatible, Compareable {
+        var y: float32;
+        
+        public constructor() {
+        }
+        
+        public constructor(x: float, y: float) {
+        }
+                                        
+        public method add() {
+        }
+    }
+    
+    public class Point3d extends Point2d {
+        var z: float32;
+        
+        public constructor() {
+        }
+        
+        public constructor(x: float, y: float, z: float) {
+        }
+        
+        public method add() {
+        }
+    }
+}
