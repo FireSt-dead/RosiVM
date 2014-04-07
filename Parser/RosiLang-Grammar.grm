@@ -6,21 +6,32 @@
 "About"   = 'RosiVMs RosiLang - First blood version.'
 
 "Case Sensitive" = 'True'
-"Start Symbol" = <Global>
+"Start Symbol" = <GlobalMembers>
+               
+!* TODO: At some point we will have to introduce convention on lists and optional usage. For example postfixes Lst and Opt *! 
         
 ! Identifiers
 Identifier = {Letter}{AlphaNumeric}*
-           
-<Identifiers> ::= Identifier | Identifier ',' <Identifiers>
+
+! TODO: IEEE 754        
+Integer        = {Digit}+
+Float          = {Digit}+ '.' {Digit}+
+
+<ConstantValue> ::= Integer
+                 | Float
+                 | 'true'
+                 | 'false'
+                 ! TODO: string
 
 ! Types    
-<Global> ::= | <Module> <Global>
+<GlobalMembers> ::= <ModuleMember> <GlobalMembers> | <>
+          
+<ModuleMember> ::= <Module>
+                | <Class>
            
 <Module> ::= 'module' Identifier '{' <ModuleMembers> '}'
           
 <ModuleMembers> ::= <ModuleMember> <ModuleMembers> | <>
-                 
-<ModuleMember> ::= <Class>
                  
 <Class> ::= <Visibility> 'class' Identifier <Extends> <Implements> '{' <ClassMembers> '}'
          
@@ -28,26 +39,57 @@ Identifier = {Letter}{AlphaNumeric}*
               
 <Extends> ::= 'extends' Identifier | <>
            
-<Implements> ::= 'implements' <Identifiers> | <>
+<Implements> ::= 'implements' <ImplementedInterfaces> | <>
+              
+<ImplementedInterfaces> ::= <InterfaceType> ',' <ImplementedInterfaces> | <InterfaceType>
+                         
+<InterfaceType> ::= Identifier ! TODO: generic parameters
               
 <ClassMembers> ::= <ClassMember> <ClassMembers> | <>
 
-<ClassMember> ::= <Field> | <Constructor> | <Function>
+<ClassMember> ::= <Field>
+               | <Constructor>
+               | <Function>
                
 <Field> ::= <Visibility> 'var' Identifier <VarType> ';'
         
 <VarType> ::= ':' Identifier | <> 
          
-<Constructor> ::= <Visibility> 'constructor' '(' <Parameters> ')' <StatementsBlock> 
+<Constructor> ::= <Visibility> 'constructor' '(' <Parameters> ')' <StatementBlock> 
                
-<Function> ::= <Visibility> 'method' Identifier '(' <Parameters> ')' <ReturnType> <StatementsBlock>
+<Function> ::= <Visibility> 'method' Identifier '(' <Parameters> ')' <ReturnType> <StatementBlock>
               
 <Parameters> ::= <Parameter> ',' <Parameters> | <Parameter> | <>
 <Parameter> ::= Identifier <VarType>
              
 <ReturnType> ::= '=>' Identifier | <>
               
+! Statements
+<StatementBlock> ::= '{' '}' | '{' <Statements> '}' 
+<Statements> ::= <Statement> <Statements> | <Statement>
+<Statement> ::= <StatementBlock>
+             | <Expression> ';'
+             | 'if' '(' <Expression> ')' <Statement> 'else' <Statement> 
+             
 ! Expressions
-<StatementsBlock> ::= '{' <Statements> '}'
-                   
-<Statements> ::= <>
+<Expression> ::= <Prec0Exp>
+              
+<Prec0Exp> ::= <Prec1Exp> <Prec0Op> <Prec0Exp> | <Prec1Exp>
+<Prec0Op> ::= '=' | '+=' | '-=' | '*=' | '/=' | '^=' | '&=' | '|=' | '%=' | '<<=' | '>>='
+              
+<Prec1Exp> ::=  <Prec1Exp> <Prec1Op> <Prec2Exp> | <Prec2Exp>
+<Prec1Op> ::= '+' | '-'
+
+<Prec2Exp> ::=  <Prec2Exp> <Prec2Op> <Prec3Exp> | <Prec3Exp>
+<Prec2Op> ::= '*' | '/' | '%'
+
+<Prec3Exp> ::= <UnaryOp> <Prec3Exp> | <Prec4Exp> 
+<UnaryOp> ::= '!' | '~' | '-' | '++' | '--'
+
+<Prec4Exp> ::= <Prec4Exp> '++' | <Prec4Exp> '--' | <Prec4Exp> '.' Identifier | <Prec4Exp> '()' | <Prec5Exp> ! f(), new
+
+<Prec5Exp> ::= Identifier | <ConstantValue> | '(' <Expression> ')'
+
+
+
+
