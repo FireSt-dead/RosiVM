@@ -14,10 +14,10 @@ module geometry {
             this.y = 13 * 16++;
             test = x.y().z.w();
             
-            if (!x) large();
+            if (x > 15) large();
             else small();
             
-            if (!x)
+            if (testVal)
                 if (!y) large();
                 else small();
             else verySmall();

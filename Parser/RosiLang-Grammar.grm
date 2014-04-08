@@ -69,26 +69,51 @@ Float          = {Digit}+ '.' {Digit}+
 <Statements> ::= <Statement> <Statements> | <Statement>
 <Statement> ::= <StatementBlock>
              | <Expression> ';'
-             | 'if' '(' <Expression> ')' <Statement> 'else' <Statement> 
+             | 'if' '(' <Expression> ')' <Statement> 'else' <Statement>
+             | 'if' '(' <Expression> ')' <Statement> ! TODO: Check the impact of that else missing if...
              
 ! Expressions
 <Expression> ::= <Prec0Exp>
+              | <Prec1Exp>
               
-<Prec0Exp> ::= <Prec1Exp> <Prec0Op> <Prec0Exp> | <Prec1Exp>
+<Prec0Exp> ::= <Prec12Exp> <Prec0Op> <Expression>
 <Prec0Op> ::= '=' | '+=' | '-=' | '*=' | '/=' | '^=' | '&=' | '|=' | '%=' | '<<=' | '>>='
-              
-<Prec1Exp> ::=  <Prec1Exp> <Prec1Op> <Prec2Exp> | <Prec2Exp>
-<Prec1Op> ::= '+' | '-'
 
-<Prec2Exp> ::=  <Prec2Exp> <Prec2Op> <Prec3Exp> | <Prec3Exp>
-<Prec2Op> ::= '*' | '/' | '%'
+<Prec1Exp> ::= <Prec2Exp> '?' <Expression> ':' <Expression> | <Prec2Exp>
+           
+<Prec2Exp> ::= <Prec2Exp> '||' <Prec3Exp> | <Prec3Exp>
+<Prec3Exp> ::= <Prec3Exp> '&&' <Prec4Exp> | <Prec4Exp>
 
-<Prec3Exp> ::= <UnaryOp> <Prec3Exp> | <Prec4Exp> 
-<UnaryOp> ::= '!' | '~' | '-' | '++' | '--'
+<Prec4Exp> ::= <Prec4Exp> '|' <Prec5Exp> | <Prec5Exp>
+<Prec5Exp> ::= <Prec5Exp> '^' <Prec6Exp> | <Prec6Exp>
+<Prec6Exp> ::= <Prec6Exp> '&' <Prec7Exp> | <Prec7Exp>
 
-<Prec4Exp> ::= <Prec4Exp> '++' | <Prec4Exp> '--' | <Prec4Exp> '.' Identifier | <Prec4Exp> '()' | <Prec5Exp> ! f(), new
+<Prec7Exp> ::= <Prec7Exp> <Prec7Op> <Prec8Exp> | <Prec8Exp>
+<Prec7Op> ::= '==' | '!='
+           
+<Prec8Exp> ::= <Prec8Exp> <Prec8Op> <Prec9Exp> | <Prec9Exp>
+<Prec8Op> ::= '<' | '>' | '<=' | '>=' ! | 'is' | 'as'
 
-<Prec5Exp> ::= Identifier | <ConstantValue> | '(' <Expression> ')'
+<Prec9Exp> ::= <Prec9Exp> <Prec9Op> <Prec10Exp> | <Prec10Exp>
+<Prec9Op> ::= '<<' | '>>'
+
+<Prec10Exp> ::=  <Prec10Exp> <Prec10Op> <Prec11Exp> | <Prec11Exp>
+<Prec10Op> ::= '+' | '-'
+
+<Prec11Exp> ::=  <Prec11Exp> <Prec11Op> <Prec12Exp> | <Prec12Exp>
+<Prec11Op> ::= '*' | '/' | '%'
+
+<Prec12Exp> ::= <Prec12Op> <Prec12Exp> | <Prec13Exp> 
+<Prec12Op> ::= '!' | '~' | '-' | '++' | '--' ! |  cast: '(' <TypeExpression> ')'
+
+<Prec13Exp> ::= Identifier
+             | <ConstantValue>
+             | '(' <Expression> ')'
+             | <Prec13Exp> '++'
+             | <Prec13Exp> '--'
+             | <Prec13Exp> '.' Identifier
+             | <Prec13Exp> '(' ')' ! TODO: invocation, add params list
+             ! TODO: a lot of shit is going here...
 
 
 
