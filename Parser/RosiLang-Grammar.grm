@@ -23,17 +23,76 @@ Float          = {Digit}+ '.' {Digit}+
                  | 'false'
                  ! TODO: string
 
-! Types    
+! Tokens
+l-brac = '{'
+r-brac = '}'
+
+l-paren = '('
+r-paren = ')'
+
+colon = ':'
+question = '?'
+semicolon = ';'
+comma = ','
+dot = '.'
+    
+turns-in = '=>'
+    
+assign = '='
+add-assign = '+='
+subtract-assign = '-='
+multiply-assign = '*='
+divide-assign = '/='
+bit-and-assign = '&='
+bit-xor-assign = '^='
+bit-or-assign = '|='
+reminder-assign = '%='
+shift-left-assign = '<<='
+shift-right-assign = '>>='
+
+conditional-or = '||'
+conditional-and = '&&'
+
+bitwise-or = '|'
+bitwise-xor = '^'
+bitwise-and = '&'       
+
+less-than = '<'
+greater-than = '>'
+less-or-equal = '<='
+greater-or-equal = '>='
+                  
+shift-left = '<<'
+shift-right = '>>'
+       
+multiply = '*'
+divide = '/'
+reminder = '%'
+
+plus = '+'
+minus = '-'
+      
+increment = '++'
+decrement = '--'
+      
+not = '!'
+complement = '~'
+      
+! Named Terminals
+<Name> ::= Identifier
+<Member> ::= Identifier
+
+! Declarations    
 <GlobalMembers> ::= <ModuleMember> <GlobalMembers> | <>
           
 <ModuleMember> ::= <Module>
                 | <Class>
            
-<Module> ::= 'module' Identifier '{' <ModuleMembers> '}'
-          
+<Module> ::= 'module' <Name> l-brac <ModuleMembers> r-brac
+             
 <ModuleMembers> ::= <ModuleMember> <ModuleMembers> | <>
                  
-<Class> ::= <Visibility> 'class' Identifier <Extends> <Implements> '{' <ClassMembers> '}'
+<Class> ::= <Visibility> 'class' <Name> <Extends> <Implements> l-brac <ClassMembers> r-brac
          
 <Visibility> ::= 'public' | 'protected' | 'private' | <>
               
@@ -41,7 +100,7 @@ Float          = {Digit}+ '.' {Digit}+
            
 <Implements> ::= 'implements' <ImplementedInterfaces> | <>
               
-<ImplementedInterfaces> ::= <InterfaceType> ',' <ImplementedInterfaces> | <InterfaceType>
+<ImplementedInterfaces> ::= <InterfaceType> comma <ImplementedInterfaces> | <InterfaceType>
                          
 <InterfaceType> ::= Identifier ! TODO: generic parameters
               
@@ -51,70 +110,152 @@ Float          = {Digit}+ '.' {Digit}+
                | <Constructor>
                | <Function>
                
-<Field> ::= <Visibility> 'var' Identifier <VarType> ';'
-        
-<VarType> ::= ':' Identifier | <> 
+<Field> ::= <Visibility> 'var' <Name> colon <Type> semicolon
          
-<Constructor> ::= <Visibility> 'constructor' '(' <Parameters> ')' <StatementBlock> 
+<Constructor> ::= <Visibility> 'constructor' l-paren <Parameters> r-paren <StatementBlock> 
                
-<Function> ::= <Visibility> 'method' Identifier '(' <Parameters> ')' <ReturnType> <StatementBlock>
+<Function> ::= <Visibility> 'method' Identifier l-paren <Parameters> r-paren <ReturnType> <StatementBlock>
               
-<Parameters> ::= <Parameter> ',' <Parameters> | <Parameter> | <>
-<Parameter> ::= Identifier <VarType>
+<Parameters> ::= <Parameter> comma <Parameters> | <Parameter> | <>
+<Parameter> ::= <Name> colon <Type>
              
-<ReturnType> ::= '=>' Identifier | <>
+<ReturnType> ::= turns-in <Type> | <>
+              
+! Types
+
+<Type> ::= Identifier ! this would be class or interface or struct etc with generic parameters etc.
               
 ! Statements
-<StatementBlock> ::= '{' '}' | '{' <Statements> '}' 
+<StatementBlock> ::= l-brac r-brac | l-brac <Statements> r-brac 
 <Statements> ::= <Statement> <Statements> | <Statement>
 <Statement> ::= <StatementBlock>
-             | <Expression> ';'
-             | 'if' '(' <Expression> ')' <Statement> 'else' <Statement>
-             | 'if' '(' <Expression> ')' <Statement> ! TODO: Check the impact of that else missing if...
+             | <Expression> semicolon
+             | <If>
+             ! | 'if' l-paren <Expression> r-paren <Statement> ! TODO: Check the impact of that else missing if...
              
+<If> ::= 'if' l-paren <Expression> r-paren <Statement> 'else' <Statement>
+
 ! Expressions
 <Expression> ::= <Prec0Exp>
               | <Prec1Exp>
-              
-<Prec0Exp> ::= <Prec12Exp> <Prec0Op> <Expression>
-<Prec0Op> ::= '=' | '+=' | '-=' | '*=' | '/=' | '^=' | '&=' | '|=' | '%=' | '<<=' | '>>='
 
-<Prec1Exp> ::= <Prec2Exp> '?' <Expression> ':' <Expression> | <Prec2Exp>
-           
-<Prec2Exp> ::= <Prec2Exp> '||' <Prec3Exp> | <Prec3Exp>
-<Prec3Exp> ::= <Prec3Exp> '&&' <Prec4Exp> | <Prec4Exp>
+! Assignment Expresisons
+<Prec0Exp> ::= <Assign>
+            | <AddAssign>
+            | <SubtractAssign>
+            | <MultiplyAssign>
+            | <DivideAssign>
+            | <BitAndAssign>
+            | <BitXorAssign>
+            | <BitOrAssign>
+            | <ReminderAssign>
+            | <ShiftLeftAssign>
+            | <ShiftRightAssign>
+<Assign> ::= <Prec12Exp> assign <Expression>
+<AddAssign> ::= <Prec12Exp> add-assign <Expression>
+<SubtractAssign> ::= <Prec12Exp> subtract-assign <Expression>
+<MultiplyAssign> ::= <Prec12Exp> multiply-assign <Expression>
+<DivideAssign> ::= <Prec12Exp> divide-assign <Expression>
+<BitAndAssign> ::= <Prec12Exp> bit-and-assign <Expression>
+<BitXorAssign> ::= <Prec12Exp> bit-xor-assign <Expression>
+<BitOrAssign> ::= <Prec12Exp> bit-or-assign <Expression>
+<ReminderAssign> ::= <Prec12Exp> reminder-assign <Expression>
+<ShiftLeftAssign> ::= <Prec12Exp> shift-left-assign <Expression>
+<ShiftRightAssign> ::= <Prec12Exp> shift-right-assign <Expression>
 
-<Prec4Exp> ::= <Prec4Exp> '|' <Prec5Exp> | <Prec5Exp>
-<Prec5Exp> ::= <Prec5Exp> '^' <Prec6Exp> | <Prec6Exp>
-<Prec6Exp> ::= <Prec6Exp> '&' <Prec7Exp> | <Prec7Exp>
+! Conditional If Expression
+<Prec1Exp> ::= <Prec2Exp> question <Expression> colon <Expression> | <Prec2Exp>
+ 
+! Conditional Expressions
+<Prec2Exp> ::= <Prec3Exp>
+            | <ConditionalOr>
+<ConditionalOr> ::= <Prec2Exp> conditional-or <Prec3Exp>       
 
-<Prec7Exp> ::= <Prec7Exp> <Prec7Op> <Prec8Exp> | <Prec8Exp>
-<Prec7Op> ::= '==' | '!='
-           
-<Prec8Exp> ::= <Prec8Exp> <Prec8Op> <Prec9Exp> | <Prec9Exp>
-<Prec8Op> ::= '<' | '>' | '<=' | '>=' ! | 'is' | 'as'
+<Prec3Exp> ::= <Prec4Exp>
+            | <ConditionalAnd>
+<ConditionalAnd> ::=  <Prec3Exp> conditional-and <Prec4Exp>
 
-<Prec9Exp> ::= <Prec9Exp> <Prec9Op> <Prec10Exp> | <Prec10Exp>
-<Prec9Op> ::= '<<' | '>>'
+! Bitwise Expressions
+<Prec4Exp> ::= <Prec5Exp>
+            | <BitwiseOr>
+<BitwiseOr> ::= <Prec4Exp> bitwise-or <Prec5Exp>
 
-<Prec10Exp> ::=  <Prec10Exp> <Prec10Op> <Prec11Exp> | <Prec11Exp>
-<Prec10Op> ::= '+' | '-'
+<Prec5Exp> ::= <Prec6Exp>
+            | <BitwiseXOr>
+<BitwiseXOr> ::= <Prec5Exp> bitwise-xor <Prec6Exp>
 
-<Prec11Exp> ::=  <Prec11Exp> <Prec11Op> <Prec12Exp> | <Prec12Exp>
-<Prec11Op> ::= '*' | '/' | '%'
+<Prec6Exp> ::= <Prec7Exp>
+            | <BitwiseAnd>
+<BitwiseAnd> ::= <Prec6Exp> bitwise-and <Prec7Exp>
 
-<Prec12Exp> ::= <Prec12Op> <Prec12Exp> | <Prec13Exp> 
-<Prec12Op> ::= '!' | '~' | '-' | '++' | '--' ! |  cast: '(' <TypeExpression> ')'
+! Equality Expressions
+<Prec7Exp> ::= <Prec8Exp>
+            | <Equal>
+            | <NotEqual>
+<Equal> ::= <Prec7Exp> equal <Prec8Exp>
+<NotEqual> ::= <Prec7Exp> not-equal <Prec8Exp>
 
-<Prec13Exp> ::= Identifier
+! Comparison Expressions
+<Prec8Exp> ::= <Prec9Exp>
+            | <LessThan>
+            | <GreaterThan>
+            | <LessOrEqual>
+            | <GreaterOrEqual>
+<LessThan> ::= <Prec8Exp> less-than <Prec9Exp>
+<GreaterThan> ::= <Prec8Exp> greater-than <Prec9Exp>
+<LessOrEqual> ::= <Prec8Exp> less-or-equal <Prec9Exp>
+<GreaterOrEqual> ::= <Prec8Exp> greater-or-equal <Prec9Exp>
+               
+! Shift Expressions
+<Prec9Exp> ::= <Prec10Exp>
+            | <LeftShift>
+            | <RightShift>
+<LeftShift> ::= <Prec9Exp> shift-left <Prec10Exp>
+<RightShift> ::= <Prec9Exp> shift-right <Prec10Exp>
+
+! Cumulative Expressions
+<Prec10Exp> ::= <Prec11Exp>
+             | <Add>
+             | <Subtract>
+<Add> ::= <Prec10Exp> plus <Prec11Exp>
+<Subtract> ::= <Prec10Exp> minus <Prec11Exp>
+
+! Multiplicative Expressions
+<Prec11Exp> ::= <Prec12Exp>
+             | <Multiply>
+             | <Divide>
+             | <Reminder>
+<Multiply> ::= <Prec11Exp> multiply <Prec12Exp>
+<Divide> ::= <Prec11Exp> divide <Prec12Exp>
+<Reminder> ::= <Prec11Exp> reminder <Prec12Exp>
+
+! Unary Pre-Operator Expressions
+<Prec12Exp> ::= <Prec13Exp> 
+             | <Not>
+             | <Plus>
+             | <Minus>
+             | <PreIncrement>
+             | <PreDecrement>
+             | <BitComplement>
+<Not> ::= not <Prec12Exp>
+<Plus> ::= plus <Prec12Exp>
+<Minus> ::= minus <Prec12Exp>
+<PreIncrement> ::= increment <Prec12Exp>
+<PreDecrement> ::= decrement <Prec12Exp>
+<BitComplement> ::= complement <Prec12Exp>
+
+! Unary Post-Operator Expressions and Base Expressions 
+<Prec13Exp> ::= <Name>
              | <ConstantValue>
-             | '(' <Expression> ')'
-             | <Prec13Exp> '++'
-             | <Prec13Exp> '--'
-             | <Prec13Exp> '.' Identifier
-             | <Prec13Exp> '(' ')' ! TODO: invocation, add params list
-             ! TODO: a lot of shit is going here...
-
-
+             | <ParenExpression>
+             | <MemberAccess>
+             | <Invocation>
+             | <PostIncrement>
+             | <PostDecrement>
+<ParenExpression> ::= l-paren <Expression> r-paren 
+<MemberAccess> ::= <Prec13Exp> dot <Member>
+<Invocation> ::= <Prec13Exp> l-paren r-paren ! TODO: add params list to invocation
+<PostIncrement> ::= <Prec13Exp> increment
+<PostDecrement> ::= <Prec13Exp> decrement
 
 
