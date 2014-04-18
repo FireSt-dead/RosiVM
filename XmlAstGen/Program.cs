@@ -13,6 +13,10 @@ namespace XmlAstGen
 {
     class Program
     {
+        private static readonly XNamespace grammar = "http://www.rosivm.org/2014/grammar/";
+        private static readonly XNamespace ast = "http://www.rosivm.org/2014/ast/";
+        private static readonly XNamespace source = "http://www.rosivm.org/2014/source/";
+
         static void Main(string[] args)
         {
             var parser = new Parser();
@@ -29,11 +33,16 @@ namespace XmlAstGen
             {
                 // TODO: Error handling, reporting, and continue on error...
                 message = parser.Parse();
+
+                // parser.CurrentReduction
             }
             while (message == ParseMessage.Reduction || message == ParseMessage.TokenRead);
 
             XDocument xmlDoc = new XDocument();
-            XElement rootElement = new XElement("Global");
+            XElement rootElement = new XElement(ast + "Global");
+            rootElement.SetAttributeValue(XNamespace.Xmlns + "grm", grammar.NamespaceName);
+            rootElement.SetAttributeValue(XNamespace.Xmlns + "src", source.NamespaceName);
+            
             xmlDoc.Add(rootElement);
             Reduction root = (Reduction)parser.CurrentReduction;
             Print(rootElement, root);
@@ -47,10 +56,10 @@ namespace XmlAstGen
             var production = reduction.Parent;
             string head = production.Head().Name();
 
-            if (reduction.Count() > 1 && container.Name.LocalName != head)
+            if (reduction.Count() > 1 && container.Name.LocalName != head && !head.EndsWith("Members"))
             {
-                XElement childContainer = new XElement(head);
-                childContainer.SetAttributeValue("production", production.Text(false).Replace('<', '(').Replace('>', ')'));
+                XElement childContainer = new XElement(ast + head);
+                childContainer.SetAttributeValue(grammar + "prod", production.Text(false).Replace('<', '(').Replace('>', ')'));
                 container.Add(childContainer);
                 container = childContainer;
             }
@@ -62,8 +71,8 @@ namespace XmlAstGen
 
             for (int i = 0; i < reduction.Count(); i++)
             {
-                object child = reduction.get_Data(i);
-                Reduction childReduction = child as Reduction;
+                Token childToken = reduction[i];
+                Reduction childReduction = childToken.Data as Reduction;
                 if (childReduction != null)
                 {
                     Print(container, childReduction);
@@ -73,32 +82,24 @@ namespace XmlAstGen
                     string name = tokens[i];
                     if (name.StartsWith("\'") && name.EndsWith("\'"))
                     {
-                        // '<token-value>'
-                        XElement token = new XElement("Token");
-                        token.SetValue(child.ToString());
-                        container.Add(token);
+                        throw new NotImplementedException("Unexpected token " + name + ". Wrap it in production.");
                     }
                     else if (reduction.Count() == 1)
                     {
                         // <production> ::= terminal - reuse the name of the production
-                        XElement token = new XElement(reduction.Parent.Head().Name().Trim('<', '>'));
-                        token.SetValue(child.ToString());
-                        container.Add(token);
+                        XElement tokenXml = new XElement(ast + reduction.Parent.Head().Name().Trim('<', '>'));
+                        tokenXml.SetValue(childToken.Data.ToString());
+                        tokenXml.SetAttributeValue(source + "line", childToken.Position().Line);
+                        tokenXml.SetAttributeValue(source + "column", childToken.Position().Column);
+                        container.Add(tokenXml);
                     }
                     else
                     {
-                        try
-                        {
-                            XElement token = new XElement(tokens[i].Trim('\''));
-                            // token.SetValue(child.ToString());
-                            container.Add(token);
-                        }
-                        catch (Exception e)
-                        {
-
-                        }
+                        XElement tokenXml = new XElement(grammar + tokens[i].Trim('\''));
+                        tokenXml.SetAttributeValue(source + "line", childToken.Position().Line);
+                        tokenXml.SetAttributeValue(source + "column", childToken.Position().Column);
+                        container.Add(tokenXml);
                     }
-                    //Console.WriteLine(ident + d.ToString());
                 }
             }
         }
