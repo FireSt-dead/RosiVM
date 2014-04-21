@@ -1,297 +1,270 @@
-<Global xmlns:grm="http://www.rosivm.org/2014/grammar/" xmlns:src="http://www.rosivm.org/2014/source/" xmlns="http://www.rosivm.org/2014/ast/">
-  <Module grm:prod="(Module) ::= module (Name) l-brac (ModuleMembers) r-brac">
-    <grm:module src:line="0" src:column="0" />
-    <Name src:line="0" src:column="7">geometry</Name>
-    <grm:l-brac src:line="0" src:column="16" />
-    <Class grm:prod="(Class) ::= (Visibility) class (Name) (Extends) (Implements) l-brac (ClassMembers) r-brac">
-      <Visibility src:line="2" src:column="4">public</Visibility>
-      <grm:class src:line="2" src:column="11" />
-      <Name src:line="2" src:column="17">Point</Name>
-      <grm:l-brac src:line="2" src:column="23" />
-      <Field grm:prod="(Field) ::= (Visibility) var (Name) colon (Type) semicolon">
-        <grm:var src:line="3" src:column="8" />
-        <Name src:line="3" src:column="12">x</Name>
-        <grm:colon src:line="3" src:column="13" />
-        <Type src:line="3" src:column="15">float32</Type>
-        <grm:semicolon src:line="3" src:column="22" />
-      </Field>
-      <Field grm:prod="(Field) ::= (Visibility) var (Name) colon (Type) semicolon">
-        <grm:var src:line="4" src:column="8" />
-        <Name src:line="4" src:column="12">y</Name>
-        <grm:colon src:line="4" src:column="13" />
-        <Type src:line="4" src:column="15">float32</Type>
-        <grm:semicolon src:line="4" src:column="22" />
-      </Field>
-      <Function grm:prod="(Function) ::= (Visibility) method (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
-        <Visibility src:line="6" src:column="8">public</Visibility>
-        <grm:method src:line="6" src:column="15" />
-        <Name src:line="6" src:column="22">add</Name>
-        <grm:l-paren src:line="6" src:column="25" />
-        <Parameter grm:prod="(Parameter) ::= (Name) colon (Type)">
-          <Name src:line="6" src:column="26">p</Name>
-          <grm:colon src:line="6" src:column="27" />
-          <Type src:line="6" src:column="29">Point</Type>
+<Global xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rosivm.org/2014/ast/ RosiLang-AST.xsd" xmlns="http://www.rosivm.org/2014/ast/">
+  <Module prod="(Module) ::= module (Name) l-brac (ModuleMembers) r-brac">
+    <module line="0" column="0" />
+    <Name line="0" column="7">math</Name>
+    <l-brac line="0" column="12" />
+    <Function prod="(Function) ::= (Visibility) function (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
+      <Visibility line="1" column="4">public</Visibility>
+      <function line="1" column="11" />
+      <Name line="1" column="20">sin</Name>
+      <l-paren line="1" column="23" />
+      <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+        <Name line="1" column="24">x</Name>
+        <colon line="1" column="25" />
+        <Type line="1" column="27">float64</Type>
+      </Parameter>
+      <r-paren line="1" column="34" />
+      <ReturnType prod="(ReturnType) ::= turns-in (Type)">
+        <turns-in line="1" column="36" />
+        <Type line="1" column="39">float64</Type>
+      </ReturnType>
+      <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
+        <l-brac line="1" column="47" />
+        <r-brac line="2" column="4" />
+      </StatementBlock>
+    </Function>
+    <Function prod="(Function) ::= (Visibility) function (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
+      <Visibility line="3" column="4">public</Visibility>
+      <function line="3" column="11" />
+      <Name line="3" column="20">cos</Name>
+      <l-paren line="3" column="23" />
+      <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+        <Name line="3" column="24">x</Name>
+        <colon line="3" column="25" />
+        <Type line="3" column="27">float64</Type>
+      </Parameter>
+      <r-paren line="3" column="34" />
+      <ReturnType prod="(ReturnType) ::= turns-in (Type)">
+        <turns-in line="3" column="36" />
+        <Type line="3" column="39">float64</Type>
+      </ReturnType>
+      <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
+        <l-brac line="3" column="47" />
+        <r-brac line="4" column="4" />
+      </StatementBlock>
+    </Function>
+    <Function prod="(Function) ::= (Visibility) function (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
+      <Visibility line="5" column="4">public</Visibility>
+      <function line="5" column="11" />
+      <Name line="5" column="20">abs</Name>
+      <l-paren line="5" column="23" />
+      <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+        <Name line="5" column="24">x</Name>
+        <colon line="5" column="25" />
+        <Type line="5" column="27">float64</Type>
+      </Parameter>
+      <r-paren line="5" column="34" />
+      <ReturnType prod="(ReturnType) ::= turns-in (Type)">
+        <turns-in line="5" column="36" />
+        <Type line="5" column="39">float64</Type>
+      </ReturnType>
+      <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
+        <l-brac line="5" column="47" />
+        <r-brac line="6" column="4" />
+      </StatementBlock>
+    </Function>
+    <r-brac line="7" column="0" />
+  </Module>
+  <Module prod="(Module) ::= module (Name) l-brac (ModuleMembers) r-brac">
+    <module line="9" column="0" />
+    <Name line="9" column="7">geometry</Name>
+    <l-brac line="9" column="16" />
+    <Interface prod="(Interface) ::= (Visibility) interface (Name) (Implements) l-brac (InterfaceMembers) r-brac">
+      <Visibility line="11" column="1">public</Visibility>
+      <interface line="11" column="8" />
+      <Name line="11" column="18">Equatible</Name>
+      <l-brac line="11" column="28" />
+      <Method prod="(InterfaceMethod) ::= method (Name) l-paren (Parameters) r-paren (ReturnType) semicolon">
+        <method line="12" column="2" />
+        <Name line="12" column="9">equals</Name>
+        <l-paren line="12" column="15" />
+        <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+          <Name line="12" column="16">other</Name>
+          <colon line="12" column="21" />
+          <Type line="12" column="23">object</Type>
         </Parameter>
-        <grm:r-paren src:line="6" src:column="34" />
-        <StatementBlock grm:prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-          <grm:l-brac src:line="6" src:column="36" />
-          <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-            <Name src:line="7" src:column="12">x</Name>
-            <grm:semicolon src:line="7" src:column="13" />
-          </Statement>
-          <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-            <PostIncrement grm:prod="(PostIncrement) ::= (Prec13Exp) increment">
-              <Name src:line="8" src:column="12">x</Name>
-              <grm:increment src:line="8" src:column="13" />
-            </PostIncrement>
-            <grm:semicolon src:line="8" src:column="15" />
-          </Statement>
-          <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-            <Assign grm:prod="(Assign) ::= (Prec12Exp) assign (Expression)">
-              <Name src:line="9" src:column="12">x</Name>
-              <grm:assign src:line="9" src:column="14" />
-              <ConstantValue src:line="9" src:column="16">1</ConstantValue>
-            </Assign>
-            <grm:semicolon src:line="9" src:column="17" />
-          </Statement>
-          <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-            <Assign grm:prod="(Assign) ::= (Prec12Exp) assign (Expression)">
-              <Name src:line="10" src:column="12">y</Name>
-              <grm:assign src:line="10" src:column="14" />
-              <ConstantValue src:line="10" src:column="16">12</ConstantValue>
-            </Assign>
-            <grm:semicolon src:line="10" src:column="18" />
-          </Statement>
-          <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-            <Assign grm:prod="(Assign) ::= (Prec12Exp) assign (Expression)">
-              <Name src:line="11" src:column="12">z</Name>
-              <grm:assign src:line="11" src:column="14" />
-              <Add grm:prod="(Add) ::= (Prec10Exp) plus (Prec11Exp)">
-                <ConstantValue src:line="11" src:column="16">1</ConstantValue>
-                <grm:plus src:line="11" src:column="18" />
-                <Multiply grm:prod="(Multiply) ::= (Prec11Exp) multiply (Prec12Exp)">
-                  <ConstantValue src:line="11" src:column="20">2</ConstantValue>
-                  <grm:multiply src:line="11" src:column="22" />
-                  <ParenExpression grm:prod="(ParenExpression) ::= l-paren (Expression) r-paren">
-                    <grm:l-paren src:line="11" src:column="24" />
-                    <Add grm:prod="(Add) ::= (Prec10Exp) plus (Prec11Exp)">
-                      <ConstantValue src:line="11" src:column="25">3</ConstantValue>
-                      <grm:plus src:line="11" src:column="27" />
-                      <ConstantValue src:line="11" src:column="29">4</ConstantValue>
-                    </Add>
-                    <grm:r-paren src:line="11" src:column="30" />
-                  </ParenExpression>
-                </Multiply>
+        <r-paren line="12" column="29" />
+        <ReturnType prod="(ReturnType) ::= turns-in (Type)">
+          <turns-in line="12" column="31" />
+          <Type line="12" column="34">bool</Type>
+        </ReturnType>
+        <semicolon line="12" column="38" />
+      </Method>
+      <r-brac line="13" column="1" />
+    </Interface>
+    <Class prod="(Class) ::= (Visibility) class (Name) (Extends) (Implements) l-brac (ClassMembers) r-brac">
+      <Visibility line="15" column="4">public</Visibility>
+      <class line="15" column="11" />
+      <Name line="15" column="17">Point</Name>
+      <l-brac line="15" column="23" />
+      <Field prod="(Field) ::= (Visibility) var (Name) colon (Type) semicolon">
+        <var line="16" column="8" />
+        <Name line="16" column="12">x</Name>
+        <colon line="16" column="13" />
+        <Type line="16" column="15">float32</Type>
+        <semicolon line="16" column="22" />
+      </Field>
+      <Field prod="(Field) ::= (Visibility) var (Name) colon (Type) semicolon">
+        <var line="17" column="8" />
+        <Name line="17" column="12">y</Name>
+        <colon line="17" column="13" />
+        <Type line="17" column="15">float32</Type>
+        <semicolon line="17" column="22" />
+      </Field>
+      <Method prod="(ClassMethod) ::= (Visibility) method (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
+        <Visibility line="19" column="8">public</Visibility>
+        <method line="19" column="15" />
+        <Name line="19" column="22">add</Name>
+        <l-paren line="19" column="25" />
+        <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+          <Name line="19" column="26">p</Name>
+          <colon line="19" column="27" />
+          <Type line="19" column="29">Point</Type>
+        </Parameter>
+        <r-paren line="19" column="34" />
+        <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
+          <l-brac line="19" column="36" />
+          <Statement prod="(Statement) ::= (Expression) semicolon">
+            <Assign prod="(Assign) ::= (Prec12Exp) assign (Expression)">
+              <MemberAccess prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
+                <Name line="20" column="12">this</Name>
+                <dot line="20" column="16" />
+                <Member line="20" column="17">x</Member>
+              </MemberAccess>
+              <assign line="20" column="19" />
+              <Add prod="(Add) ::= (Prec10Exp) plus (Prec11Exp)">
+                <ConstantValue line="20" column="21">12</ConstantValue>
+                <plus line="20" column="24" />
+                <ConstantValue line="20" column="26">15</ConstantValue>
               </Add>
             </Assign>
-            <grm:semicolon src:line="11" src:column="31" />
+            <semicolon line="20" column="28" />
           </Statement>
-          <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-            <Assign grm:prod="(Assign) ::= (Prec12Exp) assign (Expression)">
-              <MemberAccess grm:prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                <Name src:line="12" src:column="12">this</Name>
-                <grm:dot src:line="12" src:column="16" />
-                <Member src:line="12" src:column="17">x</Member>
+          <Statement prod="(Statement) ::= (Expression) semicolon">
+            <Assign prod="(Assign) ::= (Prec12Exp) assign (Expression)">
+              <MemberAccess prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
+                <Name line="21" column="12">this</Name>
+                <dot line="21" column="16" />
+                <Member line="21" column="17">y</Member>
               </MemberAccess>
-              <grm:assign src:line="12" src:column="19" />
-              <Add grm:prod="(Add) ::= (Prec10Exp) plus (Prec11Exp)">
-                <ConstantValue src:line="12" src:column="21">12</ConstantValue>
-                <grm:plus src:line="12" src:column="24" />
-                <ConstantValue src:line="12" src:column="26">15</ConstantValue>
-              </Add>
-            </Assign>
-            <grm:semicolon src:line="12" src:column="28" />
-          </Statement>
-          <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-            <Assign grm:prod="(Assign) ::= (Prec12Exp) assign (Expression)">
-              <MemberAccess grm:prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                <Name src:line="13" src:column="12">this</Name>
-                <grm:dot src:line="13" src:column="16" />
-                <Member src:line="13" src:column="17">y</Member>
-              </MemberAccess>
-              <grm:assign src:line="13" src:column="19" />
-              <Multiply grm:prod="(Multiply) ::= (Prec11Exp) multiply (Prec12Exp)">
-                <ConstantValue src:line="13" src:column="21">13</ConstantValue>
-                <grm:multiply src:line="13" src:column="24" />
-                <PostIncrement grm:prod="(PostIncrement) ::= (Prec13Exp) increment">
-                  <ConstantValue src:line="13" src:column="26">16</ConstantValue>
-                  <grm:increment src:line="13" src:column="28" />
+              <assign line="21" column="19" />
+              <Multiply prod="(Multiply) ::= (Prec11Exp) multiply (Prec12Exp)">
+                <ConstantValue line="21" column="21">13</ConstantValue>
+                <multiply line="21" column="24" />
+                <PostIncrement prod="(PostIncrement) ::= (Prec13Exp) increment">
+                  <ConstantValue line="21" column="26">16</ConstantValue>
+                  <increment line="21" column="28" />
                 </PostIncrement>
               </Multiply>
             </Assign>
-            <grm:semicolon src:line="13" src:column="30" />
+            <semicolon line="21" column="30" />
           </Statement>
-          <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-            <Assign grm:prod="(Assign) ::= (Prec12Exp) assign (Expression)">
-              <Name src:line="14" src:column="12">test</Name>
-              <grm:assign src:line="14" src:column="17" />
-              <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                <MemberAccess grm:prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                  <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                    <MemberAccess grm:prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                      <Name src:line="14" src:column="19">x</Name>
-                      <grm:dot src:line="14" src:column="20" />
-                      <Member src:line="14" src:column="21">y</Member>
-                    </MemberAccess>
-                    <grm:l-paren src:line="14" src:column="22" />
-                    <grm:r-paren src:line="14" src:column="23" />
-                  </Invocation>
-                  <grm:dot src:line="14" src:column="24" />
-                  <Member src:line="14" src:column="25">z</Member>
-                  <grm:dot src:line="14" src:column="26" />
-                  <Member src:line="14" src:column="27">w</Member>
-                </MemberAccess>
-                <grm:l-paren src:line="14" src:column="28" />
-                <grm:r-paren src:line="14" src:column="29" />
-              </Invocation>
-            </Assign>
-            <grm:semicolon src:line="14" src:column="30" />
-          </Statement>
-          <If grm:prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
-            <grm:if src:line="16" src:column="12" />
-            <grm:l-paren src:line="16" src:column="15" />
-            <GreaterThan grm:prod="(GreaterThan) ::= (Prec8Exp) greater-than (Prec9Exp)">
-              <Name src:line="16" src:column="16">x</Name>
-              <grm:greater-than src:line="16" src:column="18" />
-              <ConstantValue src:line="16" src:column="20">15</ConstantValue>
+          <If prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
+            <if line="23" column="12" />
+            <l-paren line="23" column="15" />
+            <GreaterThan prod="(GreaterThan) ::= (Prec8Exp) greater-than (Prec9Exp)">
+              <Name line="23" column="16">x</Name>
+              <greater-than line="23" column="18" />
+              <ConstantValue line="23" column="20">15</ConstantValue>
             </GreaterThan>
-            <grm:r-paren src:line="16" src:column="22" />
-            <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-              <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                <Name src:line="16" src:column="24">large</Name>
-                <grm:l-paren src:line="16" src:column="29" />
-                <grm:r-paren src:line="16" src:column="30" />
+            <r-paren line="23" column="22" />
+            <Statement prod="(Statement) ::= (Expression) semicolon">
+              <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
+                <Name line="23" column="24">large</Name>
+                <l-paren line="23" column="29" />
+                <r-paren line="23" column="30" />
               </Invocation>
-              <grm:semicolon src:line="16" src:column="31" />
+              <semicolon line="23" column="31" />
             </Statement>
-            <grm:else src:line="17" src:column="12" />
-            <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-              <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                <Name src:line="17" src:column="17">small</Name>
-                <grm:l-paren src:line="17" src:column="22" />
-                <grm:r-paren src:line="17" src:column="23" />
+            <else line="24" column="12" />
+            <Statement prod="(Statement) ::= (Expression) semicolon">
+              <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
+                <Name line="24" column="17">small</Name>
+                <l-paren line="24" column="22" />
+                <r-paren line="24" column="23" />
               </Invocation>
-              <grm:semicolon src:line="17" src:column="24" />
-            </Statement>
-          </If>
-          <If grm:prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
-            <grm:if src:line="19" src:column="12" />
-            <grm:l-paren src:line="19" src:column="15" />
-            <Name src:line="19" src:column="16">testVal</Name>
-            <grm:r-paren src:line="19" src:column="23" />
-            <grm:if src:line="20" src:column="16" />
-            <grm:l-paren src:line="20" src:column="19" />
-            <Not grm:prod="(Not) ::= not (Prec12Exp)">
-              <grm:not src:line="20" src:column="20" />
-              <Name src:line="20" src:column="21">y</Name>
-            </Not>
-            <grm:r-paren src:line="20" src:column="22" />
-            <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-              <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                <Name src:line="20" src:column="24">large</Name>
-                <grm:l-paren src:line="20" src:column="29" />
-                <grm:r-paren src:line="20" src:column="30" />
-              </Invocation>
-              <grm:semicolon src:line="20" src:column="31" />
-            </Statement>
-            <grm:else src:line="21" src:column="16" />
-            <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-              <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                <Name src:line="21" src:column="21">small</Name>
-                <grm:l-paren src:line="21" src:column="26" />
-                <grm:r-paren src:line="21" src:column="27" />
-              </Invocation>
-              <grm:semicolon src:line="21" src:column="28" />
-            </Statement>
-            <grm:else src:line="22" src:column="12" />
-            <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-              <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                <Name src:line="22" src:column="17">verySmall</Name>
-                <grm:l-paren src:line="22" src:column="26" />
-                <grm:r-paren src:line="22" src:column="27" />
-              </Invocation>
-              <grm:semicolon src:line="22" src:column="28" />
+              <semicolon line="24" column="24" />
             </Statement>
           </If>
-          <If grm:prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
-            <grm:if src:line="24" src:column="12" />
-            <grm:l-paren src:line="24" src:column="15" />
-            <Not grm:prod="(Not) ::= not (Prec12Exp)">
-              <grm:not src:line="24" src:column="16" />
-              <Name src:line="24" src:column="17">x</Name>
+          <If prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
+            <if line="26" column="12" />
+            <l-paren line="26" column="15" />
+            <Not prod="(Not) ::= not (Prec12Exp)">
+              <not line="26" column="16" />
+              <Name line="26" column="17">x</Name>
             </Not>
-            <grm:r-paren src:line="24" src:column="18" />
-            <StatementBlock grm:prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-              <grm:l-brac src:line="24" src:column="20" />
-              <If grm:prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
-                <grm:if src:line="25" src:column="16" />
-                <grm:l-paren src:line="25" src:column="19" />
-                <Not grm:prod="(Not) ::= not (Prec12Exp)">
-                  <grm:not src:line="25" src:column="20" />
-                  <Name src:line="25" src:column="21">y</Name>
+            <r-paren line="26" column="18" />
+            <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
+              <l-brac line="26" column="20" />
+              <If prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
+                <if line="27" column="16" />
+                <l-paren line="27" column="19" />
+                <Not prod="(Not) ::= not (Prec12Exp)">
+                  <not line="27" column="20" />
+                  <Name line="27" column="21">y</Name>
                 </Not>
-                <grm:r-paren src:line="25" src:column="22" />
-                <StatementBlock grm:prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-                  <grm:l-brac src:line="25" src:column="24" />
-                  <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-                    <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                      <Name src:line="26" src:column="20">large</Name>
-                      <grm:l-paren src:line="26" src:column="25" />
-                      <grm:r-paren src:line="26" src:column="26" />
+                <r-paren line="27" column="22" />
+                <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
+                  <l-brac line="27" column="24" />
+                  <Statement prod="(Statement) ::= (Expression) semicolon">
+                    <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
+                      <Name line="28" column="20">large</Name>
+                      <l-paren line="28" column="25" />
+                      <r-paren line="28" column="26" />
                     </Invocation>
-                    <grm:semicolon src:line="26" src:column="27" />
+                    <semicolon line="28" column="27" />
                   </Statement>
-                  <grm:r-brac src:line="27" src:column="16" />
+                  <r-brac line="29" column="16" />
                 </StatementBlock>
-                <grm:else src:line="27" src:column="18" />
-                <StatementBlock grm:prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-                  <grm:l-brac src:line="27" src:column="23" />
-                  <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-                    <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                      <Name src:line="28" src:column="20">small</Name>
-                      <grm:l-paren src:line="28" src:column="25" />
-                      <grm:r-paren src:line="28" src:column="26" />
+                <else line="29" column="18" />
+                <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
+                  <l-brac line="29" column="23" />
+                  <Statement prod="(Statement) ::= (Expression) semicolon">
+                    <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
+                      <Name line="30" column="20">small</Name>
+                      <l-paren line="30" column="25" />
+                      <r-paren line="30" column="26" />
                     </Invocation>
-                    <grm:semicolon src:line="28" src:column="27" />
+                    <semicolon line="30" column="27" />
                   </Statement>
-                  <grm:r-brac src:line="29" src:column="16" />
+                  <r-brac line="31" column="16" />
                 </StatementBlock>
               </If>
-              <grm:r-brac src:line="30" src:column="12" />
+              <r-brac line="32" column="12" />
             </StatementBlock>
-            <grm:else src:line="30" src:column="14" />
-            <StatementBlock grm:prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-              <grm:l-brac src:line="30" src:column="19" />
-              <Statement grm:prod="(Statement) ::= (Expression) semicolon">
-                <Invocation grm:prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                  <Name src:line="31" src:column="16">verySmall</Name>
-                  <grm:l-paren src:line="31" src:column="25" />
-                  <grm:r-paren src:line="31" src:column="26" />
+            <else line="32" column="14" />
+            <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
+              <l-brac line="32" column="19" />
+              <Statement prod="(Statement) ::= (Expression) semicolon">
+                <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
+                  <Name line="33" column="16">verySmall</Name>
+                  <l-paren line="33" column="25" />
+                  <r-paren line="33" column="26" />
                 </Invocation>
-                <grm:semicolon src:line="31" src:column="27" />
+                <semicolon line="33" column="27" />
               </Statement>
-              <grm:r-brac src:line="32" src:column="12" />
+              <r-brac line="34" column="12" />
             </StatementBlock>
           </If>
-          <grm:r-brac src:line="33" src:column="8" />
+          <r-brac line="35" column="8" />
         </StatementBlock>
-      </Function>
-      <grm:r-brac src:line="34" src:column="4" />
+      </Method>
+      <r-brac line="36" column="4" />
     </Class>
-    <Class grm:prod="(Class) ::= (Visibility) class (Name) (Extends) (Implements) l-brac (ClassMembers) r-brac">
-      <Visibility src:line="36" src:column="4">public</Visibility>
-      <grm:class src:line="36" src:column="11" />
-      <Name src:line="36" src:column="17">Point3d</Name>
-      <grm:l-brac src:line="36" src:column="25" />
-      <Field grm:prod="(Field) ::= (Visibility) var (Name) colon (Type) semicolon">
-        <grm:var src:line="37" src:column="8" />
-        <Name src:line="37" src:column="12">z</Name>
-        <grm:colon src:line="37" src:column="13" />
-        <Type src:line="37" src:column="15">float32</Type>
-        <grm:semicolon src:line="37" src:column="22" />
+    <Class prod="(Class) ::= (Visibility) class (Name) (Extends) (Implements) l-brac (ClassMembers) r-brac">
+      <Visibility line="38" column="4">public</Visibility>
+      <class line="38" column="11" />
+      <Name line="38" column="17">Point3d</Name>
+      <l-brac line="38" column="25" />
+      <Field prod="(Field) ::= (Visibility) var (Name) colon (Type) semicolon">
+        <var line="39" column="8" />
+        <Name line="39" column="12">z</Name>
+        <colon line="39" column="13" />
+        <Type line="39" column="15">float32</Type>
+        <semicolon line="39" column="22" />
       </Field>
-      <grm:r-brac src:line="38" src:column="4" />
+      <r-brac line="40" column="4" />
     </Class>
-    <grm:r-brac src:line="39" src:column="0" />
+    <r-brac line="41" column="0" />
   </Module>
 </Global>

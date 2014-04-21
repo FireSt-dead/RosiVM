@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RosiLang-Schema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.rosivm.org/2014/ast/"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    targetNamespace="http://www.rosivm.org/2014/ast/">
+
+  <xs:complexType name="token">
+    <xs:annotation>
+      <xs:documentation>
+        A token with fixed content.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="line" type="xs:unsignedInt" use="optional" />
+    <xs:attribute name="column" type="xs:unsignedInt" use="optional" />
+  </xs:complexType>
+
+  <xs:element name="Global">
+    <xs:annotation>
+      <xs:documentation>
+        Contains Modules, Functions and Classes.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Module" />
+        <xs:element ref="Function" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Module">
+    <xs:annotation>
+      <xs:documentation>
+        Contains Modules, Functions and Classes.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="module" type="token" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="Name" minOccurs="1" maxOccurs="1" />
+        <xs:element name="l-brac" type="token" minOccurs="0" maxOccurs="1" />
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="Module" />
+          <xs:element ref="Function" />
+        </xs:choice>
+        <xs:element name="r-brac" type="token" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="prod" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Function">
+    <xs:annotation>
+      <xs:documentation>
+        A function.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Visibility" minOccurs="0" maxOccurs="1" />
+        <xs:element name="function" type="token" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="Name" />
+        <xs:element name="l-paren" type="token" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="Parameter" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="r-paren" type="token" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="ReturnType" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="StatementBlock" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="prod" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Name">
+    <xs:annotation>
+      <xs:documentation>
+        A local, non-qualified, name.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="line" type="xs:unsignedInt" use="optional" />
+          <xs:attribute name="column" type="xs:unsignedInt" use="optional" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="visibility">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="public" />
+      <xs:enumeration value="protected" />
+      <xs:enumeration value="private" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Visibility">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="visibility">
+          <xs:attribute name="line" type="xs:unsignedInt" use="optional" />
+          <xs:attribute name="column" type="xs:unsignedInt" use="optional" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Parameter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Name" minOccurs="1" maxOccurs="1" />
+        <xs:element name="colon" minOccurs="1" maxOccurs="1" type="token" />
+        <xs:element ref="Type" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="prod" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <!--
+  TODO: This only shows that is possible to provide pretty decent schema.
+  We have a long way to go here but it would be best to work on the language and parser for now,
+  and push the schema later when the language is more stable.
+  -->
+  <xs:element name="ReturnType">
+    
+  </xs:element>
+  <xs:element name="StatementBlock">
+    
+  </xs:element>
+
+  <xs:element name="Type">
+    
+  </xs:element>
+</xs:schema>

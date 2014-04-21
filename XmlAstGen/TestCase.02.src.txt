@@ -1,27 +1,29 @@
+module math {
+    public function sin(x: float64) => float64 {
+    }
+    public function cos(x: float64) => float64 {
+    }
+    public function abs(x: float64) => float64 {
+    }
+}
+
 module geometry {
+
+	public interface Equatible {
+		method equals(other: object) => bool;
+	}
 
     public class Point {
         var x: float32;
         var y: float32;
         
         public method add(p: Point) {
-            x;
-            x++;
-            x = 1;
-            y = 12;
-            z = 1 + 2 * (3 + 4);
             this.x = 12 + 15;
             this.y = 13 * 16++;
-            test = x.y().z.w();
-            
+
             if (x > 15) large();
             else small();
-            
-            if (testVal)
-                if (!y) large();
-                else small();
-            else verySmall();
-            
+                        
             if (!x) {
                 if (!y) {
                     large();

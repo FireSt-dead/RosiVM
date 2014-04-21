@@ -1,22 +1,16 @@
 ﻿using GOLD;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace XmlAstGen
 {
     class Program
     {
-        private static readonly XNamespace grammar = "http://www.rosivm.org/2014/grammar/";
+        private static readonly XNamespace xsi = "http://www.w3.org/2001/XMLSchema-instance";
         private static readonly XNamespace ast = "http://www.rosivm.org/2014/ast/";
-        private static readonly XNamespace source = "http://www.rosivm.org/2014/source/";
-
+     
         static void Main(string[] args)
         {
             var parser = new Parser();
@@ -40,8 +34,8 @@ namespace XmlAstGen
 
             XDocument xmlDoc = new XDocument();
             XElement rootElement = new XElement(ast + "Global");
-            rootElement.SetAttributeValue(XNamespace.Xmlns + "grm", grammar.NamespaceName);
-            rootElement.SetAttributeValue(XNamespace.Xmlns + "src", source.NamespaceName);
+            rootElement.SetAttributeValue(XNamespace.Xmlns + "xsi", xsi.NamespaceName);
+            rootElement.SetAttributeValue(xsi + "schemaLocation", @"http://www.rosivm.org/2014/ast/ RosiLang-AST.xsd");
             
             xmlDoc.Add(rootElement);
             Reduction root = (Reduction)parser.CurrentReduction;
@@ -58,8 +52,17 @@ namespace XmlAstGen
 
             if (reduction.Count() > 1 && container.Name.LocalName != head && !head.EndsWith("Members"))
             {
-                XElement childContainer = new XElement(ast + head);
-                childContainer.SetAttributeValue(grammar + "prod", production.Text(false).Replace('<', '(').Replace('>', ')'));
+                string childContainerName;
+                if (head.StartsWith(container.Name.LocalName))
+                {
+                    childContainerName = head.Substring(container.Name.LocalName.Length);
+                }
+                else
+                {
+                    childContainerName = head;
+                }
+                XElement childContainer = new XElement(ast + childContainerName);
+                childContainer.SetAttributeValue("prod", production.Text(false).Replace('<', '(').Replace('>', ')'));
                 container.Add(childContainer);
                 container = childContainer;
             }
@@ -89,15 +92,15 @@ namespace XmlAstGen
                         // <production> ::= terminal - reuse the name of the production
                         XElement tokenXml = new XElement(ast + reduction.Parent.Head().Name().Trim('<', '>'));
                         tokenXml.SetValue(childToken.Data.ToString());
-                        tokenXml.SetAttributeValue(source + "line", childToken.Position().Line);
-                        tokenXml.SetAttributeValue(source + "column", childToken.Position().Column);
+                        tokenXml.SetAttributeValue("line", childToken.Position().Line);
+                        tokenXml.SetAttributeValue("column", childToken.Position().Column);
                         container.Add(tokenXml);
                     }
                     else
                     {
-                        XElement tokenXml = new XElement(grammar + tokens[i].Trim('\''));
-                        tokenXml.SetAttributeValue(source + "line", childToken.Position().Line);
-                        tokenXml.SetAttributeValue(source + "column", childToken.Position().Column);
+                        XElement tokenXml = new XElement(ast + tokens[i].Trim('\''));
+                        tokenXml.SetAttributeValue("line", childToken.Position().Line);
+                        tokenXml.SetAttributeValue("column", childToken.Position().Column);
                         container.Add(tokenXml);
                     }
                 }

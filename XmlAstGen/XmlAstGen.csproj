@@ -54,7 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GOLD Engine.dll" />
-    <None Include="rvm.ast.xml" />
+    <None Include="RosiLang-AST.xsd" />
+    <None Include="rvm.ast.xml">
+      <SubType>Designer</SubType>
+    </None>
     <EmbeddedResource Include="TestCase.02.src.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

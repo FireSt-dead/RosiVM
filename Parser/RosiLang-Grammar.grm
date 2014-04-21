@@ -6,7 +6,7 @@
 "About"   = 'RosiVMs RosiLang - First blood version.'
 
 "Case Sensitive" = 'True'
-"Start Symbol" = <GlobalMembers>
+"Start Symbol" = <Global>
                
 !* TODO: At some point we will have to introduce convention on lists and optional usage. For example postfixes Lst and Opt *! 
         
@@ -82,48 +82,62 @@ complement = '~'
 <Name> ::= Identifier
 <Member> ::= Identifier
 
-! Declarations    
-<GlobalMembers> ::= <ModuleMember> <GlobalMembers> | <>
-          
-<ModuleMember> ::= <Module>
-                | <Class>
-           
-<Module> ::= 'module' <Name> l-brac <ModuleMembers> r-brac
-             
-<ModuleMembers> ::= <ModuleMember> <ModuleMembers> | <>
-                 
-<Class> ::= <Visibility> 'class' <Name> <Extends> <Implements> l-brac <ClassMembers> r-brac
-         
-<Visibility> ::= 'public' | 'protected' | 'private' | <>
-              
-<Extends> ::= 'extends' Identifier | <>
-           
-<Implements> ::= 'implements' <ImplementedInterfaces> | <>
-              
-<ImplementedInterfaces> ::= <InterfaceType> comma <ImplementedInterfaces> | <InterfaceType>
-                         
-<InterfaceType> ::= Identifier ! TODO: generic parameters
-              
-<ClassMembers> ::= <ClassMember> <ClassMembers> | <>
+! Global Module, Class, Interface Declarations
+<Global> ::= <GlobalMembers>
 
-<ClassMember> ::= <Field>
-               | <Constructor>
-               | <Function>
-               
-<Field> ::= <Visibility> 'var' <Name> colon <Type> semicolon
-         
-<Constructor> ::= <Visibility> 'constructor' l-paren <Parameters> r-paren <StatementBlock> 
-               
-<Function> ::= <Visibility> 'method' <Name> l-paren <Parameters> r-paren <ReturnType> <StatementBlock>
-              
+<GlobalMembers> ::= <GlobalMember> <GlobalMembers> | <>
+<GlobalMember> ::= <Module>
+                | <Function>
+                | <Class>
+                | <Interface>
+
+<Module> ::= 'module' <Name> l-brac <ModuleMembers> r-brac
+    
+<ModuleMembers> ::= <ModuleMember> <ModuleMembers> | <>
+<ModuleMember> ::= <Module>
+                | <Function>
+                | <Class>
+                | <Interface>
+
+! Common for Function, Class and Interface
+<Visibility> ::= 'public' | 'protected' | 'private' | <>
+<ReturnType> ::= turns-in <Type> | <>
 <Parameters> ::= <Parameter> comma <Parameters> | <Parameter> | <>
 <Parameter> ::= <Name> colon <Type>
-             
-<ReturnType> ::= turns-in <Type> | <>
+
+! Function
+<Function> ::= <Visibility> 'function' <Name> l-paren <Parameters> r-paren <ReturnType> <StatementBlock>
+
+! Class                
+<Class> ::= <Visibility> 'class' <Name> <Extends> <Implements> l-brac <ClassMembers> r-brac
+
+<Extends> ::= 'extends' <ClassType> | <>
+
+<Implements> ::= 'implements' <ImplementedInterfaces> | <>
+<ImplementedInterfaces> ::= <InterfaceType> comma <ImplementedInterfaces> | <InterfaceType>                         
+
+<ClassMembers> ::= <ClassMember> <ClassMembers> | <>
+<ClassMember> ::= <Field>
+               | <Constructor>
+               | <ClassMethod>
+
+<Field> ::= <Visibility> 'var' <Name> colon <Type> semicolon
+<Constructor> ::= <Visibility> 'constructor' l-paren <Parameters> r-paren <StatementBlock>
+<ClassMethod> ::= <Visibility> 'method' <Name> l-paren <Parameters> r-paren <ReturnType> <StatementBlock>
+
+! Interface
+<Interface> ::= <Visibility> 'interface' <Name> <Implements> l-brac <InterfaceMembers> r-brac ! TODO: Implements for interface (consider using 'extends' or something...)
+<InterfaceMembers> ::= <InterfaceMember> <InterfaceMembers> | <>
+<InterfaceMember> ::= <InterfaceField>
+                   | <InterfaceMethod>
+
+<InterfaceField> ::= 'var' <Name> colon <Type> semicolon
+<InterfaceMethod> ::= 'method' <Name> l-paren <Parameters> r-paren <ReturnType> semicolon
               
 ! Types
-
 <Type> ::= Identifier ! this would be class or interface or struct etc with generic parameters etc.
+<InterfaceType> ::= Identifier
+<ClassType> ::= Identifier
               
 ! Statements
 <StatementBlock> ::= l-brac r-brac | l-brac <StatementBlockMembers> r-brac 
