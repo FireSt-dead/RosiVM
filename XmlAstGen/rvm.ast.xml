@@ -1,270 +1,326 @@
 <Global xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rosivm.org/2014/ast/ RosiLang-AST.xsd" xmlns="http://www.rosivm.org/2014/ast/">
   <Module prod="(Module) ::= module (Name) l-brac (ModuleMembers) r-brac">
-    <module line="0" column="0" />
+    <module line="0" column="0">module</module>
     <Name line="0" column="7">math</Name>
-    <l-brac line="0" column="12" />
+    <l-brac line="0" column="12">{</l-brac>
     <Function prod="(Function) ::= (Visibility) function (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
-      <Visibility line="1" column="4">public</Visibility>
-      <function line="1" column="11" />
-      <Name line="1" column="20">sin</Name>
-      <l-paren line="1" column="23" />
-      <Parameter prod="(Parameter) ::= (Name) colon (Type)">
-        <Name line="1" column="24">x</Name>
-        <colon line="1" column="25" />
-        <Type line="1" column="27">float64</Type>
-      </Parameter>
-      <r-paren line="1" column="34" />
+      <Visibility line="1" column="1">public</Visibility>
+      <function line="1" column="8">function</function>
+      <Name line="1" column="17">min</Name>
+      <l-paren line="1" column="20">(</l-paren>
+      <Parameters prod="(Parameters) ::= (Parameter) comma (Parameters)">
+        <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+          <Name line="1" column="21">x</Name>
+          <colon line="1" column="22">:</colon>
+          <Type line="1" column="24">float64</Type>
+        </Parameter>
+        <comma line="1" column="31">,</comma>
+        <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+          <Name line="1" column="33">y</Name>
+          <colon line="1" column="34">:</colon>
+          <Type line="1" column="36">float64</Type>
+        </Parameter>
+      </Parameters>
+      <r-paren line="1" column="43">)</r-paren>
       <ReturnType prod="(ReturnType) ::= turns-in (Type)">
-        <turns-in line="1" column="36" />
-        <Type line="1" column="39">float64</Type>
+        <turns-in line="1" column="45">=&gt;</turns-in>
+        <Type line="1" column="48">float64</Type>
       </ReturnType>
       <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
-        <l-brac line="1" column="47" />
-        <r-brac line="2" column="4" />
+        <l-brac line="1" column="56">{</l-brac>
+        <r-brac line="2" column="1">}</r-brac>
       </StatementBlock>
     </Function>
     <Function prod="(Function) ::= (Visibility) function (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
-      <Visibility line="3" column="4">public</Visibility>
-      <function line="3" column="11" />
-      <Name line="3" column="20">cos</Name>
-      <l-paren line="3" column="23" />
-      <Parameter prod="(Parameter) ::= (Name) colon (Type)">
-        <Name line="3" column="24">x</Name>
-        <colon line="3" column="25" />
-        <Type line="3" column="27">float64</Type>
-      </Parameter>
-      <r-paren line="3" column="34" />
+      <Visibility line="3" column="1">public</Visibility>
+      <function line="3" column="8">function</function>
+      <Name line="3" column="17">max</Name>
+      <l-paren line="3" column="20">(</l-paren>
+      <Parameters prod="(Parameters) ::= (Parameter) comma (Parameters)">
+        <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+          <Name line="3" column="21">x</Name>
+          <colon line="3" column="22">:</colon>
+          <Type line="3" column="24">float64</Type>
+        </Parameter>
+        <comma line="3" column="31">,</comma>
+        <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+          <Name line="3" column="33">y</Name>
+          <colon line="3" column="34">:</colon>
+          <Type line="3" column="36">float64</Type>
+        </Parameter>
+      </Parameters>
+      <r-paren line="3" column="43">)</r-paren>
       <ReturnType prod="(ReturnType) ::= turns-in (Type)">
-        <turns-in line="3" column="36" />
-        <Type line="3" column="39">float64</Type>
+        <turns-in line="3" column="45">=&gt;</turns-in>
+        <Type line="3" column="48">float64</Type>
       </ReturnType>
       <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
-        <l-brac line="3" column="47" />
-        <r-brac line="4" column="4" />
+        <l-brac line="3" column="56">{</l-brac>
+        <r-brac line="4" column="1">}</r-brac>
       </StatementBlock>
     </Function>
     <Function prod="(Function) ::= (Visibility) function (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
       <Visibility line="5" column="4">public</Visibility>
-      <function line="5" column="11" />
-      <Name line="5" column="20">abs</Name>
-      <l-paren line="5" column="23" />
+      <function line="5" column="11">function</function>
+      <Name line="5" column="20">sin</Name>
+      <l-paren line="5" column="23">(</l-paren>
       <Parameter prod="(Parameter) ::= (Name) colon (Type)">
         <Name line="5" column="24">x</Name>
-        <colon line="5" column="25" />
+        <colon line="5" column="25">:</colon>
         <Type line="5" column="27">float64</Type>
       </Parameter>
-      <r-paren line="5" column="34" />
+      <r-paren line="5" column="34">)</r-paren>
       <ReturnType prod="(ReturnType) ::= turns-in (Type)">
-        <turns-in line="5" column="36" />
+        <turns-in line="5" column="36">=&gt;</turns-in>
         <Type line="5" column="39">float64</Type>
       </ReturnType>
       <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
-        <l-brac line="5" column="47" />
-        <r-brac line="6" column="4" />
+        <l-brac line="5" column="47">{</l-brac>
+        <r-brac line="6" column="4">}</r-brac>
       </StatementBlock>
     </Function>
-    <r-brac line="7" column="0" />
+    <Function prod="(Function) ::= (Visibility) function (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
+      <Visibility line="7" column="4">public</Visibility>
+      <function line="7" column="11">function</function>
+      <Name line="7" column="20">cos</Name>
+      <l-paren line="7" column="23">(</l-paren>
+      <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+        <Name line="7" column="24">x</Name>
+        <colon line="7" column="25">:</colon>
+        <Type line="7" column="27">float64</Type>
+      </Parameter>
+      <r-paren line="7" column="34">)</r-paren>
+      <ReturnType prod="(ReturnType) ::= turns-in (Type)">
+        <turns-in line="7" column="36">=&gt;</turns-in>
+        <Type line="7" column="39">float64</Type>
+      </ReturnType>
+      <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
+        <l-brac line="7" column="47">{</l-brac>
+        <r-brac line="8" column="4">}</r-brac>
+      </StatementBlock>
+    </Function>
+    <Function prod="(Function) ::= (Visibility) function (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
+      <Visibility line="9" column="4">public</Visibility>
+      <function line="9" column="11">function</function>
+      <Name line="9" column="20">abs</Name>
+      <l-paren line="9" column="23">(</l-paren>
+      <Parameter prod="(Parameter) ::= (Name) colon (Type)">
+        <Name line="9" column="24">x</Name>
+        <colon line="9" column="25">:</colon>
+        <Type line="9" column="27">float64</Type>
+      </Parameter>
+      <r-paren line="9" column="34">)</r-paren>
+      <ReturnType prod="(ReturnType) ::= turns-in (Type)">
+        <turns-in line="9" column="36">=&gt;</turns-in>
+        <Type line="9" column="39">float64</Type>
+      </ReturnType>
+      <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
+        <l-brac line="9" column="47">{</l-brac>
+        <r-brac line="10" column="4">}</r-brac>
+      </StatementBlock>
+    </Function>
+    <r-brac line="11" column="0">}</r-brac>
   </Module>
   <Module prod="(Module) ::= module (Name) l-brac (ModuleMembers) r-brac">
-    <module line="9" column="0" />
-    <Name line="9" column="7">geometry</Name>
-    <l-brac line="9" column="16" />
+    <module line="13" column="0">module</module>
+    <Name line="13" column="7">geometry</Name>
+    <l-brac line="13" column="16">{</l-brac>
     <Interface prod="(Interface) ::= (Visibility) interface (Name) (Implements) l-brac (InterfaceMembers) r-brac">
-      <Visibility line="11" column="1">public</Visibility>
-      <interface line="11" column="8" />
-      <Name line="11" column="18">Equatible</Name>
-      <l-brac line="11" column="28" />
+      <Visibility line="15" column="1">public</Visibility>
+      <interface line="15" column="8">interface</interface>
+      <Name line="15" column="18">Equatible</Name>
+      <l-brac line="15" column="28">{</l-brac>
       <Method prod="(InterfaceMethod) ::= method (Name) l-paren (Parameters) r-paren (ReturnType) semicolon">
-        <method line="12" column="2" />
-        <Name line="12" column="9">equals</Name>
-        <l-paren line="12" column="15" />
+        <method line="16" column="2">method</method>
+        <Name line="16" column="9">equals</Name>
+        <l-paren line="16" column="15">(</l-paren>
         <Parameter prod="(Parameter) ::= (Name) colon (Type)">
-          <Name line="12" column="16">other</Name>
-          <colon line="12" column="21" />
-          <Type line="12" column="23">object</Type>
+          <Name line="16" column="16">other</Name>
+          <colon line="16" column="21">:</colon>
+          <Type line="16" column="23">object</Type>
         </Parameter>
-        <r-paren line="12" column="29" />
+        <r-paren line="16" column="29">)</r-paren>
         <ReturnType prod="(ReturnType) ::= turns-in (Type)">
-          <turns-in line="12" column="31" />
-          <Type line="12" column="34">bool</Type>
+          <turns-in line="16" column="31">=&gt;</turns-in>
+          <Type line="16" column="34">bool</Type>
         </ReturnType>
-        <semicolon line="12" column="38" />
+        <semicolon line="16" column="38">;</semicolon>
       </Method>
-      <r-brac line="13" column="1" />
+      <r-brac line="17" column="1">}</r-brac>
     </Interface>
     <Class prod="(Class) ::= (Visibility) class (Name) (Extends) (Implements) l-brac (ClassMembers) r-brac">
-      <Visibility line="15" column="4">public</Visibility>
-      <class line="15" column="11" />
-      <Name line="15" column="17">Point</Name>
-      <l-brac line="15" column="23" />
+      <Visibility line="19" column="4">public</Visibility>
+      <class line="19" column="11">class</class>
+      <Name line="19" column="17">Point</Name>
+      <l-brac line="19" column="23">{</l-brac>
       <Field prod="(Field) ::= (Visibility) var (Name) colon (Type) semicolon">
-        <var line="16" column="8" />
-        <Name line="16" column="12">x</Name>
-        <colon line="16" column="13" />
-        <Type line="16" column="15">float32</Type>
-        <semicolon line="16" column="22" />
+        <var line="20" column="8">var</var>
+        <Name line="20" column="12">x</Name>
+        <colon line="20" column="13">:</colon>
+        <Type line="20" column="15">float32</Type>
+        <semicolon line="20" column="22">;</semicolon>
       </Field>
       <Field prod="(Field) ::= (Visibility) var (Name) colon (Type) semicolon">
-        <var line="17" column="8" />
-        <Name line="17" column="12">y</Name>
-        <colon line="17" column="13" />
-        <Type line="17" column="15">float32</Type>
-        <semicolon line="17" column="22" />
+        <var line="21" column="8">var</var>
+        <Name line="21" column="12">y</Name>
+        <colon line="21" column="13">:</colon>
+        <Type line="21" column="15">float32</Type>
+        <semicolon line="21" column="22">;</semicolon>
       </Field>
       <Method prod="(ClassMethod) ::= (Visibility) method (Name) l-paren (Parameters) r-paren (ReturnType) (StatementBlock)">
-        <Visibility line="19" column="8">public</Visibility>
-        <method line="19" column="15" />
-        <Name line="19" column="22">add</Name>
-        <l-paren line="19" column="25" />
+        <Visibility line="23" column="8">public</Visibility>
+        <method line="23" column="15">method</method>
+        <Name line="23" column="22">add</Name>
+        <l-paren line="23" column="25">(</l-paren>
         <Parameter prod="(Parameter) ::= (Name) colon (Type)">
-          <Name line="19" column="26">p</Name>
-          <colon line="19" column="27" />
-          <Type line="19" column="29">Point</Type>
+          <Name line="23" column="26">p</Name>
+          <colon line="23" column="27">:</colon>
+          <Type line="23" column="29">Point</Type>
         </Parameter>
-        <r-paren line="19" column="34" />
+        <r-paren line="23" column="34">)</r-paren>
         <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-          <l-brac line="19" column="36" />
+          <l-brac line="23" column="36">{</l-brac>
           <Statement prod="(Statement) ::= (Expression) semicolon">
             <Assign prod="(Assign) ::= (Prec12Exp) assign (Expression)">
               <MemberAccess prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                <Name line="20" column="12">this</Name>
-                <dot line="20" column="16" />
-                <Member line="20" column="17">x</Member>
+                <Name line="24" column="12">this</Name>
+                <dot line="24" column="16">.</dot>
+                <Member line="24" column="17">x</Member>
               </MemberAccess>
-              <assign line="20" column="19" />
+              <assign line="24" column="19">=</assign>
               <Add prod="(Add) ::= (Prec10Exp) plus (Prec11Exp)">
-                <ConstantValue line="20" column="21">12</ConstantValue>
-                <plus line="20" column="24" />
-                <ConstantValue line="20" column="26">15</ConstantValue>
+                <ConstantValue line="24" column="21">12</ConstantValue>
+                <plus line="24" column="24">+</plus>
+                <ConstantValue line="24" column="26">15</ConstantValue>
               </Add>
             </Assign>
-            <semicolon line="20" column="28" />
+            <semicolon line="24" column="28">;</semicolon>
           </Statement>
           <Statement prod="(Statement) ::= (Expression) semicolon">
             <Assign prod="(Assign) ::= (Prec12Exp) assign (Expression)">
               <MemberAccess prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                <Name line="21" column="12">this</Name>
-                <dot line="21" column="16" />
-                <Member line="21" column="17">y</Member>
+                <Name line="25" column="12">this</Name>
+                <dot line="25" column="16">.</dot>
+                <Member line="25" column="17">y</Member>
               </MemberAccess>
-              <assign line="21" column="19" />
+              <assign line="25" column="19">=</assign>
               <Multiply prod="(Multiply) ::= (Prec11Exp) multiply (Prec12Exp)">
-                <ConstantValue line="21" column="21">13</ConstantValue>
-                <multiply line="21" column="24" />
+                <ConstantValue line="25" column="21">13</ConstantValue>
+                <multiply line="25" column="24">*</multiply>
                 <PostIncrement prod="(PostIncrement) ::= (Prec13Exp) increment">
-                  <ConstantValue line="21" column="26">16</ConstantValue>
-                  <increment line="21" column="28" />
+                  <ConstantValue line="25" column="26">16</ConstantValue>
+                  <increment line="25" column="28">++</increment>
                 </PostIncrement>
               </Multiply>
             </Assign>
-            <semicolon line="21" column="30" />
+            <semicolon line="25" column="30">;</semicolon>
           </Statement>
           <If prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
-            <if line="23" column="12" />
-            <l-paren line="23" column="15" />
+            <if line="27" column="12">if</if>
+            <l-paren line="27" column="15">(</l-paren>
             <GreaterThan prod="(GreaterThan) ::= (Prec8Exp) greater-than (Prec9Exp)">
-              <Name line="23" column="16">x</Name>
-              <greater-than line="23" column="18" />
-              <ConstantValue line="23" column="20">15</ConstantValue>
+              <Name line="27" column="16">x</Name>
+              <greater-than line="27" column="18">&gt;</greater-than>
+              <ConstantValue line="27" column="20">15</ConstantValue>
             </GreaterThan>
-            <r-paren line="23" column="22" />
+            <r-paren line="27" column="22">)</r-paren>
             <Statement prod="(Statement) ::= (Expression) semicolon">
               <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                <Name line="23" column="24">large</Name>
-                <l-paren line="23" column="29" />
-                <r-paren line="23" column="30" />
+                <Name line="27" column="24">large</Name>
+                <l-paren line="27" column="29">(</l-paren>
+                <r-paren line="27" column="30">)</r-paren>
               </Invocation>
-              <semicolon line="23" column="31" />
+              <semicolon line="27" column="31">;</semicolon>
             </Statement>
-            <else line="24" column="12" />
+            <else line="28" column="12">else</else>
             <Statement prod="(Statement) ::= (Expression) semicolon">
               <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                <Name line="24" column="17">small</Name>
-                <l-paren line="24" column="22" />
-                <r-paren line="24" column="23" />
+                <Name line="28" column="17">small</Name>
+                <l-paren line="28" column="22">(</l-paren>
+                <r-paren line="28" column="23">)</r-paren>
               </Invocation>
-              <semicolon line="24" column="24" />
+              <semicolon line="28" column="24">;</semicolon>
             </Statement>
           </If>
           <If prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
-            <if line="26" column="12" />
-            <l-paren line="26" column="15" />
+            <if line="30" column="12">if</if>
+            <l-paren line="30" column="15">(</l-paren>
             <Not prod="(Not) ::= not (Prec12Exp)">
-              <not line="26" column="16" />
-              <Name line="26" column="17">x</Name>
+              <not line="30" column="16">!</not>
+              <Name line="30" column="17">x</Name>
             </Not>
-            <r-paren line="26" column="18" />
+            <r-paren line="30" column="18">)</r-paren>
             <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-              <l-brac line="26" column="20" />
+              <l-brac line="30" column="20">{</l-brac>
               <If prod="(If) ::= if l-paren (Expression) r-paren (Statement) else (Statement)">
-                <if line="27" column="16" />
-                <l-paren line="27" column="19" />
+                <if line="31" column="16">if</if>
+                <l-paren line="31" column="19">(</l-paren>
                 <Not prod="(Not) ::= not (Prec12Exp)">
-                  <not line="27" column="20" />
-                  <Name line="27" column="21">y</Name>
+                  <not line="31" column="20">!</not>
+                  <Name line="31" column="21">y</Name>
                 </Not>
-                <r-paren line="27" column="22" />
+                <r-paren line="31" column="22">)</r-paren>
                 <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-                  <l-brac line="27" column="24" />
+                  <l-brac line="31" column="24">{</l-brac>
                   <Statement prod="(Statement) ::= (Expression) semicolon">
                     <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                      <Name line="28" column="20">large</Name>
-                      <l-paren line="28" column="25" />
-                      <r-paren line="28" column="26" />
+                      <Name line="32" column="20">large</Name>
+                      <l-paren line="32" column="25">(</l-paren>
+                      <r-paren line="32" column="26">)</r-paren>
                     </Invocation>
-                    <semicolon line="28" column="27" />
+                    <semicolon line="32" column="27">;</semicolon>
                   </Statement>
-                  <r-brac line="29" column="16" />
+                  <r-brac line="33" column="16">}</r-brac>
                 </StatementBlock>
-                <else line="29" column="18" />
+                <else line="33" column="18">else</else>
                 <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-                  <l-brac line="29" column="23" />
+                  <l-brac line="33" column="23">{</l-brac>
                   <Statement prod="(Statement) ::= (Expression) semicolon">
                     <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                      <Name line="30" column="20">small</Name>
-                      <l-paren line="30" column="25" />
-                      <r-paren line="30" column="26" />
+                      <Name line="34" column="20">small</Name>
+                      <l-paren line="34" column="25">(</l-paren>
+                      <r-paren line="34" column="26">)</r-paren>
                     </Invocation>
-                    <semicolon line="30" column="27" />
+                    <semicolon line="34" column="27">;</semicolon>
                   </Statement>
-                  <r-brac line="31" column="16" />
+                  <r-brac line="35" column="16">}</r-brac>
                 </StatementBlock>
               </If>
-              <r-brac line="32" column="12" />
+              <r-brac line="36" column="12">}</r-brac>
             </StatementBlock>
-            <else line="32" column="14" />
+            <else line="36" column="14">else</else>
             <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-              <l-brac line="32" column="19" />
+              <l-brac line="36" column="19">{</l-brac>
               <Statement prod="(Statement) ::= (Expression) semicolon">
                 <Invocation prod="(Invocation) ::= (Prec13Exp) l-paren r-paren">
-                  <Name line="33" column="16">verySmall</Name>
-                  <l-paren line="33" column="25" />
-                  <r-paren line="33" column="26" />
+                  <Name line="37" column="16">verySmall</Name>
+                  <l-paren line="37" column="25">(</l-paren>
+                  <r-paren line="37" column="26">)</r-paren>
                 </Invocation>
-                <semicolon line="33" column="27" />
+                <semicolon line="37" column="27">;</semicolon>
               </Statement>
-              <r-brac line="34" column="12" />
+              <r-brac line="38" column="12">}</r-brac>
             </StatementBlock>
           </If>
-          <r-brac line="35" column="8" />
+          <r-brac line="39" column="8">}</r-brac>
         </StatementBlock>
       </Method>
-      <r-brac line="36" column="4" />
+      <r-brac line="40" column="4">}</r-brac>
     </Class>
     <Class prod="(Class) ::= (Visibility) class (Name) (Extends) (Implements) l-brac (ClassMembers) r-brac">
-      <Visibility line="38" column="4">public</Visibility>
-      <class line="38" column="11" />
-      <Name line="38" column="17">Point3d</Name>
-      <l-brac line="38" column="25" />
+      <Visibility line="42" column="4">public</Visibility>
+      <class line="42" column="11">class</class>
+      <Name line="42" column="17">Point3d</Name>
+      <l-brac line="42" column="25">{</l-brac>
       <Field prod="(Field) ::= (Visibility) var (Name) colon (Type) semicolon">
-        <var line="39" column="8" />
-        <Name line="39" column="12">z</Name>
-        <colon line="39" column="13" />
-        <Type line="39" column="15">float32</Type>
-        <semicolon line="39" column="22" />
+        <var line="43" column="8">var</var>
+        <Name line="43" column="12">z</Name>
+        <colon line="43" column="13">:</colon>
+        <Type line="43" column="15">float32</Type>
+        <semicolon line="43" column="22">;</semicolon>
       </Field>
-      <r-brac line="40" column="4" />
+      <r-brac line="44" column="4">}</r-brac>
     </Class>
-    <r-brac line="41" column="0" />
+    <r-brac line="45" column="0">}</r-brac>
   </Module>
 </Global>

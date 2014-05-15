@@ -54,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GOLD Engine.dll" />
+    <Content Include="rvm.ast.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <EmbeddedResource Include="rvm.ast-html.xslt">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="RosiLang-AST.xsd" />
     <None Include="rvm.ast.xml">
       <SubType>Designer</SubType>

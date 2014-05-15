@@ -1,4 +1,8 @@
 module math {
+	public function min(x: float64, y: float64) => float64 {
+	}
+	public function max(x: float64, y: float64) => float64 {
+	}
     public function sin(x: float64) => float64 {
     }
     public function cos(x: float64) => float64 {
