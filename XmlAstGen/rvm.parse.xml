@@ -1,4 +1,4 @@
-<Global xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rosivm.org/2014/ast/ RosiLang-AST.xsd" xmlns="http://www.rosivm.org/2014/parse/">
+<Global xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rosivm.org/2014/parse/ RosiLang.parse.xsd" xmlns="http://www.rosivm.org/2014/parse/">
   <Module prod="(Module) ::= module (Name) l-brac (ModuleMembers) r-brac">
     <module line="0" column="0">module</module>
     <Name line="0" column="7">math</Name>

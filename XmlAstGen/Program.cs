@@ -11,18 +11,21 @@ namespace XmlAstGen
     class Program
     {
         private static readonly XNamespace xsi = "http://www.w3.org/2001/XMLSchema-instance";
-        private static readonly XNamespace ast = "http://www.rosivm.org/2014/ast/";
+        private static readonly XNamespace parse = "http://www.rosivm.org/2014/parse/";
      
         static void Main(string[] args)
         {
             ParseSource();
             TransformToHtml();
+
+            Compiler comp = new Compiler();
+            comp.CodeGen();
         }
 
         private static void ParseSource()
         {
             var parser = new Parser();
-            var grammarStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("XmlAstGen.RosiLang-Grammar.egt");
+            var grammarStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("XmlAstGen.RosiLang.grammar.egt");
             var binaryReader = new System.IO.BinaryReader(grammarStream);
             parser.LoadTables(binaryReader);
 
@@ -41,22 +44,22 @@ namespace XmlAstGen
             while (message == ParseMessage.Reduction || message == ParseMessage.TokenRead);
 
             XDocument xmlDoc = new XDocument();
-            XElement rootElement = new XElement(ast + "Global");
+            XElement rootElement = new XElement(parse + "Global");
             rootElement.SetAttributeValue(XNamespace.Xmlns + "xsi", xsi.NamespaceName);
-            rootElement.SetAttributeValue(xsi + "schemaLocation", @"http://www.rosivm.org/2014/ast/ RosiLang-AST.xsd");
+            rootElement.SetAttributeValue(xsi + "schemaLocation", @"http://www.rosivm.org/2014/parse/ RosiLang.parse.xsd");
 
             xmlDoc.Add(rootElement);
             Reduction root = (Reduction)parser.CurrentReduction;
             Print(rootElement, root);
-            File.WriteAllText("../../rvm.ast.xml", xmlDoc.ToString());
+            File.WriteAllText("../../rvm.parse.xml", xmlDoc.ToString());
         }
 
         private static void TransformToHtml()
         {
             var xslt = new XslCompiledTransform();
-            var transformStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("XmlAstGen.rvm.ast-html.xslt");
+            var transformStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("XmlAstGen.rvm.parse-html.xslt");
             xslt.Load(XmlReader.Create(transformStream));
-            xslt.Transform("../../rvm.ast.xml", "../../rvm.ast.html");
+            xslt.Transform("../../rvm.parse.xml", "../../rvm.html");
         }
 
         private static void Print(XElement container, Reduction reduction)
@@ -75,7 +78,7 @@ namespace XmlAstGen
                 {
                     childContainerName = head;
                 }
-                XElement childContainer = new XElement(ast + childContainerName);
+                XElement childContainer = new XElement(parse + childContainerName);
                 childContainer.SetAttributeValue("prod", production.Text(false).Replace('<', '(').Replace('>', ')'));
                 container.Add(childContainer);
                 container = childContainer;
@@ -104,7 +107,7 @@ namespace XmlAstGen
                     else if (reduction.Count() == 1)
                     {
                         // <production> ::= terminal - reuse the name of the production
-                        XElement tokenXml = new XElement(ast + reduction.Parent.Head().Name().Trim('<', '>'));
+                        XElement tokenXml = new XElement(parse + reduction.Parent.Head().Name().Trim('<', '>'));
                         tokenXml.SetValue(childToken.Data.ToString());
                         tokenXml.SetAttributeValue("line", childToken.Position().Line);
                         tokenXml.SetAttributeValue("column", childToken.Position().Column);
@@ -112,7 +115,7 @@ namespace XmlAstGen
                     }
                     else
                     {
-                        XElement tokenXml = new XElement(ast + tokens[i].Trim('\''));
+                        XElement tokenXml = new XElement(parse + tokens[i].Trim('\''));
                         tokenXml.SetValue(childToken.Data.ToString());
                         tokenXml.SetAttributeValue("line", childToken.Position().Line);
                         tokenXml.SetAttributeValue("column", childToken.Position().Column);

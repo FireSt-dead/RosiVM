@@ -45,23 +45,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compiler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EmbeddedResource Include="RosiLang-Grammar.egt" />
+    <EmbeddedResource Include="RosiLang.grammar.egt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GOLD Engine.dll" />
-    <Content Include="rvm.ast.html">
+    <Content Include="rvm.html">
       <SubType>Designer</SubType>
     </Content>
-    <EmbeddedResource Include="rvm.ast-html.xslt">
+    <EmbeddedResource Include="rvm.parse-html.xslt">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="RosiLang-AST.xsd" />
-    <None Include="rvm.ast.xml">
+    <None Include="RosiLang.parse.xsd" />
+    <None Include="rvm.parse.xml">
       <SubType>Designer</SubType>
     </None>
     <EmbeddedResource Include="TestCase.02.src.txt" />
