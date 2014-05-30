@@ -77,68 +77,48 @@ decrement = '--'
       
 not = '!'
 complement = '~'
-      
-! Named Terminals
-<Name> ::= Identifier
-<Member> ::= Identifier
 
-! Global Module, Class, Interface Declarations
+! Type System
 <Global> ::= <GlobalMembers>
-
 <GlobalMembers> ::= <GlobalMember> <GlobalMembers> | <>
-<GlobalMember> ::= <Module>
-                | <Function>
-                | <Class>
-                | <Interface>
+<GlobalMember> ::= <Module> | <Function> | <Class> | <Interface>
 
 <Module> ::= 'module' <Name> l-brac <ModuleMembers> r-brac
-    
 <ModuleMembers> ::= <ModuleMember> <ModuleMembers> | <>
-<ModuleMember> ::= <Module>
-                | <Function>
-                | <Class>
-                | <Interface>
+<ModuleMember> ::= <Module> | <Function> | <Class> | <Interface>
 
-! Common for Function, Class and Interface
-<Visibility> ::= 'public' | 'protected' | 'private' | <>
-<ReturnType> ::= turns-in <Type> | <>
-<Parameters> ::= <Parameter> comma <Parameters> | <Parameter> | <>
-<Parameter> ::= <Name> colon <Type>
+<Function> ::= <Visibility> 'function' <Name> <TypeParameters> l-paren <Parameters> r-paren <ReturnType> <StatementBlock>               
 
-! Function
-<Function> ::= <Visibility> 'function' <Name> l-paren <Parameters> r-paren <ReturnType> <StatementBlock>
-
-! Class                
-<Class> ::= <Visibility> 'class' <Name> <Extends> <Implements> l-brac <ClassMembers> r-brac
-
-<Extends> ::= 'extends' <ClassType> | <>
-
-<Implements> ::= 'implements' <ImplementedInterfaces> | <>
-<ImplementedInterfaces> ::= <InterfaceType> comma <ImplementedInterfaces> | <InterfaceType>                         
-
+<Class> ::= <Visibility> 'class' <Name> <TypeParameters> <Extends> <Implements> l-brac <ClassMembers> r-brac
 <ClassMembers> ::= <ClassMember> <ClassMembers> | <>
-<ClassMember> ::= <Field>
-               | <Constructor>
-               | <ClassMethod>
+<ClassMember> ::= <Field> | <Constructor> | <ClassMethod>
 
 <Field> ::= <Visibility> 'var' <Name> colon <Type> semicolon
 <Constructor> ::= <Visibility> 'constructor' l-paren <Parameters> r-paren <StatementBlock>
-<ClassMethod> ::= <Visibility> 'method' <Name> l-paren <Parameters> r-paren <ReturnType> <StatementBlock>
+<ClassMethod> ::= <Visibility> 'method' <Name> <TypeParameters> l-paren <Parameters> r-paren <ReturnType> <StatementBlock>
 
-! Interface
-<Interface> ::= <Visibility> 'interface' <Name> <Implements> l-brac <InterfaceMembers> r-brac ! TODO: Implements for interface (consider using 'extends' or something...)
+<Interface> ::= <Visibility> 'interface' <Name> <TypeParameters> <Implements> l-brac <InterfaceMembers> r-brac
 <InterfaceMembers> ::= <InterfaceMember> <InterfaceMembers> | <>
-<InterfaceMember> ::= <InterfaceField>
-                   | <InterfaceMethod>
-
+<InterfaceMember> ::= <InterfaceField> | <InterfaceMethod>
+                   
 <InterfaceField> ::= 'var' <Name> colon <Type> semicolon
 <InterfaceMethod> ::= 'method' <Name> l-paren <Parameters> r-paren <ReturnType> semicolon
-              
-! Types
-<Type> ::= Identifier ! this would be class or interface or struct etc with generic parameters etc.
-<InterfaceType> ::= Identifier
-<ClassType> ::= Identifier
-              
+
+<Visibility> ::= 'public' | 'protected' | 'private' | <>
+<Name> ::= Identifier
+<TypeParameters> ::= less-than <TypeParameterMembers> greater-than | <>
+<TypeParameterMembers> ::= <TypeParameter> comma <TypeParameter> | <TypeParameter>
+<Typeparameter> ::= Identifier
+<Extends> ::= 'extends' <Type> | <>
+<Implements> ::= 'implements' <Types> | <>
+<Parameters> ::= <Parameter> comma <Parameters> | <Parameter> | <>
+<Parameter> ::= <Name> colon <Type>
+<ReturnType> ::= turns-in <Type> | <>
+
+<Type> ::= Identifier <TypeArguments> ! this would be class or interface or struct etc with generic parameters etc.
+<TypeArguments> ::= less-than <Types> greater-than | <>
+<Types> ::= <Type> comma <Types> | <Type>
+                                        
 ! Statements
 <StatementBlock> ::= l-brac r-brac | l-brac <StatementBlockMembers> r-brac 
 <StatementBlockMembers> ::= <Statement> <StatementBlockMembers> | <Statement>
@@ -268,6 +248,7 @@ complement = '~'
              | <PostDecrement>
 <ParenExpression> ::= l-paren <Expression> r-paren 
 <MemberAccess> ::= <Prec13Exp> dot <Member>
+<Member> ::= Identifier
 <Invocation> ::= <Prec13Exp> l-paren r-paren ! TODO: add params list to invocation
 <PostIncrement> ::= <Prec13Exp> increment
 <PostDecrement> ::= <Prec13Exp> decrement

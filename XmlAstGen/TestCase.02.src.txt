@@ -1,3 +1,21 @@
+module structures {
+    public interface Cloneable {
+        method clone() => object;
+    }     
+    public interface ListView<T> implements Cloneable {
+        var length: int;
+        method get(index: int) => T;
+    }
+    public interface List<T> implements ListView<T> {
+        var length: int;
+        method get(index: int) => T;
+        method set(index: int, T: value); 
+    }
+    public interface Map<Key, Value> {
+        method get(key: Key) => Value;
+    }
+}
+
 module math {
 	public function min(x: float64, y: float64) => float64 {
 	}
