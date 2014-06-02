@@ -55,9 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GOLD Engine.dll" />
-    <Content Include="rvm.html">
+    <None Include="rvm.html.md">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <EmbeddedResource Include="rvm.parse-html.xslt">
       <SubType>Designer</SubType>
     </EmbeddedResource>

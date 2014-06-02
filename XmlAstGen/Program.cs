@@ -59,7 +59,7 @@ namespace XmlAstGen
             var xslt = new XslCompiledTransform();
             var transformStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("XmlAstGen.rvm.parse-html.xslt");
             xslt.Load(XmlReader.Create(transformStream));
-            xslt.Transform("../../rvm.parse.xml", "../../rvm.html");
+            xslt.Transform("../../rvm.parse.xml", "../../rvm.html.md");
         }
 
         private static void Print(XElement container, Reduction reduction)
