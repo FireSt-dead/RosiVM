@@ -17,10 +17,13 @@ module structures {
 }
 
 module math {
-	public function min(x: float64, y: float64) => float64 {
-	}
-	public function max(x: float64, y: float64) => float64 {
-	}
+    public function min(x: float64, y: float64) => float64 {
+        obj1(x, 12 * y);
+        obj2();
+        obj3(12 + y * x);
+    }
+    public function max(x: float64, y: float64) => float64 {
+    }
     public function sin(x: float64) => float64 {
     }
     public function cos(x: float64) => float64 {
@@ -31,9 +34,9 @@ module math {
 
 module geometry {
 
-	public interface Equatible {
-		method equals(other: object) => bool;
-	}
+    public interface Equatible {
+        method equals(other: object) => bool;
+    }
 
     public class Point {
         var x: float32;

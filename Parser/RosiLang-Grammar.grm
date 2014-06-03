@@ -87,32 +87,32 @@ complement = '~'
 <ModuleMembers> ::= <ModuleMember> <ModuleMembers> | <>
 <ModuleMember> ::= <Module> | <Function> | <Class> | <Interface>
 
-<Function> ::= <Visibility> 'function' <Name> <TypeParameters> l-paren <Parameters> r-paren <ReturnType> <StatementBlock>               
+<Function> ::= <Visibility> 'function' <Name> <TypeParameters> l-paren <Arguments> r-paren <ReturnType> <StatementBlock>               
 
 <Class> ::= <Visibility> 'class' <Name> <TypeParameters> <Extends> <Implements> l-brac <ClassMembers> r-brac
 <ClassMembers> ::= <ClassMember> <ClassMembers> | <>
 <ClassMember> ::= <Field> | <Constructor> | <ClassMethod>
 
 <Field> ::= <Visibility> 'var' <Name> colon <Type> semicolon
-<Constructor> ::= <Visibility> 'constructor' l-paren <Parameters> r-paren <StatementBlock>
-<ClassMethod> ::= <Visibility> 'method' <Name> <TypeParameters> l-paren <Parameters> r-paren <ReturnType> <StatementBlock>
+<Constructor> ::= <Visibility> 'constructor' l-paren <Arguments> r-paren <StatementBlock>
+<ClassMethod> ::= <Visibility> 'method' <Name> <TypeParameters> l-paren <Arguments> r-paren <ReturnType> <StatementBlock>
 
 <Interface> ::= <Visibility> 'interface' <Name> <TypeParameters> <Implements> l-brac <InterfaceMembers> r-brac
 <InterfaceMembers> ::= <InterfaceMember> <InterfaceMembers> | <>
 <InterfaceMember> ::= <InterfaceField> | <InterfaceMethod>
                    
 <InterfaceField> ::= 'var' <Name> colon <Type> semicolon
-<InterfaceMethod> ::= 'method' <Name> l-paren <Parameters> r-paren <ReturnType> semicolon
+<InterfaceMethod> ::= 'method' <Name> l-paren <Arguments> r-paren <ReturnType> semicolon
 
 <Visibility> ::= 'public' | 'protected' | 'private' | <>
 <Name> ::= Identifier
 <TypeParameters> ::= less-than <TypeParameterMembers> greater-than | <>
-<TypeParameterMembers> ::= <TypeParameter> comma <TypeParameter> | <TypeParameter>
+<TypeParameterMembers> ::= <TypeParameter> comma <TypeParameterMembers> | <TypeParameter>
 <Typeparameter> ::= Identifier
 <Extends> ::= 'extends' <Type> | <>
 <Implements> ::= 'implements' <Types> | <>
-<Parameters> ::= <Parameter> comma <Parameters> | <Parameter> | <>
-<Parameter> ::= <Name> colon <Type>
+<Arguments> ::= <Argument> comma <Arguments> | <Argument> | <>
+<Argument> ::= <Name> colon <Type>
 <ReturnType> ::= turns-in <Type> | <>
 
 <Type> ::= Identifier <TypeArguments> ! this would be class or interface or struct etc with generic parameters etc.
@@ -249,8 +249,9 @@ complement = '~'
 <ParenExpression> ::= l-paren <Expression> r-paren 
 <MemberAccess> ::= <Prec13Exp> dot <Member>
 <Member> ::= Identifier
-<Invocation> ::= <Prec13Exp> l-paren r-paren ! TODO: add params list to invocation
+<Invocation> ::= <Prec13Exp> l-paren <Values> r-paren
 <PostIncrement> ::= <Prec13Exp> increment
 <PostDecrement> ::= <Prec13Exp> decrement
 
+<Values> ::= <Expression> comma <Values> | <Expression> | <>
 
