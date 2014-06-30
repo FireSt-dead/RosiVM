@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7880086B-199A-44AB-BCB4-D7A5E47AEC4E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{2BB673E5-0CD4-42F5-97EC-E0DE7C6AB94E}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XmlAstGen</RootNamespace>
-    <AssemblyName>XmlAstGen</AssemblyName>
+    <RootNamespace>RosiCompiler</RootNamespace>
+    <AssemblyName>RosiCompiler</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GOLD Engine, Version=5.0.4337.25397, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Work\RosiVM\RosiVM\lib\GOLD Engine.dll</HintPath>
+    <Reference Include="GOLD Engine">
+      <HintPath>..\..\..\..\Work\RosiVM\RosiVM\lib\GOLD Engine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,28 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compiler.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <EmbeddedResource Include="RosiLang.grammar.egt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="GOLD Engine.dll" />
-    <EmbeddedResource Include="TestCase.01.src.txt" />
-    <None Include="rvm.html.md">
-      <SubType>Designer</SubType>
-    </None>
-    <EmbeddedResource Include="rvm.parse-html.xslt">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <None Include="RosiLang.parse.xsd" />
-    <None Include="rvm.parse.xml">
-      <SubType>Designer</SubType>
-    </None>
-    <EmbeddedResource Include="TestCase.02.src.txt" />
+    <EmbeddedResource Include="Grammar.egt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

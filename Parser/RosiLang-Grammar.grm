@@ -239,13 +239,14 @@ complement = '~'
 <BitComplement> ::= complement <Prec12Exp>
 
 ! Unary Post-Operator Expressions and Base Expressions 
-<Prec13Exp> ::= <Name>
+<Prec13Exp> ::= <Identifier>
              | <ConstantValue>
              | <ParenExpression>
              | <MemberAccess>
              | <Invocation>
              | <PostIncrement>
              | <PostDecrement>
+<Identifier> ::= Identifier
 <ParenExpression> ::= l-paren <Expression> r-paren 
 <MemberAccess> ::= <Prec13Exp> dot <Member>
 <Member> ::= Identifier

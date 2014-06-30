@@ -1,0 +1,16 @@
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\bin\Debug\RosiStudio.exe.config
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\bin\Debug\RosiStudio.exe
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\bin\Debug\RosiStudio.pdb
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\bin\Debug\GOLD Engine.dll
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\bin\Debug\RosiCompiler.dll
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\bin\Debug\RosiCompiler.pdb
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\MainWindow.baml
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\MainWindow.g.cs
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\App.g.cs
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\RosiStudio_MarkupCompile.cache
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\RosiStudio.g.resources
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\RosiStudio.Properties.Resources.resources
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\RosiStudio.csproj.GenerateResource.Cache
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\RosiStudio.exe
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\RosiStudio.pdb
+D:\GitHub\RosiVM\RosiStudio\RosiStudio\obj\Debug\RosiStudio.csprojResolveAssemblyReference.cache

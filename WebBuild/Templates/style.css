@@ -1,0 +1,65 @@
+﻿
+* {
+    margin: 0px;
+    padding: 0px;
+	border: 0px;
+}
+
+body {
+	background-image: url("images/background.png");
+	background-repeat: repeat;
+}
+
+h1 {
+	font: 48px serif;
+	line-height: 72px;
+}
+
+h2 {
+	font: 24px serif;
+	line-height: 48px;
+}
+
+p, code {
+	margin: 24px 0px 24px 0px;
+}
+
+p, li, a {
+	font: 14px Sans-serif;
+	line-height: 24px;
+}
+
+ul, ol {
+	margin: 24px 0px 24px 72px;
+}
+
+#navigation {
+	float: left;
+	margin: 144px 24px 0px 24px;
+	width: 240px;
+}
+
+#content {
+	max-width:720px;
+}
+
+#navigation, #content {
+    display: table-cell;
+}
+
+#navigation a {
+	display: block;
+}
+
+#navigation ul, ol {
+	margin: 0px 0px 0px 24px;
+}
+
+code {
+	padding: 11px;
+	border: 1px solid gray;
+	background: white;
+	font: 12px Monospace;
+	line-height: 16px;
+	display: block;
+}

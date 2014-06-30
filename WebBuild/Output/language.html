@@ -1,0 +1,38 @@
+﻿<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <div id="navigation">
+      <ul>
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="language.html">Language</a>
+      </li>
+    </ul>
+    </div>
+    <div id="content">
+      <h1>RosiLang</h1>
+      <h2>The language specification.</h2>
+      <p>Currently the language is under development so we will elaborate on examples later. For now this is a small preview:</p>
+      <code>
+        <br />
+      public class Point {<br />
+        var x: number;<br />
+        var y: number;<br /><br />
+        public method add(p: Point) =&gt; Point {<br />
+          this.x += p.x;<br />
+          this.y += p.y;<br />
+          return this;<br />
+        }<br />
+      }<br />
+       
+    </code>
+      <p>The language is inspired pretty much by the C# type system and AS3 and TypeScript syntax.</p>
+      <p>We will try to build the language so that APIs from common platforms such as Java and .NET can get mapped easily to RosiLang constructs and RosiLang should be able to compile to Java, .NET and JavaScript.</p>
+    </div>
+  </body>
+</html>
