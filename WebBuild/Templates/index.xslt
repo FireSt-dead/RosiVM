@@ -11,11 +11,17 @@
     <html>
       <head>
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="icon" type="image/png" href="favicon.png" />
         <xsl:apply-templates select="head/*" />
       </head>
       <body>
         <div id="navigation">
           <xsl:apply-templates select="document('navigation.html')/html/body/*"/>
+        </div>
+        <div id="header">
+          <a id="logo" href="index.html"><img src="images/logo.png" /></a>
+          <a class="navi" href="index.html">Home</a>
+          <a class="navi" href="language.html">Language</a>
         </div>
         <div id="content">
           <xsl:apply-templates select="body/*" />

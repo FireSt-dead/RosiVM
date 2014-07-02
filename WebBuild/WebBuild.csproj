@@ -58,7 +58,9 @@
     <Content Include="Pages\index.html">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Templates\favicon.png" />
     <Content Include="Templates\images\background.png" />
+    <Content Include="Templates\images\logo.png" />
     <Content Include="Templates\index.xslt" />
     <Content Include="Templates\navigation.html" />
     <Content Include="Templates\style.css" />

@@ -5,18 +5,15 @@
 	border: 0px;
 }
 
+/*
 body {
 	background-image: url("images/background.png");
 	background-repeat: repeat;
 }
+*/
 
 h1 {
-	font: 48px serif;
-	line-height: 72px;
-}
-
-h2 {
-	font: 24px serif;
+	font: 20px Arial;
 	line-height: 48px;
 }
 
@@ -25,12 +22,29 @@ p, code {
 }
 
 p, li, a {
-	font: 14px Sans-serif;
+	font: 12px Verdana;
 	line-height: 24px;
 }
 
 ul, ol {
 	margin: 24px 0px 24px 72px;
+}
+
+#logo {
+	line-height: 96px;
+	text-decoration: none;
+	margin: 0px 48px 0px 0px;
+}
+#logo img {
+	border: 0px;
+	margin: 19px 0px -19px 0px;
+}
+
+#header a.navi {
+	margin: 24px 12px 24px 12px;
+	font: 12px Verdana;
+	line-height: 24px;
+	font-weight: bold;
 }
 
 #navigation {
