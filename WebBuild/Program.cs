@@ -17,7 +17,7 @@ namespace WebBuild
             var files = Directory.GetFiles(@"./Pages/", "*.html", SearchOption.AllDirectories);
 
             Dictionary<string, XslCompiledTransform> transformations = new Dictionary<string, XslCompiledTransform>();
-
+            HtmlBuilderExtension extensions = new HtmlBuilderExtension();
             foreach(var file in files) {
                 try
                 {
@@ -35,9 +35,18 @@ namespace WebBuild
                     }
 
                     var destination = Path.Combine("Output", file.Substring(@"./Pages/".Length));
+                    if (!Directory.Exists(Path.GetDirectoryName(Path.GetFullPath(destination))))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(destination)));
+                    }
                     using(var output = File.Create(destination))
                     {
-                        transform.Transform(xDoc.Root.CreateReader(), null, output);
+                        XsltArgumentList xsltArgs = new XsltArgumentList();
+                        var page = file.Substring("./Pages/".Length);
+                        xsltArgs.AddParam("page", "", page);
+                        xsltArgs.AddExtensionObject("urn:web-build:xslt", extensions);
+                        extensions.Page = page;
+                        transform.Transform(xDoc.Root.CreateReader(), xsltArgs, output);
                     }
                 }
                 catch (Exception e)
@@ -71,6 +80,58 @@ namespace WebBuild
         public override object GetEntity(Uri absoluteUri, string role, Type ofObjectToReturn)
         {
             return XmlReader.Create(absoluteUri.AbsolutePath);
+        }
+    }
+
+    internal class HtmlBuilderExtension
+    {
+        public string Page { get; internal set; }
+
+        public bool isinside(string page)
+        {
+            if (page != null)
+            {
+                var normalizedCurrentPageDirectory = NormalizedDirectory(this.Page);
+                var normalizedCheckingPageDirectory = NormalizedDirectory(page);
+
+                // Implement "is under" when subpages arrive...
+                Console.WriteLine(normalizedCurrentPageDirectory + " -> " + normalizedCheckingPageDirectory);
+                return normalizedCurrentPageDirectory == normalizedCheckingPageDirectory;
+            }
+
+            return false;
+        }
+
+        public bool isselected(string page)
+        {
+            if (page != null)
+            {
+                var normalizedCurrentPage = NormalizedPath(this.Page);
+                var normalizedCheckingPage = NormalizedPath(page);
+                return normalizedCurrentPage == normalizedCheckingPage;
+            }
+
+            return false;
+        }
+
+        private static string NormalizedPath(string path)
+        {
+            return path.Replace(@"\", @"/").Trim('/');
+        }
+
+        private static string NormalizedDirectory(string path)
+        {
+            path = NormalizedPath(path);
+            var lastSlashIndex = path.LastIndexOf('/');
+            if (lastSlashIndex >= 0)
+            {
+                path = path.Substring(0, lastSlashIndex);
+            }
+            else
+            {
+                path = string.Empty;
+            }
+            return path;
         }
     }
 }

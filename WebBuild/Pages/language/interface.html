@@ -1,0 +1,28 @@
+﻿<?template Index.xslt?>
+<html>
+  <head>
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <h1>Interface</h1>
+    <p>
+      An interface defines a set of members a class may implement.
+      A class may implement multiple interfaces.
+      Interfaces play important role in defining behaviors, and simulating multiple inheritance.
+    </p>
+    <p>Interface definition:</p>
+    <code>
+      &lt;Interface&gt; ::= &lt;Visibility&gt; 'interface' &lt;Name&gt; &lt;TypeParameters&gt;<br/>
+      &#160;&#160;&#160;&#160;&lt;Implements&gt;<br/>
+      &#160;&#160;&#160;&#160;l-brac &lt;InterfaceMembers&gt; r-brac<br/>
+      &lt;InterfaceMembers&gt; ::= &lt;InterfaceMember&gt; &lt;InterfaceMembers&gt; | &lt;&gt;<br/>
+      &lt;InterfaceMember&gt; ::= &lt;InterfaceField&gt; | &lt;InterfaceMethod&gt;<br/>
+    </code>
+    <p>For example:</p>
+    <code>
+      public interface Comparable implements Clonable {<br/>
+      &#160;&#160;// fields, methods etc.<br/>
+      }
+    </code>
+  </body>
+</html>

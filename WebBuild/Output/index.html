@@ -1,26 +1,34 @@
-﻿<html>
+﻿<html xmlns:www="urn:web-build:xslt">
   <head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <title>RosiVM</title>
   </head>
   <body>
     <div id="navigation">
       <ul>
       <li>
-        <a href="index.html">Home</a>
+        <a class="lhandnavi inside selected" href="/index.html">Home</a>
       </li>
       <li>
-        <a href="language.html">Language</a>
+        <a class="lhandnavi" href="/language/index.html">Language</a>
+        <ul>
+          <li>
+            <a class="lhandnavi" href="/language/class.html">Class</a>
+          </li>
+          <li>
+            <a class="lhandnavi" href="/language/interface.html">Interface</a>
+          </li>
+        </ul>
       </li>
     </ul>
     </div>
     <div id="header">
-      <a id="logo" href="index.html">
-        <img src="images/logo.png" />
-      </a>
-      <a class="navi" href="index.html">Home</a>
-      <a class="navi" href="language.html">Language</a>
+      <a id="logo" href="/index.html">
+      <img src="/images/logo.png" />
+    </a>
+      <a class="topnavi inside selected" href="/index.html">Home</a>
+      <a class="topnavi" href="/language/index.html">Language</a>
     </div>
     <div id="content">
       <h1>RosiVM - High Level Object Oriented Language and Virtual Machine.</h1>
@@ -49,18 +57,18 @@
       <p>
       The RosiVM project will try to build infrastructure for a modern object oriented programming language.
       We will try to provide rich type system, but keep custom operators and types at minimum.
-      For example we would avoid AS3's XML types, .NET's lync types, Java's nested classes,
+      For example we would avoid AS3's XML types, .NET's lynq types, Java's nested classes;
       we would preserve modules, classes, interfaces, generic parameters with co and contra variance.
       We will also try to minimize compiler magic such as building fields from constructor parameters, yield return, async await etc.
     </p>
       <p>
       Initially we will focus on the type system and language specification. 
       We will use an XML to represent the language AST and probably keep the XML as intermediate representation.
-      It can easily be traversed to generate bytecode for .NET using
+      It can easily be traversed to generate byte code for .NET using
       <a href="http://blogs.msdn.com/b/jmstall/archive/2005/02/03/366429.aspx" target="_blank">System.Emit</a>
       (with debugging support). Also it should be able to generate
       <a href="http://llvm.org/docs/LangRef.html" target="_blank">LLVM-IR</a>, but we will need GC.
-      We can also convert the XML using XSLT to the <a href="http://xmlvm.org/" target="_blank">XMLVM</a> and have its toolchain cross compile.
+      We can also convert the XML using XSLT to the <a href="http://xmlvm.org/" target="_blank">XMLVM</a> and have its tool chain cross compile.
     </p>
       <p>
       In the long distant future we may build a custom virtual machine but that task would be too heavy.

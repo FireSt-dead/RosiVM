@@ -52,7 +52,13 @@
     <None Include="Output\**\*" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\language.html">
+    <Content Include="Pages\language\interface.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Pages\language\class.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Pages\language\index.html">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Pages\index.html">
@@ -62,7 +68,12 @@
     <Content Include="Templates\images\background.png" />
     <Content Include="Templates\images\logo.png" />
     <Content Include="Templates\index.xslt" />
-    <Content Include="Templates\navigation.html" />
+    <Content Include="Templates\header.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Templates\navigation.html">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Templates\style.css" />
   </ItemGroup>
   <ItemGroup />

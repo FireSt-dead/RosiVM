@@ -1,0 +1,27 @@
+﻿<?template Index.xslt?>
+<html>
+  <head>
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <h1>Class</h1>
+    <p>Classes encapsulate data with operations. Basic building block in Object Oriented Programming.</p>
+    <p>A class can extend a single base class to inherit its members.</p>
+    <p>A class may implement multiple interfaces.</p>
+    <p>Class definition:</p>
+    <code>
+      &lt;Class&gt; ::= <br/>
+      &#160;&#160;&#160;&#160;&lt;Visibility&gt; 'class' &lt;Name&gt; &lt;TypeParameters&gt; <br/>
+      &#160;&#160;&#160;&#160;&lt;Extends&gt; &lt;Implements&gt; <br/>
+      &#160;&#160;&#160;&#160;l-brac &lt;ClassMembers&gt; r-brac<br />
+      &lt;ClassMembers&gt; ::= &lt;ClassMember&gt; &lt;ClassMembers&gt; | &lt;&gt;<br/>
+      &lt;ClassMember&gt; ::= &lt;Field&gt; | &lt;Constructor&gt; | &lt;ClassMethod&gt;
+    </code>
+    <p>For example:</p>
+    <code>
+      public class Point2D extends Point3D implements Clonable {<br/>
+      &#160;&#160;// fields, constructos, methods etc.<br/>
+      }
+    </code>
+  </body>
+</html>
