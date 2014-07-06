@@ -1,0 +1,66 @@
+﻿<html xmlns:www="urn:web-build:xslt">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <div id="navigation">
+      <ul>
+      <li>
+        <a class="lhandnavi" href="/index.html">Home</a>
+      </li>
+      <li>
+        <a class="lhandnavi inside" href="/language/index.html">Language</a>
+        <ul>
+          <li>
+            <a class="lhandnavi inside selected" href="/language/module.html">Module</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/function.html">Function</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/class.html">Class</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/interface.html">Interface</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/visibility.html">Visibility</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a class="lhandnavi" href="/studio/index.html">Studio</a>
+      </li>
+    </ul>
+    </div>
+    <div id="header">
+      <a id="logo" href="/index.html">
+      <img src="/images/logo.png" />
+    </a>
+      <a class="topnavi" href="/index.html">Home</a>
+      <a class="topnavi inside" href="/language/index.html">Language</a>
+      <a class="topnavi" href="/studio/index.html">Studio</a>
+    </div>
+    <div id="content">
+      <h1>Module</h1>
+      <p>
+      Modules group common functionalities together.
+      We have to elaborate on module namespaces,
+      but for now modules will simply be referred by name.
+    </p>
+      <p>Module definition:</p>
+      <code>
+      &lt;Module&gt; ::= 'module' &lt;Name&gt; l-brac &lt;ModuleMembers&gt; r-brac<br />
+      &lt;ModuleMembers&gt; ::= &lt;ModuleMember&gt; &lt;ModuleMembers&gt; | &lt;&gt;<br />
+      &lt;ModuleMember&gt; ::= <a href="/language/function.html">&lt;Function&gt;</a> | <a href="/language/class.html">&lt;Class&gt;</a> | <a href="/language/interface.html">&lt;Interface&gt;</a><br /></code>
+      <p>For example:</p>
+      <code>
+      module geometry {<br />
+        // functions, classes and interfaces...<br />
+      }
+    </code>
+    </div>
+  </body>
+</html>

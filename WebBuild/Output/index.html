@@ -14,12 +14,24 @@
         <a class="lhandnavi" href="/language/index.html">Language</a>
         <ul>
           <li>
+            <a class="lhandnavi" href="/language/module.html">Module</a>
+          </li>
+          <li>
+            <a class="lhandnavi" href="/language/function.html">Function</a>
+          </li>
+          <li>
             <a class="lhandnavi" href="/language/class.html">Class</a>
           </li>
           <li>
             <a class="lhandnavi" href="/language/interface.html">Interface</a>
           </li>
+          <li>
+            <a class="lhandnavi" href="/language/visibility.html">Visibility</a>
+          </li>
         </ul>
+      </li>
+      <li>
+        <a class="lhandnavi" href="/studio/index.html">Studio</a>
       </li>
     </ul>
     </div>
@@ -29,50 +41,41 @@
     </a>
       <a class="topnavi inside selected" href="/index.html">Home</a>
       <a class="topnavi" href="/language/index.html">Language</a>
+      <a class="topnavi" href="/studio/index.html">Studio</a>
     </div>
     <div id="content">
       <h1>RosiVM - High Level Object Oriented Language and Virtual Machine.</h1>
-      <p>After following various projects such as:</p>
-      <ul>
-        <li>
-          <a href="http://xmlvm.org">xmlvm</a>
-        </li>
-        <li>
-          <a href="http://haxe.org/">haxe</a>
-        </li>
-        <li>
-          <a href="http://llvm.org/">llvm</a>
-        </li>
-        <li>
-          <a href="http://www.openfl.org/">openfl</a>
-        </li>
-      </ul>
-      <p>And inspired by some of the languages:</p>
-      <ul>
-        <li>ActionScript 3</li>
-        <li>C#</li>
-        <li>Java</li>
-        <li>TypeScript</li>
-      </ul>
       <p>
-      The RosiVM project will try to build infrastructure for a modern object oriented programming language.
-      We will try to provide rich type system, but keep custom operators and types at minimum.
-      For example we would avoid AS3's XML types, .NET's lynq types, Java's nested classes;
-      we would preserve modules, classes, interfaces, generic parameters with co and contra variance.
-      We will also try to minimize compiler magic such as building fields from constructor parameters, yield return, async await etc.
+      I have a background of .NET C#, Flash AS3, HTML and JavaScript and some C, C++ and Java;
+      So far the .NET and C# get closest to what I consider a perfect framework.
+      Yet I had most fun while I was working with Flash.
+      Flash is slowly dying however as adobe is focusing on HTML.
+      Now in my spare time I am doing some work, trying to get what made me happy in Flash,
+      and fill the gaps with what is available in .NET. And since I do not have much of that spare time,
+      I will be taking any possible shortcuts,
+      the documentations would be short and punctual,
+      often things would be let to your imagination.
     </p>
+      <h2>Version 0.01</h2>
       <p>
-      Initially we will focus on the type system and language specification. 
-      We will use an XML to represent the language AST and probably keep the XML as intermediate representation.
-      It can easily be traversed to generate byte code for .NET using
-      <a href="http://blogs.msdn.com/b/jmstall/archive/2005/02/03/366429.aspx" target="_blank">System.Emit</a>
-      (with debugging support). Also it should be able to generate
-      <a href="http://llvm.org/docs/LangRef.html" target="_blank">LLVM-IR</a>, but we will need GC.
-      We can also convert the XML using XSLT to the <a href="http://xmlvm.org/" target="_blank">XMLVM</a> and have its tool chain cross compile.
+      I am currently working on the language and language spec, along with compiler front-end.
+      The parser is written in the <a href="http://goldparser.org/" target="_blank">GOLD</a>.
+      There is a .NET tool currently that with simple tree rewriting algorithms
+      converts GOLD's parse tree to AST in XML format. (yep XML, because its cool)
+      XML allows us to convert code to colorized HTML,
+      to navigate easily the tree with xpath,
+      to build API reference,
+      and is overall is flexible.
+      Once the language is set in stone we will measure performance and if necessary implement non XML version.
     </p>
+      <h2>Code</h2>
       <p>
-      In the long distant future we may build a custom virtual machine but that task would be too heavy.
-      We will be making small steps for now.
+      Currently the code is not even in an alpha state...<br />
+      You can find the RosiVM playground in github:<br /><a href="https://github.com/FireSt-dead/RosiVM" target="_blank">https://github.com/FireSt-dead/RosiVM</a></p>
+      <h2>License</h2>
+      <p>
+      I think to release the language under the MIT license.
+      I do not have plans for VM and tools just yet.
     </p>
     </div>
   </body>

@@ -52,6 +52,16 @@
     <None Include="Output\**\*" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\images\rosi-studio.png" />
+    <Content Include="Pages\language\function.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Pages\language\module.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Pages\language\visibility.html">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Pages\language\interface.html">
       <SubType>Designer</SubType>
     </Content>
@@ -62,6 +72,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Pages\index.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Pages\studio\index.html">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Templates\favicon.png" />

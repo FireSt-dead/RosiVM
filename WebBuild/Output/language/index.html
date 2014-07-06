@@ -14,12 +14,24 @@
         <a class="lhandnavi inside selected" href="/language/index.html">Language</a>
         <ul>
           <li>
+            <a class="lhandnavi inside" href="/language/module.html">Module</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/function.html">Function</a>
+          </li>
+          <li>
             <a class="lhandnavi inside" href="/language/class.html">Class</a>
           </li>
           <li>
             <a class="lhandnavi inside" href="/language/interface.html">Interface</a>
           </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/visibility.html">Visibility</a>
+          </li>
         </ul>
+      </li>
+      <li>
+        <a class="lhandnavi" href="/studio/index.html">Studio</a>
       </li>
     </ul>
     </div>
@@ -29,6 +41,7 @@
     </a>
       <a class="topnavi" href="/index.html">Home</a>
       <a class="topnavi inside selected" href="/language/index.html">Language</a>
+      <a class="topnavi" href="/studio/index.html">Studio</a>
     </div>
     <div id="content">
       <h1>RosiLang, The Language</h1>
@@ -46,8 +59,16 @@
       }<br />
        
     </code>
-      <p>The language is inspired pretty much by the C# type system and AS3 and TypeScript syntax.</p>
-      <p>We will try to build the language so that APIs from common platforms such as Java and .NET can get mapped easily to RosiLang constructs and RosiLang should be able to compile to Java, .NET and JavaScript.</p>
+      <p>
+      The language is inspired pretty much by the C# type system and AS3 and TypeScript syntax.
+      We are currently adding some noise (such as the "method") keyword to avoid easily grammar ambiguity,
+      but it probably would be removed in the final version.
+    </p>
+      <h2>Language Definition</h2>
+      <p>
+      The grammer is written in the <a href="http://goldparser.org/" target="_blank">GOLD</a> language.
+      <a href="http://goldparser.org/" target="_blank">GOLD</a> uses a BNF as a language and can build a LALR parser, which is cool... and free... and integrates well with .NET...
+    </p>
     </div>
   </body>
 </html>

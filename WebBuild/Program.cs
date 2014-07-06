@@ -56,6 +56,17 @@ namespace WebBuild
             }
 
             // Copy non html and non xslt from pages and templates to output
+            foreach (var file in Directory.GetFiles(@"./Pages", "*.*", SearchOption.AllDirectories).Where(NonSystemExtension))
+            {
+                var destination = Path.Combine("Output", file.Substring(@"./Pages/".Length));
+                var destinationDir = Path.GetDirectoryName(Path.GetFullPath(destination));
+                if (!Directory.Exists(destinationDir))
+                {
+                    Directory.CreateDirectory(destinationDir);
+                }
+                File.Copy(file, destination, true);
+            }
+
             foreach(var file in Directory.GetFiles(@"./Templates", "*.*", SearchOption.AllDirectories).Where(NonSystemExtension))
             {
                 var destination = Path.Combine("Output", file.Substring(@"./Templates/".Length));
@@ -95,7 +106,7 @@ namespace WebBuild
                 var normalizedCheckingPageDirectory = NormalizedDirectory(page);
 
                 // Implement "is under" when subpages arrive...
-                Console.WriteLine(normalizedCurrentPageDirectory + " -> " + normalizedCheckingPageDirectory);
+                // Console.WriteLine(normalizedCurrentPageDirectory + " -> " + normalizedCheckingPageDirectory);
                 return normalizedCurrentPageDirectory == normalizedCheckingPageDirectory;
             }
 

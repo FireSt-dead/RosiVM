@@ -13,7 +13,13 @@ body {
 */
 
 h1 {
-	font: 20px Arial;
+	font: 22px Arial;
+	line-height: 48px;
+	color: #FF9900;
+}
+
+h2 {
+	font: 18px Arial;
 	line-height: 48px;
 	color: #FF9900;
 }
@@ -95,4 +101,9 @@ code {
 	font: 12px Monospace;
 	line-height: 16px;
 	display: block;
+}
+
+code a {
+	font: 12px Monospace;
+	line-height: 16px;
 }

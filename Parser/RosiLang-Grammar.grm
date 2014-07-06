@@ -85,16 +85,16 @@ complement = '~'
 
 <Module> ::= 'module' <Name> l-brac <ModuleMembers> r-brac
 <ModuleMembers> ::= <ModuleMember> <ModuleMembers> | <>
-<ModuleMember> ::= <Module> | <Function> | <Class> | <Interface>
+<ModuleMember> ::= <Function> | <Class> | <Interface>
 
 <Function> ::= <Visibility> 'function' <Name> <TypeParameters> l-paren <Arguments> r-paren <ReturnType> <StatementBlock>               
 
 <Class> ::= <Visibility> 'class' <Name> <TypeParameters> <Extends> <Implements> l-brac <ClassMembers> r-brac
 <ClassMembers> ::= <ClassMember> <ClassMembers> | <>
-<ClassMember> ::= <Field> | <Constructor> | <ClassMethod>
+<ClassMember> ::= <ClassField> | <ClassConstructor> | <ClassMethod>
 
-<Field> ::= <Visibility> 'var' <Name> colon <Type> semicolon
-<Constructor> ::= <Visibility> 'constructor' l-paren <Arguments> r-paren <StatementBlock>
+<ClassField> ::= <Visibility> 'var' <Name> colon <Type> semicolon
+<ClassConstructor> ::= <Visibility> 'constructor' l-paren <Arguments> r-paren <StatementBlock>
 <ClassMethod> ::= <Visibility> 'method' <Name> <TypeParameters> l-paren <Arguments> r-paren <ReturnType> <StatementBlock>
 
 <Interface> ::= <Visibility> 'interface' <Name> <TypeParameters> <Implements> l-brac <InterfaceMembers> r-brac

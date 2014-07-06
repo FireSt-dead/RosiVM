@@ -1,0 +1,71 @@
+﻿<html xmlns:www="urn:web-build:xslt">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <div id="navigation">
+      <ul>
+      <li>
+        <a class="lhandnavi" href="/index.html">Home</a>
+      </li>
+      <li>
+        <a class="lhandnavi inside" href="/language/index.html">Language</a>
+        <ul>
+          <li>
+            <a class="lhandnavi inside" href="/language/module.html">Module</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside selected" href="/language/function.html">Function</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/class.html">Class</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/interface.html">Interface</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/visibility.html">Visibility</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a class="lhandnavi" href="/studio/index.html">Studio</a>
+      </li>
+    </ul>
+    </div>
+    <div id="header">
+      <a id="logo" href="/index.html">
+      <img src="/images/logo.png" />
+    </a>
+      <a class="topnavi" href="/index.html">Home</a>
+      <a class="topnavi inside" href="/language/index.html">Language</a>
+      <a class="topnavi" href="/studio/index.html">Studio</a>
+    </div>
+    <div id="content">
+      <h1>Function</h1>
+      <p>
+      Well its a function...
+      Differs from methods by being defined in module instead of class.
+      I dislike C# static classes.
+      Functions would be used for example in min, max etc. defined in module math.
+    </p>
+      <p>Function definition:</p>
+      <code>
+      &lt;Function&gt; ::=<br />
+          &lt;Visibility&gt; 'function' &lt;Name&gt; &lt;TypeParameters&gt; l-paren &lt;Arguments&gt; r-paren &lt;ReturnType&gt;<br />
+          &lt;StatementBlock&gt;
+    </code>
+      <p>For example:</p>
+      <code>
+      module math {<br />
+        function min(x: number) =&gt; number {<br />
+          return x &gt;= 0 ? x : -x;<br />
+        }<br />
+      }
+    </code>
+      <p>Be very careful not to write procedural code using functions. <a href="/language/class.html">Classes</a> are still good for you.</p>
+    </div>
+  </body>
+</html>

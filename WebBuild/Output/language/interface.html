@@ -1,0 +1,69 @@
+﻿<html xmlns:www="urn:web-build:xslt">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <div id="navigation">
+      <ul>
+      <li>
+        <a class="lhandnavi" href="/index.html">Home</a>
+      </li>
+      <li>
+        <a class="lhandnavi inside" href="/language/index.html">Language</a>
+        <ul>
+          <li>
+            <a class="lhandnavi inside" href="/language/module.html">Module</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/function.html">Function</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/class.html">Class</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside selected" href="/language/interface.html">Interface</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/visibility.html">Visibility</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a class="lhandnavi" href="/studio/index.html">Studio</a>
+      </li>
+    </ul>
+    </div>
+    <div id="header">
+      <a id="logo" href="/index.html">
+      <img src="/images/logo.png" />
+    </a>
+      <a class="topnavi" href="/index.html">Home</a>
+      <a class="topnavi inside" href="/language/index.html">Language</a>
+      <a class="topnavi" href="/studio/index.html">Studio</a>
+    </div>
+    <div id="content">
+      <h1>Interface</h1>
+      <p>
+      An interface defines a set of members a class may implement.
+      A class may implement multiple interfaces.
+      Interfaces play important role in defining behaviors, and simulating multiple inheritance.
+    </p>
+      <p>Interface definition:</p>
+      <code>
+      &lt;Interface&gt; ::=<br />
+          <a href="/language/visibility.html">&lt;Visibility&gt;</a> 'interface' &lt;Name&gt; &lt;TypeParameters&gt;<br />
+          &lt;Implements&gt;<br />
+          l-brac &lt;InterfaceMembers&gt; r-brac<br />
+      &lt;InterfaceMembers&gt; ::= &lt;InterfaceMember&gt; &lt;InterfaceMembers&gt; | &lt;&gt;<br />
+      &lt;InterfaceMember&gt; ::= &lt;InterfaceField&gt; | &lt;InterfaceMethod&gt;<br /></code>
+      <p>For example:</p>
+      <code>
+      public interface Comparable implements Clonable {<br />
+        // fields, methods...<br />
+      }
+    </code>
+    </div>
+  </body>
+</html>

@@ -12,7 +12,8 @@
     </p>
     <p>Interface definition:</p>
     <code>
-      &lt;Interface&gt; ::= &lt;Visibility&gt; 'interface' &lt;Name&gt; &lt;TypeParameters&gt;<br/>
+      &lt;Interface&gt; ::=<br/>
+      &#160;&#160;&#160;&#160;<a href="/language/visibility.html">&lt;Visibility&gt;</a> 'interface' &lt;Name&gt; &lt;TypeParameters&gt;<br/>
       &#160;&#160;&#160;&#160;&lt;Implements&gt;<br/>
       &#160;&#160;&#160;&#160;l-brac &lt;InterfaceMembers&gt; r-brac<br/>
       &lt;InterfaceMembers&gt; ::= &lt;InterfaceMember&gt; &lt;InterfaceMembers&gt; | &lt;&gt;<br/>
@@ -21,7 +22,7 @@
     <p>For example:</p>
     <code>
       public interface Comparable implements Clonable {<br/>
-      &#160;&#160;// fields, methods etc.<br/>
+      &#160;&#160;// fields, methods...<br/>
       }
     </code>
   </body>
