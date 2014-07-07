@@ -10,8 +10,12 @@
                
 !* TODO: At some point we will have to introduce convention on lists and optional usage. For example postfixes Lst and Opt *! 
         
-! Identifiers
+! Terminals
 Identifier = {Letter}{AlphaNumeric}*
+           
+! Aliased Terminals
+<Name> ::= Identifier
+<Identifier> ::= Identifier
 
 ! TODO: IEEE 754        
 Integer        = {Digit}+
@@ -81,7 +85,7 @@ complement = '~'
 ! Type System
 <Global> ::= <GlobalMembers>
 <GlobalMembers> ::= <GlobalMember> <GlobalMembers> | <>
-<GlobalMember> ::= <Module> | <Function> | <Class> | <Interface>
+<GlobalMember> ::= <Module>
 
 <Module> ::= 'module' <Name> l-brac <ModuleMembers> r-brac
 <ModuleMembers> ::= <ModuleMember> <ModuleMembers> | <>
@@ -89,28 +93,29 @@ complement = '~'
 
 <Function> ::= <Visibility> 'function' <Name> <TypeParameters> l-paren <Arguments> r-paren <ReturnType> <StatementBlock>               
 
-<Class> ::= <Visibility> 'class' <Name> <TypeParameters> <Extends> <Implements> l-brac <ClassMembers> r-brac
+<Class> ::= <Visibility> 'class' <Name> <TypeParameters> <ClassExtends> <ClassImplements> l-brac <ClassMembers> r-brac
 <ClassMembers> ::= <ClassMember> <ClassMembers> | <>
 <ClassMember> ::= <ClassField> | <ClassConstructor> | <ClassMethod>
 
+<ClassExtends> ::= 'extends' <Type> | <>
+<ClassImplements> ::= 'implements' <Types> | <>
 <ClassField> ::= <Visibility> 'var' <Name> colon <Type> semicolon
 <ClassConstructor> ::= <Visibility> 'constructor' l-paren <Arguments> r-paren <StatementBlock>
 <ClassMethod> ::= <Visibility> 'method' <Name> <TypeParameters> l-paren <Arguments> r-paren <ReturnType> <StatementBlock>
-
-<Interface> ::= <Visibility> 'interface' <Name> <TypeParameters> <Implements> l-brac <InterfaceMembers> r-brac
+              
+<Interface> ::= <Visibility> 'interface' <Name> <TypeParameters> <InterfaceExtends> l-brac <InterfaceMembers> r-brac
 <InterfaceMembers> ::= <InterfaceMember> <InterfaceMembers> | <>
 <InterfaceMember> ::= <InterfaceField> | <InterfaceMethod>
                    
 <InterfaceField> ::= 'var' <Name> colon <Type> semicolon
 <InterfaceMethod> ::= 'method' <Name> l-paren <Arguments> r-paren <ReturnType> semicolon
-
+<InterfaceExtends> ::= 'extends' <Types> | <>
+                   
 <Visibility> ::= 'public' | 'protected' | 'private' | <>
-<Name> ::= Identifier
 <TypeParameters> ::= less-than <TypeParameterMembers> greater-than | <>
 <TypeParameterMembers> ::= <TypeParameter> comma <TypeParameterMembers> | <TypeParameter>
 <Typeparameter> ::= Identifier
-<Extends> ::= 'extends' <Type> | <>
-<Implements> ::= 'implements' <Types> | <>
+
 <Arguments> ::= <Argument> comma <Arguments> | <Argument> | <>
 <Argument> ::= <Name> colon <Type>
 <ReturnType> ::= turns-in <Type> | <>

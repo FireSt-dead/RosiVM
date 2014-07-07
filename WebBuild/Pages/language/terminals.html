@@ -1,0 +1,79 @@
+﻿<?template Index.xslt?>
+<html>
+  <head>
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <h1>Terminals</h1>
+    <code>
+      <span id="identifier">Identifier = {Letter}{AlphaNumeric}*</span>
+    </code>
+    <h2>Aliased Terminals</h2>
+    <p>
+      Some terminals are aliased with productions,
+      so that they can be named correctly in the context they are used:
+    </p>
+    <code>
+      <span id="name">&lt;Name&gt; ::= <a href="/language/terminals.html#identifier">Identifier</a></span>
+    </code>
+    <h2>Constants</h2>
+    <p>
+      The following named constant terminals are used widely throughout the language.
+    </p>
+    <code>
+      l-brac = '{'<br/>
+      r-brac = '}'<br/>
+      <br/>
+      l-paren = '('<br/>
+      r-paren = ')'<br/>
+      <br/>
+      colon = ':'<br/>
+      question = '?'<br/>
+      semicolon = ';'<br/>
+      comma = ','<br/>
+      dot = '.'<br/>
+      <br/>
+      turns-in = '=>'<br/>
+      <br/>
+      assign = '='<br/>
+      add-assign = '+='<br/>
+      subtract-assign = '-='<br/>
+      multiply-assign = '*='<br/>
+      divide-assign = '/='<br/>
+      bit-and-assign = '&amp;='<br/>
+      bit-xor-assign = '^='<br/>
+      bit-or-assign = '|='<br/>
+      reminder-assign = '%='<br/>
+      shift-left-assign = '&lt;&lt;='<br/>
+      shift-right-assign = '&gt;&gt;='<br/>
+      <br/>
+      conditional-or = '||'<br/>
+      conditional-and = '&amp;&amp;'<br/>
+      <br/>
+      bitwise-or = '|'<br/>
+      bitwise-xor = '^'<br/>
+      bitwise-and = '&amp;'<br/>
+      <br/>
+      less-than = '&lt;'<br/>
+      greater-than = '&gt;'<br/>
+      less-or-equal = '&lt;='<br/>
+      greater-or-equal = '&gt;='<br/>
+      <br/>
+      shift-left = '&lt;&lt;'<br/>
+      shift-right = '&gt;&gt;'<br/>
+      <br/>
+      multiply = '*'<br/>
+      divide = '/'<br/>
+      reminder = '%'<br/>
+      <br/>
+      plus = '+'<br/>
+      minus = '-'<br/>
+      <br/>
+      increment = '++'<br/>
+      decrement = '--'<br/>
+      <br/>
+      not = '!'<br/>
+      complement = '~'
+    </code>
+  </body>
+</html>

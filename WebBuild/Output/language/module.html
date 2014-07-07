@@ -20,13 +20,27 @@
             <a class="lhandnavi inside" href="/language/function.html">Function</a>
           </li>
           <li>
-            <a class="lhandnavi inside" href="/language/class.html">Class</a>
+            <a class="lhandnavi" href="/language/class/index.html">Class</a>
+            <ul>
+              <li>
+                <a class="lhandnavi" href="/language/class/field.html">Field</a>
+              </li>
+              <li>
+                <a class="lhandnavi" href="/language/class/constructor.html">Constructor</a>
+              </li>
+              <li>
+                <a class="lhandnavi" href="/language/class/method.html">Method</a>
+              </li>
+            </ul>
           </li>
           <li>
             <a class="lhandnavi inside" href="/language/interface.html">Interface</a>
           </li>
           <li>
             <a class="lhandnavi inside" href="/language/visibility.html">Visibility</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/terminals.html">Terminals</a>
           </li>
         </ul>
       </li>
@@ -52,7 +66,7 @@
     </p>
       <p>Module definition:</p>
       <code>
-      &lt;Module&gt; ::= 'module' &lt;Name&gt; l-brac &lt;ModuleMembers&gt; r-brac<br />
+      &lt;Module&gt; ::= 'module' <a href="/language/terminals.html#name">&lt;Name&gt;</a> l-brac &lt;ModuleMembers&gt; r-brac<br />
       &lt;ModuleMembers&gt; ::= &lt;ModuleMember&gt; &lt;ModuleMembers&gt; | &lt;&gt;<br />
       &lt;ModuleMember&gt; ::= <a href="/language/function.html">&lt;Function&gt;</a> | <a href="/language/class.html">&lt;Class&gt;</a> | <a href="/language/interface.html">&lt;Interface&gt;</a><br /></code>
       <p>For example:</p>

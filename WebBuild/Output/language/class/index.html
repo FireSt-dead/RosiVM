@@ -1,0 +1,126 @@
+﻿<html xmlns:www="urn:web-build:xslt">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <div id="navigation">
+      <ul>
+      <li>
+        <a class="lhandnavi" href="/index.html">Home</a>
+      </li>
+      <li>
+        <a class="lhandnavi" href="/language/index.html">Language</a>
+        <ul>
+          <li>
+            <a class="lhandnavi" href="/language/module.html">Module</a>
+          </li>
+          <li>
+            <a class="lhandnavi" href="/language/function.html">Function</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside selected" href="/language/class/index.html">Class</a>
+            <ul>
+              <li>
+                <a class="lhandnavi inside" href="/language/class/field.html">Field</a>
+              </li>
+              <li>
+                <a class="lhandnavi inside" href="/language/class/constructor.html">Constructor</a>
+              </li>
+              <li>
+                <a class="lhandnavi inside" href="/language/class/method.html">Method</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="lhandnavi" href="/language/interface.html">Interface</a>
+          </li>
+          <li>
+            <a class="lhandnavi" href="/language/visibility.html">Visibility</a>
+          </li>
+          <li>
+            <a class="lhandnavi" href="/language/terminals.html">Terminals</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a class="lhandnavi" href="/studio/index.html">Studio</a>
+      </li>
+    </ul>
+    </div>
+    <div id="header">
+      <a id="logo" href="/index.html">
+      <img src="/images/logo.png" />
+    </a>
+      <a class="topnavi" href="/index.html">Home</a>
+      <a class="topnavi" href="/language/index.html">Language</a>
+      <a class="topnavi" href="/studio/index.html">Studio</a>
+    </div>
+    <div id="content">
+      <h1>Class</h1>
+      <p>
+      Classes encapsulate data with operations.
+      Basic building block in Object Oriented Programming.
+      A class can extend a single base class to inherit its members.
+      A class may implement multiple interfaces.
+    </p>
+      <p>Class definition:</p>
+      <code>
+      &lt;Class&gt; ::= <br />
+          <a href="/language/visibility.html">&lt;Visibility&gt;</a> 'class' <a href="/language/terminals.html#name">&lt;Name&gt;</a> &lt;TypeParameters&gt; <br />
+          <a href="/language/class/index.html#class-extends">&lt;ClassExtends&gt;</a> <a href="/language/class/index.html#class-implements">&lt;ClassImplements&gt;</a><br />
+          l-brac &lt;ClassMembers&gt; r-brac<br />
+      &lt;ClassMembers&gt; ::= &lt;ClassMember&gt; &lt;ClassMembers&gt; | &lt;&gt;<br />
+      &lt;ClassMember&gt; ::= &lt;ClassField&gt; | &lt;ClassConstructor&gt; | &lt;ClassMethod&gt;
+    </code>
+      <p>For example:</p>
+      <code>
+      public class Point2D extends Point3D implements Clonable {<br />
+        // fields, constructos, methods...<br />
+      }
+    </code>
+      <h2>Class Visibility</h2>
+      <ul>
+        <li>
+          <strong>"public":</strong> the class has no access restrictions.
+      </li>
+        <li>
+          <strong>"protected":</strong> the class is visible only from within the module it is defined in.
+      </li>
+        <li>
+          <strong>
+            <del>"private":</del>
+          </strong> forbidden to use for classes!
+      </li>
+        <li>
+          <strong>omitted:</strong> defaults to public.
+      </li>
+      </ul>
+      <h2>Class Name</h2>
+      <p>
+      The class definition includes a non qualified name.
+      A fully qualified class name would include the name of the module the class is defined in.
+      A class is always defined within a module.
+    </p>
+      <h2 id="class-extends">Class Extends</h2>
+      <p>
+      A class can have a base class.
+      The type provided must be an actual type (if generic - the type parameters must be well defined) based on class.
+      The class can not extend primitive types or interfaces.
+    </p>
+      <code>
+      &lt;ClassExtends&gt; ::= 'extends' &lt;Type&gt; | &lt;&gt;
+    </code>
+      <h2 id="class-implements">Class Implements</h2>
+      <p>
+      A class can implement zero, one or multiple interfaces.
+      Each type provided must be an actual type (if generic - the type parameters must be well defined) based on interface.
+      The class can not implement primitive types or classes.
+    </p>
+      <code>
+        <span />&lt;ClassImplements&gt; ::= 'implements' &lt;Types&gt; | &lt;&gt;
+    </code>
+    </div>
+  </body>
+</html>

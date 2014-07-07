@@ -20,16 +20,16 @@
             <a class="lhandnavi" href="/language/function.html">Function</a>
           </li>
           <li>
-            <a class="lhandnavi" href="/language/class/index.html">Class</a>
+            <a class="lhandnavi inside" href="/language/class/index.html">Class</a>
             <ul>
               <li>
-                <a class="lhandnavi" href="/language/class/field.html">Field</a>
+                <a class="lhandnavi inside" href="/language/class/field.html">Field</a>
               </li>
               <li>
-                <a class="lhandnavi" href="/language/class/constructor.html">Constructor</a>
+                <a class="lhandnavi inside" href="/language/class/constructor.html">Constructor</a>
               </li>
               <li>
-                <a class="lhandnavi" href="/language/class/method.html">Method</a>
+                <a class="lhandnavi inside selected" href="/language/class/method.html">Method</a>
               </li>
             </ul>
           </li>
@@ -45,7 +45,7 @@
         </ul>
       </li>
       <li>
-        <a class="lhandnavi inside selected" href="/studio/index.html">Studio</a>
+        <a class="lhandnavi" href="/studio/index.html">Studio</a>
       </li>
     </ul>
     </div>
@@ -55,22 +55,16 @@
     </a>
       <a class="topnavi" href="/index.html">Home</a>
       <a class="topnavi" href="/language/index.html">Language</a>
-      <a class="topnavi inside selected" href="/studio/index.html">Studio</a>
+      <a class="topnavi" href="/studio/index.html">Studio</a>
     </div>
     <div id="content">
-      <h1>RosiStudio</h1>
-      <p>
-      I am developing a "RosiStudio" to verify some of the language experiments I am doing.
-      It can not be called IDE since its current purpose is to support the language development,
-      rather than actual application development.
-      At the moment it is terrible, parses on keysstroke and on a page of code may spend 3 sec. to update
-      (most of which spend on higlighting rather than actual compilation).
-    </p>
-      <p>
-      Yet it will soon be able to generate HTML code snippets with highlighting for this site... :)
-      Also when a true compiler rolls on it will be of great help to push forward the language implementation.
-    </p>
-      <img src="/images/rosi-studio.png" />
+      <h1>Class Method</h1>
+      <code>
+      &lt;ClassMethod&gt; ::= <br />
+          &lt;Visibility&gt; 'method' <a href="/language/terminals.html#name">&lt;Name&gt;</a> &lt;TypeParameters&gt;<br />
+          l-paren &lt;Arguments&gt; r-paren &lt;ReturnType&gt;<br />
+          &lt;StatementBlock&gt;
+    </code>
     </div>
   </body>
 </html>

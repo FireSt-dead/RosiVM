@@ -13,8 +13,8 @@
     <p>Interface definition:</p>
     <code>
       &lt;Interface&gt; ::=<br/>
-      &#160;&#160;&#160;&#160;<a href="/language/visibility.html">&lt;Visibility&gt;</a> 'interface' &lt;Name&gt; &lt;TypeParameters&gt;<br/>
-      &#160;&#160;&#160;&#160;&lt;Implements&gt;<br/>
+      &#160;&#160;&#160;&#160;<a href="/language/visibility.html">&lt;Visibility&gt;</a> 'interface' <a href="/language/terminals.html#name">&lt;Name&gt;</a> &lt;TypeParameters&gt;<br/>
+      &#160;&#160;&#160;&#160;&lt;InterfaceExtends&gt;<br/>
       &#160;&#160;&#160;&#160;l-brac &lt;InterfaceMembers&gt; r-brac<br/>
       &lt;InterfaceMembers&gt; ::= &lt;InterfaceMember&gt; &lt;InterfaceMembers&gt; | &lt;&gt;<br/>
       &lt;InterfaceMember&gt; ::= &lt;InterfaceField&gt; | &lt;InterfaceMethod&gt;<br/>
@@ -22,8 +22,10 @@
     <p>For example:</p>
     <code>
       public interface Comparable implements Clonable {<br/>
-      &#160;&#160;// fields, methods...<br/>
-      }
-    </code>
+      &#160;&#160;var hash: number;<br/>
+      &#160;&#160;method isLessThan(other: Comparable) => boolean;<br/>
+      &#160;&#160;method isGreaterThan(other: Comparable) => boolean;<br/>
+    }
+  </code>
   </body>
 </html>

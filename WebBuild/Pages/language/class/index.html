@@ -1,0 +1,69 @@
+﻿<?template Index.xslt?>
+<html>
+  <head>
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <h1>Class</h1>
+    <p>
+      Classes encapsulate data with operations.
+      Basic building block in Object Oriented Programming.
+      A class can extend a single base class to inherit its members.
+      A class may implement multiple interfaces.
+    </p>
+    <p>Class definition:</p>
+    <code>
+      &lt;Class&gt; ::= <br/>
+      &#160;&#160;&#160;&#160;<a href="/language/visibility.html">&lt;Visibility&gt;</a> 'class' <a href="/language/terminals.html#name">&lt;Name&gt;</a> &lt;TypeParameters&gt; <br/>
+      &#160;&#160;&#160;&#160;<a href="/language/class/index.html#class-extends">&lt;ClassExtends&gt;</a>&#160;<a href="/language/class/index.html#class-implements">&lt;ClassImplements&gt;</a><br/>
+      &#160;&#160;&#160;&#160;l-brac &lt;ClassMembers&gt; r-brac<br />
+      &lt;ClassMembers&gt; ::= &lt;ClassMember&gt; &lt;ClassMembers&gt; | &lt;&gt;<br/>
+      &lt;ClassMember&gt; ::= &lt;ClassField&gt; | &lt;ClassConstructor&gt; | &lt;ClassMethod&gt;
+    </code>
+    <p>For example:</p>
+    <code>
+      public class Point2D extends Point3D implements Clonable {<br/>
+      &#160;&#160;// fields, constructos, methods...<br/>
+      }
+    </code>
+    <h2>Class Visibility</h2>
+    <ul>
+      <li>
+        <strong>"public":</strong> the class has no access restrictions.
+      </li>
+      <li>
+        <strong>"protected":</strong> the class is visible only from within the module it is defined in.
+      </li>
+      <li>
+        <strong><del>"private":</del></strong> forbidden to use for classes!
+      </li>
+      <li>
+        <strong>omitted:</strong> defaults to public.
+      </li>
+    </ul>
+    <h2>Class Name</h2>
+    <p>
+      The class definition includes a non qualified name.
+      A fully qualified class name would include the name of the module the class is defined in.
+      A class is always defined within a module.
+    </p>
+    <h2 id="class-extends">Class Extends</h2>
+    <p>
+      A class can have a base class.
+      The type provided must be an actual type (if generic - the type parameters must be well defined) based on class.
+      The class can not extend primitive types or interfaces.
+    </p>
+    <code>
+      &lt;ClassExtends&gt; ::= 'extends' &lt;Type&gt; | &lt;&gt;
+    </code>
+    <h2 id="class-implements">Class Implements</h2>
+    <p>
+      A class can implement zero, one or multiple interfaces.
+      Each type provided must be an actual type (if generic - the type parameters must be well defined) based on interface.
+      The class can not implement primitive types or classes.
+    </p>
+    <code>
+      <span></span>&lt;ClassImplements&gt; ::= 'implements' &lt;Types&gt; | &lt;&gt;
+    </code>
+  </body>
+</html>

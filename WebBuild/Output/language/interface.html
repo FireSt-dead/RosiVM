@@ -20,13 +20,27 @@
             <a class="lhandnavi inside" href="/language/function.html">Function</a>
           </li>
           <li>
-            <a class="lhandnavi inside" href="/language/class.html">Class</a>
+            <a class="lhandnavi" href="/language/class/index.html">Class</a>
+            <ul>
+              <li>
+                <a class="lhandnavi" href="/language/class/field.html">Field</a>
+              </li>
+              <li>
+                <a class="lhandnavi" href="/language/class/constructor.html">Constructor</a>
+              </li>
+              <li>
+                <a class="lhandnavi" href="/language/class/method.html">Method</a>
+              </li>
+            </ul>
           </li>
           <li>
             <a class="lhandnavi inside selected" href="/language/interface.html">Interface</a>
           </li>
           <li>
             <a class="lhandnavi inside" href="/language/visibility.html">Visibility</a>
+          </li>
+          <li>
+            <a class="lhandnavi inside" href="/language/terminals.html">Terminals</a>
           </li>
         </ul>
       </li>
@@ -53,17 +67,19 @@
       <p>Interface definition:</p>
       <code>
       &lt;Interface&gt; ::=<br />
-          <a href="/language/visibility.html">&lt;Visibility&gt;</a> 'interface' &lt;Name&gt; &lt;TypeParameters&gt;<br />
-          &lt;Implements&gt;<br />
+          <a href="/language/visibility.html">&lt;Visibility&gt;</a> 'interface' <a href="/language/terminals.html#name">&lt;Name&gt;</a> &lt;TypeParameters&gt;<br />
+          &lt;InterfaceExtends&gt;<br />
           l-brac &lt;InterfaceMembers&gt; r-brac<br />
       &lt;InterfaceMembers&gt; ::= &lt;InterfaceMember&gt; &lt;InterfaceMembers&gt; | &lt;&gt;<br />
       &lt;InterfaceMember&gt; ::= &lt;InterfaceField&gt; | &lt;InterfaceMethod&gt;<br /></code>
       <p>For example:</p>
       <code>
       public interface Comparable implements Clonable {<br />
-        // fields, methods...<br />
-      }
-    </code>
+        var hash: number;<br />
+        method isLessThan(other: Comparable) =&gt; boolean;<br />
+        method isGreaterThan(other: Comparable) =&gt; boolean;<br />
+    }
+  </code>
     </div>
   </body>
 </html>
