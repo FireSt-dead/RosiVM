@@ -6,19 +6,18 @@
   <body>
     <h1>RosiLang, The Language</h1>
     <p>Currently the language is under development so we will elaborate on examples later. For now this is a small preview:</p>
-    <code>
-      <br />
-      public class Point {<br />
-      &#160;&#160;var x: number;<br />
-      &#160;&#160;var y: number;<br />
-      <br />
-      &#160;&#160;public method add(p: Point) => Point {<br />
-      &#160;&#160;&#160;&#160;this.x += p.x;<br />
-      &#160;&#160;&#160;&#160;this.y += p.y;<br />
-      &#160;&#160;&#160;&#160;return this;<br />
-      &#160;&#160;}<br />
-      }<br />
-      &#160;
+    <code lang="rvm">
+      module geom {
+        public class Point {
+          var x: number;
+          var y: number;
+
+          public method add(p: Point) => Point {
+            this.x += p.x;
+            this.y += p.y;
+          }
+        }
+      }
     </code>
     <p>
       The language is inspired pretty much by the C# type system and AS3 and TypeScript syntax.

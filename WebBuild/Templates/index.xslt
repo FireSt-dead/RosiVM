@@ -3,7 +3,8 @@
     version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:msxsl="urn:schemas-microsoft-com:xslt"
-    xmlns:www="urn:web-build:xslt"
+    xmlns:www="urn:web-build:www"
+    xmlns:rvm="urn:web-build:rvm"
     exclude-result-prefixes="msxsl">
 
   <xsl:output indent="yes" encoding="utf-8" method="xml" omit-xml-declaration="yes"/>
@@ -12,6 +13,7 @@
     <html>
       <head>
         <link rel="stylesheet" type="text/css" href="/style.css" />
+        <link rel="stylesheet" type="text/css" href="/codervm.css" />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <xsl:apply-templates select="head/*" />
       </head>
@@ -40,6 +42,19 @@
         <xsl:text> selected</xsl:text>
       </xsl:if>
     </xsl:attribute>
+  </xsl:template>
+  
+  <xsl:template match="code">
+    <xsl:choose>
+      <xsl:when test="@lang = 'rvm'">
+        <xsl:apply-templates select="rvm:html(.)" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy>
+          <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="@* | node()">

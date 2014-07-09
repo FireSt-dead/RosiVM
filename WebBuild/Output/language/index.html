@@ -1,6 +1,7 @@
-﻿<html xmlns:www="urn:web-build:xslt">
+﻿<html xmlns:www="urn:web-build:www" xmlns:rvm="urn:web-build:rvm">
   <head>
     <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/codervm.css" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>RosiLang</title>
   </head>
@@ -60,19 +61,23 @@
     <div id="content">
       <h1>RosiLang, The Language</h1>
       <p>Currently the language is under development so we will elaborate on examples later. For now this is a small preview:</p>
-      <code>
-        <br />
-      public class Point {<br />
-        var x: number;<br />
-        var y: number;<br /><br />
-        public method add(p: Point) =&gt; Point {<br />
-          this.x += p.x;<br />
-          this.y += p.y;<br />
-          return this;<br />
-        }<br />
-      }<br />
-       
-    </code>
+      <code class="rvm">
+        <ol>
+          <li>
+            <span class="module">module</span> <span class="Name">geom</span> <span class="l-brac">{</span></li>
+          <li>    <span class="Visibility">public</span> <span class="class">class</span> <span class="Name">Point</span> <span class="l-brac">{</span></li>
+          <li>        <span class="var">var</span> <span class="Name">x</span><span class="colon">:</span> <span class="Identifier">number</span><span class="semicolon">;</span></li>
+          <li>        <span class="var">var</span> <span class="Name">y</span><span class="colon">:</span> <span class="Identifier">number</span><span class="semicolon">;</span></li>
+          <li>        <span class="Visibility">public</span> <span class="method">method</span> <span class="Name">add</span><span class="l-paren">(</span><span class="Name">p</span><span class="colon">:</span><span class="Identifier">Point</span><span class="r-paren">)</span> <span class="turns-in">=&gt;</span> <span class="Identifier">Point</span> <span class="l-brac">{</span></li>
+          <li>            <span class="Identifier">this</span><span class="dot">.</span><span class="Member">x</span> <span class="add-assign">+=</span> <span class="Identifier">p</span><span class="dot">.</span><span class="Member">x</span><span class="semicolon">;</span></li>
+          <li>            <span class="Identifier">this</span><span class="dot">.</span><span class="Member">y</span> <span class="add-assign">+=</span> <span class="Identifier">p</span><span class="dot">.</span><span class="Member">y</span><span class="semicolon">;</span></li>
+          <li>        <span class="r-brac">}</span></li>
+          <li>    <span class="r-brac">}</span></li>
+          <li>
+            <span class="r-brac">}</span>
+          </li>
+        </ol>
+      </code>
       <p>
       The language is inspired pretty much by the C# type system and AS3 and TypeScript syntax.
       We are currently adding some noise (such as the "method") keyword to avoid easily grammar ambiguity,

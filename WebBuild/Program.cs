@@ -5,6 +5,8 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Xsl;
+using System.Xml.XPath;
+using RosiCompiler;
 
 namespace WebBuild
 {
@@ -17,7 +19,8 @@ namespace WebBuild
             var files = Directory.GetFiles(@"./Pages/", "*.html", SearchOption.AllDirectories);
 
             Dictionary<string, XslCompiledTransform> transformations = new Dictionary<string, XslCompiledTransform>();
-            HtmlBuilderExtension extensions = new HtmlBuilderExtension();
+            HtmlBuilderExtension wwwExtension = new HtmlBuilderExtension();
+            RvmCompilerExtension rvmExtension = new RvmCompilerExtension();
             foreach(var file in files) {
                 try
                 {
@@ -42,10 +45,12 @@ namespace WebBuild
                     using(var output = File.Create(destination))
                     {
                         XsltArgumentList xsltArgs = new XsltArgumentList();
+                        xsltArgs.XsltMessageEncountered += (s, e) => Console.WriteLine(e.Message);
                         var page = file.Substring("./Pages/".Length);
                         xsltArgs.AddParam("page", "", page);
-                        xsltArgs.AddExtensionObject("urn:web-build:xslt", extensions);
-                        extensions.Page = page;
+                        xsltArgs.AddExtensionObject("urn:web-build:www", wwwExtension);
+                        xsltArgs.AddExtensionObject("urn:web-build:rvm", rvmExtension);
+                        wwwExtension.Page = page;
                         transform.Transform(xDoc.Root.CreateReader(), xsltArgs, output);
                     }
                 }
@@ -143,6 +148,40 @@ namespace WebBuild
                 path = string.Empty;
             }
             return path;
+        }
+    }
+
+    internal class RvmCompilerExtension
+    {
+        private PushParser parser; // = new PushParser();
+        private XslCompiledTransform transform;
+
+        public RvmCompilerExtension()
+        {
+            parser = new PushParser();
+            transform = new XslCompiledTransform();
+            transform.Load("Templates/rvm-html.xslt");
+        }
+
+        public object html(string code)
+        {
+            Console.WriteLine("Compile:");
+            Console.WriteLine(code);
+            //var xDoc = new XDocument();
+            //var xCode = new XElement("code");
+            //xDoc.Add(xCode);
+            //xCode.Add(code + "!");
+            //var result = xCode.CreateNavigator();
+
+            parser.Code = code;
+            XDocument doc = new XDocument();
+            using (var writer = doc.CreateWriter())
+            {
+                transform.Transform(parser.Tree.CreateNavigator(), writer);
+            }
+            var result = doc.CreateNavigator();
+            // We need to apply second xslt that will convert that to html:
+            return result;
         }
     }
 }

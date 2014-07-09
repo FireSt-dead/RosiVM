@@ -5,3 +5,7 @@ D:\GitHub\RosiVM\WebBuild\obj\Debug\WebBuild.pdb
 D:\GitHub\RosiVM\WebBuild\WebBuild.exe
 D:\GitHub\RosiVM\WebBuild\WebBuild.pdb
 D:\GitHub\RosiVM\WebBuild\obj\Debug\WebBuild.csprojResolveAssemblyReference.cache
+D:\GitHub\RosiVM\WebBuild\RosiCompiler.dll
+D:\GitHub\RosiVM\WebBuild\GOLD Engine.dll
+D:\GitHub\RosiVM\WebBuild\RosiCompiler.pdb
+D:\GitHub\RosiVM\WebBuild\Templates\rvm-html.xslt

@@ -98,9 +98,12 @@ code {
 	padding: 11px;
 	border: 1px solid gray;
 	background: white;
+	display: block;
+}
+
+code, code li {
 	font: 12px Monospace;
 	line-height: 16px;
-	display: block;
 }
 
 code a {

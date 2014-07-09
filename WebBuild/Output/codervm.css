@@ -1,0 +1,37 @@
+﻿code.rvm span.module,
+code.rvm span.function,
+code.rvm span.class,
+code.rvm span.interface,
+code.rvm span.Visibility,
+code.rvm span.extends,
+code.rvm span.implements,
+code.rvm span.method,
+code.rvm span.var,
+code.rvm span.if,
+code.rvm span.else
+{
+	color: #00008B;
+}
+code.rvm span.semicolon,
+code.rvm span.colon
+{
+	color: #A9A9A9;
+}
+code.rvm span.Name
+{
+	color: #8B0000;
+}
+code.rvm span.Identifier,
+code.rvm span.Member
+{
+	color: #008B8B;
+}
+code.rvm ol {
+	border-left: solid 4px lightblue;
+}
+code.rvm ol li {
+	padding-left: 4px;
+}
+code.rvm {
+	border: none;
+}

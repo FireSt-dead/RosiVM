@@ -3,3 +3,4 @@ D:\GitHub\RosiVM\RosiStudio\RosiCompiler\bin\Debug\RosiCompiler.pdb
 D:\GitHub\RosiVM\RosiStudio\RosiCompiler\bin\Debug\GOLD Engine.dll
 D:\GitHub\RosiVM\RosiStudio\RosiCompiler\obj\Debug\RosiCompiler.dll
 D:\GitHub\RosiVM\RosiStudio\RosiCompiler\obj\Debug\RosiCompiler.pdb
+D:\GitHub\RosiVM\RosiStudio\RosiCompiler\obj\Debug\RosiCompiler.csprojResolveAssemblyReference.cache

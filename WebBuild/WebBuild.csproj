@@ -91,6 +91,9 @@
     <Content Include="Templates\favicon.png" />
     <Content Include="Templates\images\background.png" />
     <Content Include="Templates\images\logo.png" />
+    <Content Include="Templates\rvm-html.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\index.xslt" />
     <Content Include="Templates\header.html">
       <SubType>Designer</SubType>
@@ -98,9 +101,15 @@
     <Content Include="Templates\navigation.html">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Templates\codervm.css" />
     <Content Include="Templates\style.css" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RosiStudio\RosiCompiler\RosiCompiler.csproj">
+      <Project>{2bb673e5-0cd4-42f5-97ec-e0de7c6ab94e}</Project>
+      <Name>RosiCompiler</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
