@@ -20,11 +20,13 @@
       &lt;InterfaceMember&gt; ::= &lt;InterfaceField&gt; | &lt;InterfaceMethod&gt;<br/>
     </code>
     <p>For example:</p>
-    <code>
-      public interface Comparable implements Clonable {<br/>
-      &#160;&#160;var hash: number;<br/>
-      &#160;&#160;method isLessThan(other: Comparable) => boolean;<br/>
-      &#160;&#160;method isGreaterThan(other: Comparable) => boolean;<br/>
+    <code lang="rvm">
+    module model {
+      public interface Comparable implements Clonable {
+        var hash: number;
+        method isLessThan(other: Comparable) => boolean;
+        method isGreaterThan(other: Comparable) => boolean;
+      }
     }
   </code>
   </body>

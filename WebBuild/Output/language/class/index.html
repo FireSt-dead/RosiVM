@@ -76,11 +76,18 @@
       &lt;ClassMember&gt; ::= &lt;ClassField&gt; | &lt;ClassConstructor&gt; | &lt;ClassMethod&gt;
     </code>
       <p>For example:</p>
-      <code>
-      public class Point2D extends Point3D implements Clonable {<br />
-        // fields, constructos, methods...<br />
-      }
-    </code>
+      <code class="rvm">
+        <ol>
+          <li>
+            <span class="module">module</span> <span class="Name">geom</span> <span class="l-brac">{</span></li>
+          <li>    <span class="Visibility">public</span> <span class="class">class</span> <span class="Name">Point3D</span> <span class="extends">extends</span> <span class="Identifier">Point2D</span> <span class="implements">implements</span> <span class="Identifier">Clonable</span><span class="comma">,</span> <span class="Identifier">Serializable</span> <span class="l-brac">{</span></li>
+          <li>        <span class="var">var</span> <span class="Name">z</span><span class="colon">:</span> <span class="Identifier">number</span><span class="semicolon">;</span></li>
+          <li>    <span class="r-brac">}</span></li>
+          <li>
+            <span class="r-brac">}</span>
+          </li>
+        </ol>
+      </code>
       <h2>Class Visibility</h2>
       <ul>
         <li>

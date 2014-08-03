@@ -35,6 +35,44 @@
       <xsl:apply-templates select="parse:r-brac"/>
     </li>
   </xsl:template>
+  <xsl:template match="parse:Function">
+    <xsl:param name="ident" select="''" />
+    <li>
+      <xsl:value-of select="$ident"/>
+      <xsl:if test ="parse:Visibility">
+        <xsl:apply-templates select="parse:Visibility"/>
+        <xsl:text>&#160;</xsl:text>
+      </xsl:if>
+      <xsl:apply-templates select="parse:function"/>
+      <xsl:text>&#160;</xsl:text>
+      <xsl:apply-templates select="parse:Name"/>
+      <xsl:apply-templates select="parse:l-paren"/>
+      <xsl:apply-templates select="parse:Argument | parse:comma"/>
+      <xsl:apply-templates select="parse:r-paren"/>
+      <xsl:if test="parse:ReturnType">
+        <xsl:text>&#160;</xsl:text>
+        <xsl:apply-templates select="parse:ReturnType"/>
+      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="parse:StatementBlock">
+          <xsl:text>&#160;</xsl:text>
+          <xsl:apply-templates select="parse:StatementBlock/parse:l-brac"/>
+        </xsl:when>
+        <xsl:when test="parse:semicolon">
+          <xsl:apply-templates select="parse:semicolon" />
+        </xsl:when>
+      </xsl:choose>
+    </li>
+    <xsl:if test="parse:StatementBlock">
+      <xsl:apply-templates select="parse:StatementBlock/parse:Statement">
+        <xsl:with-param name="ident" select="concat($ident, $identchar)"/>
+      </xsl:apply-templates>
+      <li>
+        <xsl:value-of select="$ident"/>
+        <xsl:apply-templates select="parse:StatementBlock/parse:r-brac"/>
+      </li>
+    </xsl:if>
+  </xsl:template>
   <xsl:template match="parse:Class">
     <xsl:param name="ident" select="''" />
     <li>
@@ -46,10 +84,53 @@
       <xsl:apply-templates select="parse:class"/>
       <xsl:text>&#160;</xsl:text>
       <xsl:apply-templates select="parse:Name"/>
+      <xsl:if test="parse:Extends">
+        <xsl:text>&#160;</xsl:text>
+        <xsl:apply-templates select="parse:Extends" />
+      </xsl:if>
+      <xsl:if test="parse:Implements">
+        <xsl:text>&#160;</xsl:text>
+        <xsl:apply-templates select="parse:Implements" />
+      </xsl:if>
       <xsl:text>&#160;</xsl:text>
       <xsl:apply-templates select="parse:l-brac"/>
     </li>
     <xsl:apply-templates select="parse:Field | parse:Constructor | parse:Method">
+      <xsl:with-param name="ident" select="concat($ident, $identchar)" />
+    </xsl:apply-templates>
+    <li>
+      <xsl:value-of select="$ident"/>
+      <xsl:apply-templates select="parse:r-brac"/>
+    </li>
+  </xsl:template>
+  <xsl:template match="parse:Extends">
+    <xsl:apply-templates select="parse:extends" />
+    <xsl:text>&#160;</xsl:text>
+    <xsl:apply-templates select="parse:Type" />
+  </xsl:template>
+  <xsl:template match="parse:Implements">
+    <xsl:apply-templates select="parse:implements" />
+    <xsl:text>&#160;</xsl:text>
+    <xsl:apply-templates select="parse:Types" />
+  </xsl:template>
+  <xsl:template match="parse:Types">
+    <xsl:apply-templates select="*" mode="comma-list" />
+  </xsl:template>
+  <xsl:template match="parse:Interface">
+    <xsl:param name="ident" select="''" />
+    <li>
+      <xsl:value-of select="$ident"/>
+      <xsl:if test="parse:Visibility">
+        <xsl:apply-templates select="parse:Visibility"/>
+        <xsl:text>&#160;</xsl:text>
+      </xsl:if>
+      <xsl:apply-templates select="parse:interface"/>
+      <xsl:text>&#160;</xsl:text>
+      <xsl:apply-templates select="parse:Name"/>
+      <xsl:text>&#160;</xsl:text>
+      <xsl:apply-templates select="parse:l-brac"/>
+    </li>
+    <xsl:apply-templates select="parse:Field | parse:Method">
       <xsl:with-param name="ident" select="concat($ident, $identchar)" />
     </xsl:apply-templates>
     <li>
@@ -78,20 +159,29 @@
       <xsl:apply-templates select="parse:l-paren"/>
       <xsl:apply-templates select="parse:Argument | parse:comma"/>
       <xsl:apply-templates select="parse:r-paren"/>
-      <xsl:text>&#160;</xsl:text>
       <xsl:if test="parse:ReturnType">
-        <xsl:apply-templates select="parse:ReturnType"/>
         <xsl:text>&#160;</xsl:text>
+        <xsl:apply-templates select="parse:ReturnType"/>
       </xsl:if>
-      <xsl:apply-templates select="parse:StatementBlock/parse:l-brac"/>
+      <xsl:choose>
+        <xsl:when test="parse:StatementBlock">
+          <xsl:text>&#160;</xsl:text>
+          <xsl:apply-templates select="parse:StatementBlock/parse:l-brac"/>
+        </xsl:when>
+        <xsl:when test="parse:semicolon">
+          <xsl:apply-templates select="parse:semicolon" />
+        </xsl:when>
+      </xsl:choose>
     </li>
-    <xsl:apply-templates select="parse:StatementBlock/parse:Statement">
-      <xsl:with-param name="ident" select="concat($ident, $identchar)"/>
-    </xsl:apply-templates>
-    <li>
-      <xsl:value-of select="$ident"/>
-      <xsl:apply-templates select="parse:StatementBlock/parse:r-brac"/>
-    </li>
+    <xsl:if test="parse:StatementBlock">
+      <xsl:apply-templates select="parse:StatementBlock/parse:Statement">
+        <xsl:with-param name="ident" select="concat($ident, $identchar)"/>
+      </xsl:apply-templates>
+      <li>
+        <xsl:value-of select="$ident"/>
+        <xsl:apply-templates select="parse:StatementBlock/parse:r-brac"/>
+      </li>
+    </xsl:if>
   </xsl:template>
   <xsl:template match="parse:ReturnType">
     <xsl:apply-templates select="parse:turns-in"/>
@@ -141,6 +231,14 @@
     <xsl:apply-templates select="parse:add-assign"/>
     <xsl:text>&#160;</xsl:text>
     <xsl:apply-templates select="*[3]"/>
+  </xsl:template>
+  
+  <xsl:template match="parse:comma" mode="comma-list">
+    <xsl:apply-templates select="." />
+    <xsl:text>&#160;</xsl:text>
+  </xsl:template>
+  <xsl:template match="@* | node()" mode="comma-list">
+    <xsl:apply-templates select="." />
   </xsl:template>
 
   <xsl:template match="@* | node()">

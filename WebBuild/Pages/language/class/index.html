@@ -21,9 +21,11 @@
       &lt;ClassMember&gt; ::= &lt;ClassField&gt; | &lt;ClassConstructor&gt; | &lt;ClassMethod&gt;
     </code>
     <p>For example:</p>
-    <code>
-      public class Point2D extends Point3D implements Clonable {<br/>
-      &#160;&#160;// fields, constructos, methods...<br/>
+    <code lang="rvm">
+      module geom {
+        public class Point3D extends Point2D implements Clonable, Serializable {
+          var z: number;
+        }
       }
     </code>
     <h2>Class Visibility</h2>

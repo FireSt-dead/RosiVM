@@ -1,99 +1,31 @@
 <Global xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rosivm.org/2014/parse/ RosiLang.parse.xsd" xmlns="http://www.rosivm.org/2014/parse/">
   <Module prod="(Module) ::= module (Name) l-brac (ModuleMembers) r-brac">
-    <module line="0" column="0">module</module>
-    <Name line="0" column="7">geom</Name>
-    <l-brac line="0" column="12">{</l-brac>
-    <Class prod="(Class) ::= (Visibility) class (Name) (TypeParameters) (Extends) (Implements) l-brac (ClassMembers) r-brac">
-      <Visibility line="1" column="2">public</Visibility>
-      <class line="1" column="9">class</class>
-      <Name line="1" column="15">Point</Name>
-      <l-brac line="1" column="21">{</l-brac>
-      <Field prod="(ClassField) ::= (Visibility) var (Name) colon (Type) semicolon">
-        <var line="2" column="4">var</var>
-        <Name line="2" column="8">x</Name>
-        <colon line="2" column="9">:</colon>
+    <module line="0" column="6">module</module>
+    <Name line="0" column="13">math</Name>
+    <l-brac line="0" column="18">{</l-brac>
+    <Function prod="(Function) ::= (Visibility) function (Name) (TypeParameters) l-paren (Arguments) r-paren (ReturnType) (StatementBlock)">
+      <function line="1" column="8">function</function>
+      <Name line="1" column="17">min</Name>
+      <l-paren line="1" column="20">(</l-paren>
+      <Argument prod="(Argument) ::= (Name) colon (Type)">
+        <Name line="1" column="21">x</Name>
+        <colon line="1" column="22">:</colon>
         <Type prod="(Type) ::= Identifier (TypeArguments)">
-          <Identifier line="2" column="11">number</Identifier>
+          <Identifier line="1" column="24">number</Identifier>
         </Type>
-        <semicolon line="2" column="17">;</semicolon>
-      </Field>
-      <Field prod="(ClassField) ::= (Visibility) var (Name) colon (Type) semicolon">
-        <var line="3" column="4">var</var>
-        <Name line="3" column="8">y</Name>
-        <colon line="3" column="9">:</colon>
+      </Argument>
+      <r-paren line="1" column="30">)</r-paren>
+      <ReturnType prod="(ReturnType) ::= turns-in (Type)">
+        <turns-in line="1" column="32">=&gt;</turns-in>
         <Type prod="(Type) ::= Identifier (TypeArguments)">
-          <Identifier line="3" column="11">number</Identifier>
+          <Identifier line="1" column="35">number</Identifier>
         </Type>
-        <semicolon line="3" column="17">;</semicolon>
-      </Field>
-      <Method prod="(ClassMethod) ::= (Visibility) method (Name) (TypeParameters) l-paren (Arguments) r-paren (ReturnType) (StatementBlock)">
-        <Visibility line="4" column="4">public</Visibility>
-        <method line="4" column="11">method</method>
-        <Name line="4" column="18">add</Name>
-        <l-paren line="4" column="21">(</l-paren>
-        <Arguments prod="(Arguments) ::= (Argument) comma (Arguments)">
-          <Argument prod="(Argument) ::= (Name) colon (Type)">
-            <Name line="4" column="22">p</Name>
-            <colon line="4" column="23">:</colon>
-            <Type prod="(Type) ::= Identifier (TypeArguments)">
-              <Identifier line="4" column="24">Point</Identifier>
-            </Type>
-          </Argument>
-          <comma line="4" column="29">,</comma>
-          <Argument prod="(Argument) ::= (Name) colon (Type)">
-            <Name line="4" column="31">p1</Name>
-            <colon line="4" column="33">:</colon>
-            <Type prod="(Type) ::= Identifier (TypeArguments)">
-              <Identifier line="4" column="34">Point</Identifier>
-            </Type>
-          </Argument>
-        </Arguments>
-        <r-paren line="4" column="39">)</r-paren>
-        <ReturnType prod="(ReturnType) ::= turns-in (Type)">
-          <turns-in line="4" column="40">=&gt;</turns-in>
-          <Type prod="(Type) ::= Identifier (TypeArguments)">
-            <Identifier line="4" column="42">Point</Identifier>
-          </Type>
-        </ReturnType>
-        <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
-          <l-brac line="4" column="47">{</l-brac>
-          <Statement prod="(Statement) ::= (Expression) semicolon">
-            <AddAssign prod="(AddAssign) ::= (Prec12Exp) add-assign (Expression)">
-              <MemberAccess prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                <Identifier line="5" column="6">this</Identifier>
-                <dot line="5" column="10">.</dot>
-                <Member line="5" column="11">x</Member>
-              </MemberAccess>
-              <add-assign line="5" column="12">+=</add-assign>
-              <MemberAccess prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                <Identifier line="5" column="14">p</Identifier>
-                <dot line="5" column="15">.</dot>
-                <Member line="5" column="16">x</Member>
-              </MemberAccess>
-            </AddAssign>
-            <semicolon line="5" column="17">;</semicolon>
-          </Statement>
-          <Statement prod="(Statement) ::= (Expression) semicolon">
-            <AddAssign prod="(AddAssign) ::= (Prec12Exp) add-assign (Expression)">
-              <MemberAccess prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                <Identifier line="6" column="6">this</Identifier>
-                <dot line="6" column="10">.</dot>
-                <Member line="6" column="11">y</Member>
-              </MemberAccess>
-              <add-assign line="6" column="12">+=</add-assign>
-              <MemberAccess prod="(MemberAccess) ::= (Prec13Exp) dot (Member)">
-                <Identifier line="6" column="14">p</Identifier>
-                <dot line="6" column="15">.</dot>
-                <Member line="6" column="16">y</Member>
-              </MemberAccess>
-            </AddAssign>
-            <semicolon line="6" column="17">;</semicolon>
-          </Statement>
-          <r-brac line="7" column="4">}</r-brac>
-        </StatementBlock>
-      </Method>
-      <r-brac line="8" column="2">}</r-brac>
-    </Class>
-    <r-brac line="9" column="0">}</r-brac>
+      </ReturnType>
+      <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
+        <l-brac line="1" column="42">{</l-brac>
+        <r-brac line="3" column="8">}</r-brac>
+      </StatementBlock>
+    </Function>
+    <r-brac line="4" column="6">}</r-brac>
   </Module>
 </Global>
