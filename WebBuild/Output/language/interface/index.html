@@ -18,7 +18,7 @@
             <a class="lhandnavi inside" href="/language/module.html">Module</a>
           </li>
           <li>
-            <a class="lhandnavi inside selected" href="/language/function.html">Function</a>
+            <a class="lhandnavi inside" href="/language/function.html">Function</a>
           </li>
           <li>
             <a class="lhandnavi inside" href="/language/class/index.html">Class</a>
@@ -35,7 +35,7 @@
             </ul>
           </li>
           <li>
-            <a class="lhandnavi inside" href="/language/interface/index.html">Interface</a>
+            <a class="lhandnavi inside selected" href="/language/interface/index.html">Interface</a>
             <ul>
               <li>
                 <a class="lhandnavi inside" href="/language/interface/field.html">Field</a>
@@ -70,32 +70,36 @@
       <a class="topnavi" href="/studio/index.html">Studio</a>
     </div>
     <div id="content">
-      <h1>Function</h1>
+      <h1>Interface</h1>
       <p>
-      Well its a function...
-      Differs from the methods by being defined in a module instead of a class.
-      I dislike C# static classes.
-      Functions would be used for example in min, max etc. defined in module math.
+      An interface defines a set of members a class may implement.
+      A class may implement multiple interfaces.
+      Interfaces play important role in defining behaviors, and simulating multiple inheritance.
     </p>
-      <p>Function syntax:</p>
+      <p>Interface syntax:</p>
       <code>
-      &lt;Function&gt; ::=<br />
-          &lt;Visibility&gt; 'function' <a href="/language/terminals.html#name">&lt;Name&gt;</a> &lt;TypeParameters&gt; l-paren &lt;Arguments&gt; r-paren &lt;ReturnType&gt;<br />
-          &lt;StatementBlock&gt;
-    </code>
+      &lt;Interface&gt; ::=<br />
+          <a href="/language/visibility.html">&lt;Visibility&gt;</a> 'interface' <a href="/language/terminals.html#name">&lt;Name&gt;</a> &lt;TypeParameters&gt;<br />
+          &lt;InterfaceExtends&gt;<br />
+          l-brac &lt;InterfaceMembers&gt; r-brac<br />
+      &lt;InterfaceExtends&gt; ::= 'extends' &lt;Types&gt; | &lt;&gt;<br />
+      &lt;InterfaceMembers&gt; ::= &lt;InterfaceMember&gt; &lt;InterfaceMembers&gt; | &lt;&gt;<br />
+      &lt;InterfaceMember&gt; ::= &lt;InterfaceField&gt; | &lt;InterfaceMethod&gt;<br /></code>
       <p>For example:</p>
       <code class="rvm">
         <ol>
           <li>
-            <span class="module">module</span> <span class="Name">math</span> <span class="l-brac">{</span></li>
-          <li>    <span class="function">function</span> <span class="Name">min</span><span class="l-paren">(</span><span class="Name">x</span><span class="colon">:</span><span class="Identifier">number</span><span class="r-paren">)</span> <span class="turns-in">=&gt;</span> <span class="Identifier">number</span> <span class="l-brac">{</span></li>
+            <span class="module">module</span> <span class="Name">model</span> <span class="l-brac">{</span></li>
+          <li>    <span class="Visibility">public</span> <span class="interface">interface</span> <span class="Name">Comparable</span> <span class="l-brac">{</span></li>
+          <li>        <span class="var">var</span> <span class="Name">hash</span><span class="colon">:</span> <span class="Identifier">number</span><span class="semicolon">;</span></li>
+          <li>        <span class="method">method</span> <span class="Name">isLessThan</span><span class="l-paren">(</span><span class="Name">other</span><span class="colon">:</span><span class="Identifier">Comparable</span><span class="r-paren">)</span> <span class="turns-in">=&gt;</span> <span class="Identifier">boolean</span><span class="semicolon">;</span></li>
+          <li>        <span class="method">method</span> <span class="Name">isGreaterThan</span><span class="l-paren">(</span><span class="Name">other</span><span class="colon">:</span><span class="Identifier">Comparable</span><span class="r-paren">)</span> <span class="turns-in">=&gt;</span> <span class="Identifier">boolean</span><span class="semicolon">;</span></li>
           <li>    <span class="r-brac">}</span></li>
           <li>
             <span class="r-brac">}</span>
           </li>
         </ol>
       </code>
-      <p>Be very careful not to write procedural code using functions. <a href="/language/class.html">Classes</a> are still good for you.</p>
     </div>
   </body>
 </html>

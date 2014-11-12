@@ -15,7 +15,6 @@ Identifier = {Letter}{AlphaNumeric}*
            
 ! Aliased Terminals
 <Name> ::= Identifier
-<Identifier> ::= Identifier
 
 ! TODO: IEEE 754        
 Integer        = {Digit}+
@@ -104,12 +103,12 @@ complement = '~'
 <ClassMethod> ::= <Visibility> 'method' <Name> <TypeParameters> l-paren <Arguments> r-paren <ReturnType> <StatementBlock>
               
 <Interface> ::= <Visibility> 'interface' <Name> <TypeParameters> <InterfaceExtends> l-brac <InterfaceMembers> r-brac
+<InterfaceExtends> ::= 'extends' <Types> | <>
 <InterfaceMembers> ::= <InterfaceMember> <InterfaceMembers> | <>
 <InterfaceMember> ::= <InterfaceField> | <InterfaceMethod>
                    
 <InterfaceField> ::= 'var' <Name> colon <Type> semicolon
-<InterfaceMethod> ::= 'method' <Name> l-paren <Arguments> r-paren <ReturnType> semicolon
-<InterfaceExtends> ::= 'extends' <Types> | <>
+<InterfaceMethod> ::= 'method' <Name> <TypeParameters> l-paren <Arguments> r-paren <ReturnType> semicolon
                    
 <Visibility> ::= 'public' | 'protected' | 'private' | <>
 <TypeParameters> ::= less-than <TypeParameterMembers> greater-than | <>
@@ -135,10 +134,9 @@ complement = '~'
 <If> ::= 'if' l-paren <Expression> r-paren <Statement> 'else' <Statement>
 
 ! Expressions
-<Expression> ::= <Prec0Exp>
-              | <Prec1Exp>
+<Expression> ::= <Prec0Exp> | <Prec1Exp>
 
-! Assignment Expresisons
+! Assignment Operators
 <Prec0Exp> ::= <Assign>
             | <AddAssign>
             | <SubtractAssign>
@@ -162,73 +160,55 @@ complement = '~'
 <ShiftLeftAssign> ::= <Prec12Exp> shift-left-assign <Expression>
 <ShiftRightAssign> ::= <Prec12Exp> shift-right-assign <Expression>
 
-! Conditional If Expression
+! Conditional If Operators
 <Prec1Exp> ::= <Prec2Exp> question <Expression> colon <Expression> | <Prec2Exp>
  
-! Conditional Expressions
-<Prec2Exp> ::= <Prec3Exp>
-            | <ConditionalOr>
+! Conditional Operators
+<Prec2Exp> ::= <Prec3Exp> | <ConditionalOr>
 <ConditionalOr> ::= <Prec2Exp> conditional-or <Prec3Exp>       
 
-<Prec3Exp> ::= <Prec4Exp>
-            | <ConditionalAnd>
+<Prec3Exp> ::= <Prec4Exp> | <ConditionalAnd>
 <ConditionalAnd> ::=  <Prec3Exp> conditional-and <Prec4Exp>
 
-! Bitwise Expressions
-<Prec4Exp> ::= <Prec5Exp>
-            | <BitwiseOr>
+! Bitwise Operators
+<Prec4Exp> ::= <Prec5Exp> | <BitwiseOr>
 <BitwiseOr> ::= <Prec4Exp> bitwise-or <Prec5Exp>
 
-<Prec5Exp> ::= <Prec6Exp>
-            | <BitwiseXOr>
+<Prec5Exp> ::= <Prec6Exp> | <BitwiseXOr>
 <BitwiseXOr> ::= <Prec5Exp> bitwise-xor <Prec6Exp>
 
-<Prec6Exp> ::= <Prec7Exp>
-            | <BitwiseAnd>
+<Prec6Exp> ::= <Prec7Exp> | <BitwiseAnd>
 <BitwiseAnd> ::= <Prec6Exp> bitwise-and <Prec7Exp>
 
-! Equality Expressions
-<Prec7Exp> ::= <Prec8Exp>
-            | <Equal>
-            | <NotEqual>
+! Equality Operators
+<Prec7Exp> ::= <Prec8Exp> | <Equal> | <NotEqual>
 <Equal> ::= <Prec7Exp> equal <Prec8Exp>
 <NotEqual> ::= <Prec7Exp> not-equal <Prec8Exp>
 
-! Comparison Expressions
-<Prec8Exp> ::= <Prec9Exp>
-            | <LessThan>
-            | <GreaterThan>
-            | <LessOrEqual>
-            | <GreaterOrEqual>
+! Comparison Operators
+<Prec8Exp> ::= <Prec9Exp> | <LessThan> | <GreaterThan> | <LessOrEqual> | <GreaterOrEqual>
 <LessThan> ::= <Prec8Exp> less-than <Prec9Exp>
 <GreaterThan> ::= <Prec8Exp> greater-than <Prec9Exp>
 <LessOrEqual> ::= <Prec8Exp> less-or-equal <Prec9Exp>
 <GreaterOrEqual> ::= <Prec8Exp> greater-or-equal <Prec9Exp>
                
-! Shift Expressions
-<Prec9Exp> ::= <Prec10Exp>
-            | <LeftShift>
-            | <RightShift>
+! Shift Operators
+<Prec9Exp> ::= <Prec10Exp> | <LeftShift> | <RightShift>
 <LeftShift> ::= <Prec9Exp> shift-left <Prec10Exp>
 <RightShift> ::= <Prec9Exp> shift-right <Prec10Exp>
 
-! Cumulative Expressions
-<Prec10Exp> ::= <Prec11Exp>
-             | <Add>
-             | <Subtract>
+! Cumulative Operators
+<Prec10Exp> ::= <Prec11Exp> | <Add> | <Subtract>
 <Add> ::= <Prec10Exp> plus <Prec11Exp>
 <Subtract> ::= <Prec10Exp> minus <Prec11Exp>
 
-! Multiplicative Expressions
-<Prec11Exp> ::= <Prec12Exp>
-             | <Multiply>
-             | <Divide>
-             | <Reminder>
+! Multiplicative Operators
+<Prec11Exp> ::= <Prec12Exp> | <Multiply> | <Divide> | <Reminder>
 <Multiply> ::= <Prec11Exp> multiply <Prec12Exp>
 <Divide> ::= <Prec11Exp> divide <Prec12Exp>
 <Reminder> ::= <Prec11Exp> reminder <Prec12Exp>
 
-! Unary Pre-Operator Expressions
+! Unary Pre-Operators
 <Prec12Exp> ::= <Prec13Exp> 
              | <Not>
              | <Plus>
@@ -243,7 +223,7 @@ complement = '~'
 <PreDecrement> ::= decrement <Prec12Exp>
 <BitComplement> ::= complement <Prec12Exp>
 
-! Unary Post-Operator Expressions and Base Expressions 
+! Unary Post-Operators and Base Expressions 
 <Prec13Exp> ::= <Identifier>
              | <ConstantValue>
              | <ParenExpression>

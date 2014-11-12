@@ -51,6 +51,10 @@
     <None Include="Output\**\*" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Output\language\interface\field.html" />
+    <Content Include="Output\language\interface\index.html" />
+    <Content Include="Output\language\interface\method.html" />
+    <Content Include="Output\language\operators.html" />
     <Content Include="Pages\images\rosi-studio.png" />
     <Content Include="Pages\language\class\constructor.html">
       <SubType>Designer</SubType>
@@ -59,6 +63,12 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Pages\language\class\field.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Pages\language\interface\field.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Pages\language\interface\method.html">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Pages\language\terminals.html">
@@ -70,10 +80,13 @@
     <Content Include="Pages\language\module.html">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Pages\language\operators.html">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Pages\language\visibility.html">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Pages\language\interface.html">
+    <Content Include="Pages\language\interface\index.html">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Pages\language\class\index.html">

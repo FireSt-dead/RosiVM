@@ -8,3 +8,13 @@ D:\GitHub\RosiVM\WebBuild\WebBuild.pdb
 D:\GitHub\RosiVM\WebBuild\RosiCompiler.dll
 D:\GitHub\RosiVM\WebBuild\GOLD Engine.dll
 D:\GitHub\RosiVM\WebBuild\RosiCompiler.pdb
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\WebBuild.exe.config
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\obj\Debug\WebBuild.exe
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\obj\Debug\WebBuild.pdb
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\obj\Debug\WebBuild.csprojResolveAssemblyReference.cache
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\Templates\rvm-html.xslt
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\WebBuild.exe
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\WebBuild.pdb
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\RosiCompiler.dll
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\GOLD Engine.dll
+D:\GItHub\FireSt-dead\RosiVM\WebBuild\RosiCompiler.pdb

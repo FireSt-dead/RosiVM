@@ -18,7 +18,7 @@
             <a class="lhandnavi inside" href="/language/module.html">Module</a>
           </li>
           <li>
-            <a class="lhandnavi inside selected" href="/language/function.html">Function</a>
+            <a class="lhandnavi inside" href="/language/function.html">Function</a>
           </li>
           <li>
             <a class="lhandnavi inside" href="/language/class/index.html">Class</a>
@@ -41,7 +41,7 @@
                 <a class="lhandnavi inside" href="/language/interface/field.html">Field</a>
               </li>
               <li>
-                <a class="lhandnavi inside" href="/language/interface/method.html">Method</a>
+                <a class="lhandnavi inside selected" href="/language/interface/method.html">Method</a>
               </li>
             </ul>
           </li>
@@ -70,32 +70,10 @@
       <a class="topnavi" href="/studio/index.html">Studio</a>
     </div>
     <div id="content">
-      <h1>Function</h1>
-      <p>
-      Well its a function...
-      Differs from the methods by being defined in a module instead of a class.
-      I dislike C# static classes.
-      Functions would be used for example in min, max etc. defined in module math.
-    </p>
-      <p>Function syntax:</p>
+      <h1>Interface Method</h1>
       <code>
-      &lt;Function&gt; ::=<br />
-          &lt;Visibility&gt; 'function' <a href="/language/terminals.html#name">&lt;Name&gt;</a> &lt;TypeParameters&gt; l-paren &lt;Arguments&gt; r-paren &lt;ReturnType&gt;<br />
-          &lt;StatementBlock&gt;
+      &lt;InterfaceMethod&gt; ::= 'method' &lt;Name&gt; &lt;TypeParameters&gt; l-paren &lt;Arguments&gt; r-paren &lt;ReturnType&gt; semicolon
     </code>
-      <p>For example:</p>
-      <code class="rvm">
-        <ol>
-          <li>
-            <span class="module">module</span> <span class="Name">math</span> <span class="l-brac">{</span></li>
-          <li>    <span class="function">function</span> <span class="Name">min</span><span class="l-paren">(</span><span class="Name">x</span><span class="colon">:</span><span class="Identifier">number</span><span class="r-paren">)</span> <span class="turns-in">=&gt;</span> <span class="Identifier">number</span> <span class="l-brac">{</span></li>
-          <li>    <span class="r-brac">}</span></li>
-          <li>
-            <span class="r-brac">}</span>
-          </li>
-        </ol>
-      </code>
-      <p>Be very careful not to write procedural code using functions. <a href="/language/class.html">Classes</a> are still good for you.</p>
     </div>
   </body>
 </html>

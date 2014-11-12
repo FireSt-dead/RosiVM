@@ -103,12 +103,15 @@ namespace WebBuild
     {
         public string Page { get; internal set; }
 
+        /// <summary>
+        /// Checks if the page is inside the top level category. 
+        /// </summary>
         public bool isinside(string page)
         {
             if (page != null)
             {
-                var normalizedCurrentPageDirectory = NormalizedDirectory(this.Page);
-                var normalizedCheckingPageDirectory = NormalizedDirectory(page);
+                var normalizedCurrentPageDirectory = NormalizedDirectory(this.Page).Split('/')[0];
+                var normalizedCheckingPageDirectory = NormalizedDirectory(page).Split('/')[0];
 
                 // Implement "is under" when subpages arrive...
                 // Console.WriteLine(normalizedCurrentPageDirectory + " -> " + normalizedCheckingPageDirectory);
@@ -118,6 +121,9 @@ namespace WebBuild
             return false;
         }
 
+        /// <summary>
+        /// Checks if the page is the currently displayed page.
+        /// </summary>
         public bool isselected(string page)
         {
             if (page != null)
@@ -147,6 +153,8 @@ namespace WebBuild
             {
                 path = string.Empty;
             }
+
+            path += '/';
             return path;
         }
     }

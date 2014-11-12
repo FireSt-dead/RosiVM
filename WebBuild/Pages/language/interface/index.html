@@ -10,12 +10,13 @@
       A class may implement multiple interfaces.
       Interfaces play important role in defining behaviors, and simulating multiple inheritance.
     </p>
-    <p>Interface definition:</p>
+    <p>Interface syntax:</p>
     <code>
       &lt;Interface&gt; ::=<br/>
       &#160;&#160;&#160;&#160;<a href="/language/visibility.html">&lt;Visibility&gt;</a> 'interface' <a href="/language/terminals.html#name">&lt;Name&gt;</a> &lt;TypeParameters&gt;<br/>
       &#160;&#160;&#160;&#160;&lt;InterfaceExtends&gt;<br/>
       &#160;&#160;&#160;&#160;l-brac &lt;InterfaceMembers&gt; r-brac<br/>
+      &lt;InterfaceExtends&gt; ::= 'extends' &lt;Types&gt; | &lt;&gt;<br/>
       &lt;InterfaceMembers&gt; ::= &lt;InterfaceMember&gt; &lt;InterfaceMembers&gt; | &lt;&gt;<br/>
       &lt;InterfaceMember&gt; ::= &lt;InterfaceField&gt; | &lt;InterfaceMethod&gt;<br/>
     </code>

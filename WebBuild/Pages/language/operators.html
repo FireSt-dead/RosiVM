@@ -1,0 +1,152 @@
+﻿<?template Index.xslt?>
+<html>
+  <head>
+    <title>RosiLang</title>
+  </head>
+  <body>
+    <h1>Operators</h1>
+    
+    <h2>Expressions</h2>
+    <code>
+      &lt;Expression&gt; ::= &lt;Prec0Exp&gt; | &lt;Prec1Exp&gt;
+    </code>
+    
+    <h2>Assignment Operators</h2>
+    <p>The operators '+=', '-=', '/=' and so on. Precedense 0. Syntax:</p>
+    <code>
+      &lt;Prec0Exp&gt; ::= &lt;Assign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;AddAssign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;SubtractAssign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;MultiplyAssign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;DivideAssign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;BitAndAssign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;BitXorAssign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;BitOrAssign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;ReminderAssign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;ShiftLeftAssign&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;ShiftRightAssign&gt;<br/>
+      &lt;Assign&gt; ::= &lt;Prec12Exp&gt; assign &lt;Expression&gt;<br/>
+      &lt;AddAssign&gt; ::= &lt;Prec12Exp&gt; add-assign &lt;Expression&gt;<br/>
+      &lt;SubtractAssign&gt; ::= &lt;Prec12Exp&gt; subtract-assign &lt;Expression&gt;<br/>
+      &lt;MultiplyAssign&gt; ::= &lt;Prec12Exp&gt; multiply-assign &lt;Expression&gt;<br/>
+      &lt;DivideAssign&gt; ::= &lt;Prec12Exp&gt; divide-assign &lt;Expression&gt;<br/>
+      &lt;BitAndAssign&gt; ::= &lt;Prec12Exp&gt; bit-and-assign &lt;Expression&gt;<br/>
+      &lt;BitXorAssign&gt; ::= &lt;Prec12Exp&gt; bit-xor-assign &lt;Expression&gt;<br/>
+      &lt;BitOrAssign&gt; ::= &lt;Prec12Exp&gt; bit-or-assign &lt;Expression&gt;<br/>
+      &lt;ReminderAssign&gt; ::= &lt;Prec12Exp&gt; reminder-assign &lt;Expression&gt;<br/>
+      &lt;ShiftLeftAssign&gt; ::= &lt;Prec12Exp&gt; shift-left-assign &lt;Expression&gt;<br/>
+      &lt;ShiftRightAssign&gt; ::= &lt;Prec12Exp&gt; shift-right-assign &lt;Expression&gt;
+    </code>
+    
+    <h2>Conditional If</h2>
+    <p>The '<i>ifBool</i> ? <i>trueValue</i> : <i>falseValue</i>' inline if operator. Precedense 1. Syntax:</p>
+    <code>
+      &lt;Prec1Exp&gt; ::= &lt;Prec2Exp&gt; question &lt;Expression&gt; colon &lt;Expression&gt; | &lt;Prec2Exp&gt;
+    </code>
+    
+    <h2>Conditional Operators</h2>
+    <p>These are the conditional operators: or - '||' precedence 2, and - '&amp;&amp;' precedence 3. Syntax:</p>
+    <code>
+      &lt;Prec2Exp&gt; ::= &lt;Prec3Exp&gt; | &lt;ConditionalOr&gt;<br/>
+      &lt;ConditionalOr&gt; ::= &lt;Prec2Exp&gt; conditional-or &lt;Prec3Exp&gt;<br/>
+      <br/>
+      &lt;Prec3Exp&gt; ::= &lt;Prec4Exp&gt; | &lt;ConditionalAnd&gt;<br/>
+      &lt;ConditionalAnd&gt; ::=  &lt;Prec3Exp&gt; conditional-and &lt;Prec4Exp&gt;
+    </code>
+
+    <h2>Bitwise Operators</h2>
+    <p>These are the bitwise operators: or - '|' precedence 4, xor - '^' precedence 5, and - '&amp;' precedence 6. Syntax:</p>
+    <code>
+      &lt;Prec4Exp&gt; ::= &lt;Prec5Exp&gt; | &lt;BitwiseOr&gt;<br/>
+      &lt;BitwiseOr&gt; ::= &lt;Prec4Exp&gt; bitwise-or &lt;Prec5Exp&gt;<br/>
+      <br/>
+      &lt;Prec5Exp&gt; ::= &lt;Prec6Exp&gt; | &lt;BitwiseXOr&gt;<br/>
+      &lt;BitwiseXOr&gt; ::= &lt;Prec5Exp&gt; bitwise-xor &lt;Prec6Exp&gt;<br/>
+      <br/>
+      &lt;Prec6Exp&gt; ::= &lt;Prec7Exp&gt; | &lt;BitwiseAnd&gt;<br/>
+      &lt;BitwiseAnd&gt; ::= &lt;Prec6Exp&gt; bitwise-and &lt;Prec7Exp&gt;
+    </code>
+    
+    <h2>Equality Operators</h2>
+    <p>These include 'equal' and 'not equal'. Precedence 7. Syntax:</p>
+    <code>
+      &lt;Prec7Exp&gt; ::= &lt;Prec8Exp&gt; | &lt;Equal&gt; | &lt;NotEqual&gt;<br/>
+      &lt;Equal&gt; ::= &lt;Prec7Exp&gt; equal &lt;Prec8Exp&gt;<br/>
+      &lt;NotEqual&gt; ::= &lt;Prec7Exp&gt; not-equal &lt;Prec8Exp&gt;
+    </code>
+    
+    <h2>Comparison Operators</h2>
+    <p>The operators: less than, greater than, less than or equal, greater than or equal; Precedence 8. Syntax:</p>
+    <code>
+      &lt;Prec8Exp&gt; ::= &lt;Prec9Exp&gt; | &lt;LessThan&gt; | &lt;GreaterThan&gt; | &lt;LessOrEqual&gt; | &lt;GreaterOrEqual&gt;<br/>
+      &lt;LessThan&gt; ::= &lt;Prec8Exp&gt; less-than &lt;Prec9Exp&gt;<br/>
+      &lt;GreaterThan&gt; ::= &lt;Prec8Exp&gt; greater-than &lt;Prec9Exp&gt;<br/>
+      &lt;LessOrEqual&gt; ::= &lt;Prec8Exp&gt; less-or-equal &lt;Prec9Exp&gt;<br/>
+      &lt;GreaterOrEqual&gt; ::= &lt;Prec8Exp&gt; greater-or-equal &lt;Prec9Exp&gt;
+    </code>
+    
+    <h2>Shift Operators</h2>
+    <p>Bitwise shift operators. Precedence 9. Syntax:</p>
+    <code>
+      &lt;Prec9Exp&gt; ::= &lt;Prec10Exp&gt; | &lt;LeftShift&gt; | &lt;RightShift&gt;<br/>
+      &lt;LeftShift&gt; ::= &lt;Prec9Exp&gt; shift-left &lt;Prec10Exp&gt;<br/>
+      &lt;RightShift&gt; ::= &lt;Prec9Exp&gt; shift-right &lt;Prec10Exp&gt;
+    </code>
+    
+    <h2>Cumulative Operators</h2>
+    <p>The add and subtract operators. Precedence 10. Syntax:</p>
+    <code>
+      &lt;Prec10Exp&gt; ::= &lt;Prec11Exp&gt; | &lt;Add&gt; | &lt;Subtract&gt;<br/>
+      &lt;Add&gt; ::= &lt;Prec10Exp&gt; plus &lt;Prec11Exp&gt;<br/>
+      &lt;Subtract&gt; ::= &lt;Prec10Exp&gt; minus &lt;Prec11Exp&gt;
+    </code>
+    
+    <h2>Multiplicative Operators</h2>
+    <p>The multiply, divide and reminder operators. Precedence 11. Syntax:</p>
+    <code>
+      &lt;Prec11Exp&gt; ::= &lt;Prec12Exp&gt; | &lt;Multiply&gt; | &lt;Divide&gt; | &lt;Reminder&gt;<br/>
+      &lt;Multiply&gt; ::= &lt;Prec11Exp&gt; multiply &lt;Prec12Exp&gt;<br/>
+      &lt;Divide&gt; ::= &lt;Prec11Exp&gt; divide &lt;Prec12Exp&gt;<br/>
+      &lt;Reminder&gt; ::= &lt;Prec11Exp&gt; reminder &lt;Prec12Exp&gt;
+    </code>
+
+    <h2>Unary Pre-Operators</h2>
+    <p>Unaty prefix operators: not, plus, minus, increment, decrement and bit complement. Precedence 12. Syntax:</p>
+    <code>
+      &lt;Prec12Exp&gt; ::= &lt;Prec13Exp&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;Not&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;Plus&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;Minus&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;PreIncrement&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;PreDecrement&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;BitComplement&gt;<br/>
+      &lt;Not&gt; ::= not &lt;Prec12Exp&gt;<br/>
+      &lt;Plus&gt; ::= plus &lt;Prec12Exp&gt;<br/>
+      &lt;Minus&gt; ::= minus &lt;Prec12Exp&gt;<br/>
+      &lt;PreIncrement&gt; ::= increment &lt;Prec12Exp&gt;<br/>
+      &lt;PreDecrement&gt; ::= decrement &lt;Prec12Exp&gt;<br/>
+      &lt;BitComplement&gt; ::= complement &lt;Prec12Exp&gt;
+    </code>
+
+    <h2>Unary Post-Operators and Base Expressions</h2>
+    <p>The postfix operators: increment and decrement.</p>
+    <p>Along with some base expressions such as parens, used to group expressions to control precedence, invocation and member access.</p>
+    <p>Precedence 13. Syntax:</p>
+    <code>
+      &lt;Prec13Exp&gt; ::= &lt;Identifier&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;ConstantValue&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;ParenExpression&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;MemberAccess&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;Invocation&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;PostIncrement&gt;<br/>
+      &#160;&#160;&#160;&#160;| &lt;PostDecrement&gt;<br/>
+      &lt;Identifier&gt; ::= Identifier<br/>
+      &lt;ParenExpression&gt; ::= l-paren &lt;Expression&gt; r-paren<br/>
+      &lt;MemberAccess&gt; ::= &lt;Prec13Exp&gt; dot &lt;Member&gt;<br/>
+      &lt;Member&gt; ::= Identifier<br/>
+      &lt;Invocation&gt; ::= &lt;Prec13Exp&gt; l-paren &lt;Values&gt; r-paren<br/>
+      &lt;PostIncrement&gt; ::= &lt;Prec13Exp&gt; increment<br/>
+      &lt;PostDecrement&gt; ::= &lt;Prec13Exp&gt; decrement
+    </code>
+  </body>
+</html>
