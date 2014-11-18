@@ -23,7 +23,7 @@
     <p>For example:</p>
     <code lang="rvm">
     module model {
-      public interface Comparable implements Clonable {
+      public interface Comparable extends Clonable {
         var hash: number;
         method isLessThan(other: Comparable) => boolean;
         method isGreaterThan(other: Comparable) => boolean;

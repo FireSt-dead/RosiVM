@@ -101,11 +101,42 @@
       &lt;ShiftLeftAssign&gt; ::= &lt;Prec12Exp&gt; shift-left-assign &lt;Expression&gt;<br />
       &lt;ShiftRightAssign&gt; ::= &lt;Prec12Exp&gt; shift-right-assign &lt;Expression&gt;
     </code>
+      <p>For example:</p>
+      <code class="rvm">
+        <ol>
+          <li>
+            <span class="function">function</span> <span class="Name">compare</span><span class="l-paren">(</span><span class="Name">x</span><span class="colon">:</span> <span class="Identifier">number</span><span class="comma">,</span> <span class="Name">y</span><span class="colon">:</span> <span class="Identifier">number</span><span class="r-paren">)</span> <span class="l-brac">{</span></li>
+          <li>    <span class="Identifier">x</span> <span class="add-assign">+=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>    <span class="Identifier">x</span> <span class="subtract-assign">-=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>    <span class="Identifier">x</span> <span class="multiply-assign">*=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>    <span class="Identifier">x</span> <span class="divide-assign">/=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>    <span class="Identifier">x</span> <span class="bit-and-assign">&amp;=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>    <span class="Identifier">x</span> <span class="bit-xor-assign">^=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>    <span class="Identifier">x</span> <span class="bit-or-assign">|=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>    <span class="Identifier">x</span> <span class="reminder-assign">%=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>    <span class="Identifier">x</span> <span class="shift-left-assign">&lt;&lt;=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>    <span class="Identifier">x</span> <span class="shift-right-assign">&gt;&gt;=</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>
+            <span class="r-brac">}</span>
+          </li>
+        </ol>
+      </code>
       <h2>Conditional If</h2>
       <p>The '<i>ifBool</i> ? <i>trueValue</i> : <i>falseValue</i>' inline if operator. Precedense 1. Syntax:</p>
       <code>
       &lt;Prec1Exp&gt; ::= &lt;Prec2Exp&gt; question &lt;Expression&gt; colon &lt;Expression&gt; | &lt;Prec2Exp&gt;
     </code>
+      <p>For example the following function returns the largest number of its two arguments:</p>
+      <code class="rvm">
+        <ol>
+          <li>
+            <span class="function">function</span> <span class="Name">max</span><span class="l-paren">(</span><span class="Name">x</span><span class="colon">:</span> <span class="Identifier">number</span><span class="comma">,</span> <span class="Name">y</span><span class="colon">:</span> <span class="Identifier">number</span><span class="r-paren">)</span> <span class="turns-in">=&gt;</span> <span class="Identifier">number</span> <span class="l-brac">{</span></li>
+          <li>    <span class="return">return</span> <span class="Identifier">x</span> <span class="greater-or-equal">&gt;=</span> <span class="Identifier">y</span> <span class="question">?</span> <span class="Identifier">x</span> <span class="colon">:</span> <span class="Identifier">y</span><span class="semicolon">;</span></li>
+          <li>
+            <span class="r-brac">}</span>
+          </li>
+        </ol>
+      </code>
       <h2>Conditional Operators</h2>
       <p>These are the conditional operators: or - '||' precedence 2, and - '&amp;&amp;' precedence 3. Syntax:</p>
       <code>

@@ -41,6 +41,7 @@ namespace RosiStudio
                 // Operators
                 new TokenStyle(PushParser.parse + "if", Brushes.DarkBlue, FontWeights.Normal),
                 new TokenStyle(PushParser.parse + "else", Brushes.DarkBlue, FontWeights.Normal),
+                new TokenStyle(PushParser.parse + "return", Brushes.DarkRed, FontWeights.Normal),
                 
                 new TokenStyle(PushParser.parse + "semicolon", Brushes.DarkGray, FontWeights.Normal),
                 new TokenStyle(PushParser.parse + "colon", Brushes.DarkGray, FontWeights.Normal),

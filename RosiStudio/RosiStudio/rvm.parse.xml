@@ -1,31 +1,109 @@
 <Global xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rosivm.org/2014/parse/ RosiLang.parse.xsd" xmlns="http://www.rosivm.org/2014/parse/">
-  <Module prod="(Module) ::= module (Name) l-brac (ModuleMembers) r-brac">
-    <module line="0" column="6">module</module>
-    <Name line="0" column="13">math</Name>
-    <l-brac line="0" column="18">{</l-brac>
-    <Function prod="(Function) ::= (Visibility) function (Name) (TypeParameters) l-paren (Arguments) r-paren (ReturnType) (StatementBlock)">
-      <function line="1" column="8">function</function>
-      <Name line="1" column="17">min</Name>
-      <l-paren line="1" column="20">(</l-paren>
+  <Function prod="(Function) ::= (Visibility) function (Name) (TypeParameters) l-paren (Arguments) r-paren (ReturnType) (StatementBlock)">
+    <function line="0" column="8">function</function>
+    <Name line="0" column="17">compare</Name>
+    <l-paren line="0" column="24">(</l-paren>
+    <Arguments prod="(Arguments) ::= (Argument) comma (Arguments)">
       <Argument prod="(Argument) ::= (Name) colon (Type)">
-        <Name line="1" column="21">x</Name>
-        <colon line="1" column="22">:</colon>
+        <Name line="0" column="25">x</Name>
+        <colon line="0" column="26">:</colon>
         <Type prod="(Type) ::= Identifier (TypeArguments)">
-          <Identifier line="1" column="24">number</Identifier>
+          <Identifier line="0" column="28">number</Identifier>
         </Type>
       </Argument>
-      <r-paren line="1" column="30">)</r-paren>
-      <ReturnType prod="(ReturnType) ::= turns-in (Type)">
-        <turns-in line="1" column="32">=&gt;</turns-in>
+      <comma line="0" column="34">,</comma>
+      <Argument prod="(Argument) ::= (Name) colon (Type)">
+        <Name line="0" column="36">y</Name>
+        <colon line="0" column="37">:</colon>
         <Type prod="(Type) ::= Identifier (TypeArguments)">
-          <Identifier line="1" column="35">number</Identifier>
+          <Identifier line="0" column="39">number</Identifier>
         </Type>
-      </ReturnType>
-      <StatementBlock prod="(StatementBlock) ::= l-brac r-brac">
-        <l-brac line="1" column="42">{</l-brac>
-        <r-brac line="3" column="8">}</r-brac>
-      </StatementBlock>
-    </Function>
-    <r-brac line="4" column="6">}</r-brac>
-  </Module>
+      </Argument>
+    </Arguments>
+    <r-paren line="0" column="45">)</r-paren>
+    <StatementBlock prod="(StatementBlock) ::= l-brac (StatementBlockMembers) r-brac">
+      <l-brac line="0" column="47">{</l-brac>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <AddAssign prod="(AddAssign) ::= (Prec12Exp) add-assign (Expression)">
+          <Identifier line="1" column="10">x</Identifier>
+          <add-assign line="1" column="12">+=</add-assign>
+          <Identifier line="1" column="15">y</Identifier>
+        </AddAssign>
+        <semicolon line="1" column="16">;</semicolon>
+      </Statement>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <SubtractAssign prod="(SubtractAssign) ::= (Prec12Exp) subtract-assign (Expression)">
+          <Identifier line="2" column="10">x</Identifier>
+          <subtract-assign line="2" column="12">-=</subtract-assign>
+          <Identifier line="2" column="15">y</Identifier>
+        </SubtractAssign>
+        <semicolon line="2" column="16">;</semicolon>
+      </Statement>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <MultiplyAssign prod="(MultiplyAssign) ::= (Prec12Exp) multiply-assign (Expression)">
+          <Identifier line="3" column="10">x</Identifier>
+          <multiply-assign line="3" column="12">*=</multiply-assign>
+          <Identifier line="3" column="15">y</Identifier>
+        </MultiplyAssign>
+        <semicolon line="3" column="16">;</semicolon>
+      </Statement>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <DivideAssign prod="(DivideAssign) ::= (Prec12Exp) divide-assign (Expression)">
+          <Identifier line="4" column="10">x</Identifier>
+          <divide-assign line="4" column="12">/=</divide-assign>
+          <Identifier line="4" column="15">y</Identifier>
+        </DivideAssign>
+        <semicolon line="4" column="16">;</semicolon>
+      </Statement>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <BitAndAssign prod="(BitAndAssign) ::= (Prec12Exp) bit-and-assign (Expression)">
+          <Identifier line="5" column="10">x</Identifier>
+          <bit-and-assign line="5" column="12">&amp;=</bit-and-assign>
+          <Identifier line="5" column="15">y</Identifier>
+        </BitAndAssign>
+        <semicolon line="5" column="16">;</semicolon>
+      </Statement>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <BitXorAssign prod="(BitXorAssign) ::= (Prec12Exp) bit-xor-assign (Expression)">
+          <Identifier line="6" column="10">x</Identifier>
+          <bit-xor-assign line="6" column="12">^=</bit-xor-assign>
+          <Identifier line="6" column="15">y</Identifier>
+        </BitXorAssign>
+        <semicolon line="6" column="16">;</semicolon>
+      </Statement>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <BitOrAssign prod="(BitOrAssign) ::= (Prec12Exp) bit-or-assign (Expression)">
+          <Identifier line="7" column="10">x</Identifier>
+          <bit-or-assign line="7" column="12">|=</bit-or-assign>
+          <Identifier line="7" column="15">y</Identifier>
+        </BitOrAssign>
+        <semicolon line="7" column="16">;</semicolon>
+      </Statement>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <ReminderAssign prod="(ReminderAssign) ::= (Prec12Exp) reminder-assign (Expression)">
+          <Identifier line="8" column="10">x</Identifier>
+          <reminder-assign line="8" column="12">%=</reminder-assign>
+          <Identifier line="8" column="15">y</Identifier>
+        </ReminderAssign>
+        <semicolon line="8" column="16">;</semicolon>
+      </Statement>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <ShiftLeftAssign prod="(ShiftLeftAssign) ::= (Prec12Exp) shift-left-assign (Expression)">
+          <Identifier line="9" column="10">x</Identifier>
+          <shift-left-assign line="9" column="12">&lt;&lt;=</shift-left-assign>
+          <Identifier line="9" column="16">y</Identifier>
+        </ShiftLeftAssign>
+        <semicolon line="9" column="17">;</semicolon>
+      </Statement>
+      <Statement prod="(Statement) ::= (Expression) semicolon">
+        <ShiftRightAssign prod="(ShiftRightAssign) ::= (Prec12Exp) shift-right-assign (Expression)">
+          <Identifier line="10" column="10">x</Identifier>
+          <shift-right-assign line="10" column="12">&gt;&gt;=</shift-right-assign>
+          <Identifier line="10" column="16">y</Identifier>
+        </ShiftRightAssign>
+        <semicolon line="10" column="17">;</semicolon>
+      </Statement>
+      <r-brac line="11" column="8">}</r-brac>
+    </StatementBlock>
+  </Function>
 </Global>

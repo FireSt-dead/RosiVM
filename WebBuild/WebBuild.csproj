@@ -54,7 +54,6 @@
     <Content Include="Output\language\interface\field.html" />
     <Content Include="Output\language\interface\index.html" />
     <Content Include="Output\language\interface\method.html" />
-    <Content Include="Output\language\operators.html" />
     <Content Include="Pages\images\rosi-studio.png" />
     <Content Include="Pages\language\class\constructor.html">
       <SubType>Designer</SubType>
@@ -106,6 +105,7 @@
     <Content Include="Templates\images\logo.png" />
     <Content Include="Templates\rvm-html.xslt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Templates\index.xslt" />
     <Content Include="Templates\header.html">

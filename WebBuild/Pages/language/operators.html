@@ -37,11 +37,32 @@
       &lt;ShiftLeftAssign&gt; ::= &lt;Prec12Exp&gt; shift-left-assign &lt;Expression&gt;<br/>
       &lt;ShiftRightAssign&gt; ::= &lt;Prec12Exp&gt; shift-right-assign &lt;Expression&gt;
     </code>
+    <p>For example:</p>
+    <code lang="rvm">
+        function compare(x: number, y: number) {
+          x += y;
+          x -= y;
+          x *= y;
+          x /= y;
+          x &amp;= y;
+          x ^= y;
+          x |= y;
+          x %= y;
+          x &lt;&lt;= y;
+          x &gt;&gt;= y;
+        }
+    </code>
     
     <h2>Conditional If</h2>
     <p>The '<i>ifBool</i> ? <i>trueValue</i> : <i>falseValue</i>' inline if operator. Precedense 1. Syntax:</p>
     <code>
       &lt;Prec1Exp&gt; ::= &lt;Prec2Exp&gt; question &lt;Expression&gt; colon &lt;Expression&gt; | &lt;Prec2Exp&gt;
+    </code>
+    <p>For example the following function returns the largest number of its two arguments:</p>
+    <code lang="rvm">
+      function max(x: number, y: number) => number {
+        return x >= y ? x : y; 
+      }
     </code>
     
     <h2>Conditional Operators</h2>

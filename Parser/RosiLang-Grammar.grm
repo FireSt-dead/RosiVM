@@ -81,8 +81,16 @@ decrement = '--'
 not = '!'
 complement = '~'
 
+<Global> ::= <GlobalMembers> ! This may be empty
+          | <ModuleMembersNonEmpty>
+          | <ClassMembersNonEmpty>
+          | <InterfaceMembersNonEmpty>
+          | <StatementBlockMembers> ! If the StatementBlockMembers is refactored to accomudate empty members this should change.
+<ModuleMembersNonEmpty> ::= <ModuleMember> <ModuleMembersNonEmpty> | <ModuleMember>
+<ClassMembersNonEmpty> ::= <ClassMember> <ClassMembersNonEmpty> | <ClassMember>
+<InterfaceMembersNonEmpty> ::= <InterfaceMember> <InterfaceMembersNonEmpty> | <InterfaceMember>
+
 ! Type System
-<Global> ::= <GlobalMembers>
 <GlobalMembers> ::= <GlobalMember> <GlobalMembers> | <>
 <GlobalMember> ::= <Module>
 
@@ -129,9 +137,11 @@ complement = '~'
 <Statement> ::= <StatementBlock>
              | <Expression> semicolon
              | <If>
+             | <Return>
              ! | 'if' l-paren <Expression> r-paren <Statement> ! TODO: Check the impact of that else missing if...
              
 <If> ::= 'if' l-paren <Expression> r-paren <Statement> 'else' <Statement>
+<Return> ::= 'return' <Expression> semicolon
 
 ! Expressions
 <Expression> ::= <Prec0Exp> | <Prec1Exp>
@@ -161,7 +171,8 @@ complement = '~'
 <ShiftRightAssign> ::= <Prec12Exp> shift-right-assign <Expression>
 
 ! Conditional If Operators
-<Prec1Exp> ::= <Prec2Exp> question <Expression> colon <Expression> | <Prec2Exp>
+<Prec1Exp> ::= <ConditionalIf> | <Prec2Exp>
+<ConditionalIf> ::= <Prec2Exp> question <Expression> colon <Expression>
  
 ! Conditional Operators
 <Prec2Exp> ::= <Prec3Exp> | <ConditionalOr>

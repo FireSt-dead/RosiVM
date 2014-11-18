@@ -17,7 +17,8 @@ code.rvm span.colon
 {
 	color: #A9A9A9;
 }
-code.rvm span.Name
+code.rvm span.Name,
+code.rvm span.return
 {
 	color: #8B0000;
 }
